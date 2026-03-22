@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Problem Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav div {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            background: #667eea;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .problem-header {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .problem-title {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .problem-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .difficulty-easy {
+            background: #e8f5e9;
+            color: #1b5e20;
+        }
+
+        .difficulty-medium {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .difficulty-hard {
+            background: #ffebee;
+            color: #b71c1c;
+        }
+
+        .resources-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .resources-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .resource-list {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .resource-card {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .resource-platform {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .resource-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .resource-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .resource-link-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .tips-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .tips-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .no-problem {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            color: #666;
+        }
+
+        .no-problem h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .problem-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .mark-completed-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .mark-completed-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .mark-completed-btn.completed {
+            background: #26a639;
+            border: 2px solid #1b5e20;
+        }
+
+        .mark-completed-btn.completed:hover {
+            background: #1b5e20;
+        }
+
+        .checkmark {
+            font-size: 1.2rem;
+        }
+
+        .progress-tracker {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: #f0f0f0;
+            border-radius: 6px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div>
+            <a href="index.html">🏠 Home</a>
+            <a href="master-roadmap.html">📚 Complete Roadmap</a>
+            <a href="problem-detail.html" class="active">🔗 Problem Resources</a>
+            <a href="dashboard.html">📊 Dashboard</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="master-roadmap.html" class="back-btn">← Back to Roadmap</a>
+        <div id="problemContent"></div>
+    </div>
+
+    <script>
+        const problemDatabase = {
+            "TwoSum": {
+                title: "Two Sum",
+                topic: "Arrays",
+                difficulty: "Easy",
+                description: "Given an array of integers nums and an integer target, return the indices of the two numbers that add up to target.",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Official LeetCode problem with company tags and solution discussions",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/two-sum/" },
+                            { text: "Discuss", url: "https://leetcode.com/problems/two-sum/discuss/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Detailed explanation with multiple approaches and complexity analysis",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/two-sum/" }
+                        ]
+                    },
+                    {
+                        platform: "YouTube",
+                        type: "Video",
+                        description: "Visual explanation with walkthrough of different approaches",
+                        links: [
+                            { text: "NeetCode Video", url: "https://www.youtube.com/results?search_query=neetcode+two+sum" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Brute force: Check all pairs - O(n²) time, O(1) space",
+                    "Optimized: Use hash map - O(n) time, O(n) space (RECOMMENDED)",
+                    "While iterating, check if target-current exists in hash map",
+                    "Return indices, not values!",
+                    "Handle case where same element used twice (check index != i)"
+                ]
+            },
+
+            "BuyStock": {
+                title: "Best Time to Buy and Sell Stock",
+                topic: "Arrays",
+                difficulty: "Easy",
+                description: "You are given an array prices where prices[i] is the price of a given stock on the ith day. Find max profit possible.",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic problem testing array traversal and optimization",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Multiple approaches from brute force to optimized",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/best-time-to-buy-and-sell-stock/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Optimal: Single pass - track min price seen so far, max profit",
+                    "O(n) time, O(1) space",
+                    "Can't sell before you buy (index constraint)",
+                    "If prices always decreasing, profit = 0",
+                    "Pattern: Keep track of global min while calculating max profit from each point"
+                ]
+            },
+
+            "MaxSubarray": {
+                title: "Maximum Subarray (Kadane's Algorithm)",
+                topic: "Arrays",
+                difficulty: "Medium",
+                description: "Find the contiguous subarray with the largest sum",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic dynamic programming array problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/maximum-subarray/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Kadane's Algorithm explained with visualization",
+                        links: [
+                            { text: "Kadane Algorithm", url: "https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Kadane's Algorithm: O(n) time, O(1) space - MUST KNOW",
+                    "Track: current_max and global_max",
+                    "At each element: current_max = max(element, current_max + element)",
+                    "Update global_max = max(global_max, current_max)",
+                    "Common interview question - be prepared to explain it!"
+                ]
+            },
+
+            "3Sum": {
+                title: "3Sum",
+                topic: "Arrays & Two Pointers",
+                difficulty: "Medium",
+                description: "Find all unique triplets that sum to zero",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Medium difficulty problem combining sorting and two pointers",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/3sum/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Step-by-step solution with handling duplicates",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-triplets-array-sum-given-number/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Sort array first - O(n log n)",
+                    "Fix one element, use two pointers for remaining two",
+                    "Skip duplicates carefully to avoid repeats in output",
+                    "O(n²) time, O(1) space (excluding output)",
+                    "Two pointers pattern starts here - IMPORTANT!"
+                ]
+            },
+
+            "LongestSubstring": {
+                title: "Longest Substring Without Repeating Characters",
+                topic: "Sliding Window",
+                difficulty: "Medium",
+                description: "Find the length of the longest substring without repeating characters",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic sliding window problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Sliding window technique with character map",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/length-of-the-longest-substring-without-repeating-characters/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use sliding window with hash map for character positions",
+                    "Expand window by moving right pointer",
+                    "Shrink window when duplicate found",
+                    "Track max length during iterations",
+                    "O(n) time, O(min(m, n)) space where m = charset size"
+                ]
+            },
+
+            "ReverseLinkedList": {
+                title: "Reverse Linked List",
+                topic: "Linked Lists",
+                difficulty: "Easy",
+                description: "Reverse a singly linked list",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Fundamental linked list problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/reverse-linked-list/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Iterative and recursive approaches",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/reverse-a-linked-list/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Iterative approach: 3 pointers (prev, curr, next) - O(n) time, O(1) space",
+                    "Recursive approach: O(n) time, O(n) space (call stack)",
+                    "Must handle: null input, single node, multiple nodes",
+                    "Don't lose references while reversing!",
+                    "MASTER THIS - Asked in almost every interview"
+                ]
+            },
+
+            "ValidParentheses": {
+                title: "Valid Parentheses",
+                topic: "Stacks",
+                difficulty: "Easy",
+                description: "Check if parentheses are matched and in correct order",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic stack problem for matching pairs",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/valid-parentheses/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Stack-based solution with detailed explanation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use stack to match closing brackets with opening ones",
+                    "O(n) time, O(n) space",
+                    "Handle 3 types: (), {}, []",
+                    "Return false if closing bracket doesn't match top of stack",
+                    "Stack should be empty at end for valid string"
+                ]
+            },
+
+            "BinarySearch": {
+                title: "Binary Search",
+                topic: "Binary Search",
+                difficulty: "Easy",
+                description: "Search for target value in sorted array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Fundamental binary search template",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/binary-search/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Binary search algorithm with complexity analysis",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/binary-search/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "O(log n) time, O(1) space - MUST KNOW",
+                    "Only works on sorted arrays",
+                    "Compare mid with target, eliminate half search space",
+                    "Template: while left <= right",
+                    "Learn this template: left = 0, right = len-1, mid = left + (right-left)//2"
+                ]
+            },
+
+            "Fibonacci": {
+                title: "Fibonacci Number",
+                topic: "Dynamic Programming",
+                difficulty: "Easy",
+                description: "Calculate the nth Fibonacci number efficiently",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic DP problem - great starting point",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/fibonacci-number/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Compare recursive, memoization, and tabulation approaches",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/program-for-fibonacci-numbers/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Recursive: O(2^n) - SLOW, avoid",
+                    "Memoization (top-down): O(n) time, O(n) space - good",
+                    "Tabulation (bottom-up): O(n) time, O(n) space - excellent",
+                    "Space optimized: O(n) time, O(1) space - BEST",
+                    "Great for learning DP basics!"
+                ]
+            },
+
+            "NumberOfIslands": {
+                title: "Number of Islands",
+                topic: "Graphs",
+                difficulty: "Medium",
+                description: "Count the number of islands in a 2D grid",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic DFS/BFS graph connectivity problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/number-of-islands/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "DFS approach for connected components",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-number-of-islands/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use DFS or BFS to explore connected 1s",
+                    "Mark visited cells to avoid recounting",
+                    "O(m*n) time, O(m*n) space for visited array",
+                    "Can also use Union-Find approach",
+                    "Great problem for learning graph traversal!"
+                ]
+            },
+
+            "TwoSumII": {
+                title: "Two Sum II",
+                topic: "Two Pointers",
+                difficulty: "Easy",
+                description: "Find two numbers in sorted array that add up to target (return 1-indexed positions)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic two pointer problem on sorted array",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Two pointer solution with explanation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/pair-in-array-whose-sum-is-closest-to-x/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Array is SORTED - so use two pointers from opposite ends",
+                    "Start: left=0, right=n-1, compare sum to target",
+                    "O(n) time, O(1) space",
+                    "Easier than Two Sum because array is sorted",
+                    "Return 1-indexed positions, not 0-indexed!"
+                ]
+            },
+
+            "ValidPalindrome": {
+                title: "Valid Palindrome",
+                topic: "Two Pointers",
+                difficulty: "Easy",
+                description: "Check if string is palindrome (ignore non-alphanumeric, case-insensitive)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Two pointer string validation problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/valid-palindrome/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Palindrome checking with character filtering",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/how-to-check-if-a-string-is-a-palindrome/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use two pointers from both ends of string",
+                    "Skip non-alphanumeric characters during comparison",
+                    "Convert to lowercase for case-insensitive comparison",
+                    "O(n) time, O(1) space",
+                    "Don't create new string - use pointers on original!"
+                ]
+            },
+
+            "Container": {
+                title: "Container With Most Water",
+                topic: "Two Pointers",
+                difficulty: "Medium",
+                description: "Find two lines that form container holding most water",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Two pointer optimization reducing space",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/container-with-most-water/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Maximum area with two pointers strategy",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/container-with-most-water/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Start from widest container (left=0, right=n-1)",
+                    "Always move the pointer pointing to SHORTER line",
+                    "Water trapped = min(height[left], height[right]) * width",
+                    "O(n) time, O(1) space - greedy approach",
+                    "Why move shorter? Moving taller can't increase area!"
+                ]
+            },
+
+            "RemoveDuplicates": {
+                title: "Remove Duplicates",
+                topic: "Two Pointers",
+                difficulty: "Easy",
+                description: "Remove duplicates in-place from sorted array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "In-place array modification with two pointers",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "In-place duplicate removal algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/remove-duplicates-from-sorted-array/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use two pointers: one for reading, one for writing",
+                    "Only write when value changes",
+                    "Return new length (number of unique elements)",
+                    "O(n) time, O(1) space",
+                    "Modify array in-place - don't use extra space!"
+                ]
+            },
+
+            "RainWater": {
+                title: "Trapping Rain Water",
+                topic: "Two Pointers",
+                difficulty: "Hard",
+                description: "Calculate water trapped after raining on elevations",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Hard problem combining dynamic programming and two pointers",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/trapping-rain-water/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Multiple approaches from brute force to O(n) two pointer",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/trapping-rain-water/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Water at position i = min(max_left, max_right) - height[i]",
+                    "Two pointer approach: from both ends, move shorter side",
+                    "O(n) time, O(1) space with two pointers",
+                    "Precompute left_max and right_max arrays for clarity",
+                    "Hard interview question - master the approach!"
+                ]
+            },
+
+            "ReverseString": {
+                title: "Reverse String",
+                topic: "Two Pointers",
+                difficulty: "Easy",
+                description: "Reverse a string in-place",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Simple two pointer string reversal",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/reverse-string/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "String reversal algorithms and techniques",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/reverse-a-string/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use two pointers from both ends, swap characters",
+                    "O(n) time, O(1) space (in-place)",
+                    "For strings in JS, convert to array first (strings are immutable)",
+                    "Continue until pointers meet (left < right)",
+                    "Basic but important for understanding two pointer pattern"
+                ]
+            },
+
+            "GroupAnagrams": {
+                title: "Group Anagrams",
+                topic: "Strings",
+                difficulty: "Medium",
+                description: "Group words that are anagrams of each other",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "HashMap grouping problem for strings",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/group-anagrams/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Group anagrams using sorting and hashing",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/group-anagrams/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Key insight: Anagrams have same sorted characters",
+                    "Use sorted string as hash key to group anagrams",
+                    "O(n * k log k) where k = average word length",
+                    "Alternative: Count character frequencies as key",
+                    "Great practice for string manipulation and hashing!"
+                ]
+            },
+
+            "LongestPalindrome": {
+                title: "Longest Palindromic Substring",
+                topic: "Strings",
+                difficulty: "Medium",
+                description: "Find longest palindromic substring in string",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Dynamic programming string matching problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/longest-palindromic-substring/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Approach: DP, expand-around-center, Manacher's algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/longest-palindromic-substring/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Expand-around-center: Treat each position as potential center",
+                    "Handle both odd-length (single center) and even-length palindromes",
+                    "DP approach: O(n²) time, O(n²) space",
+                    "Expand-around-center: O(n²) time, O(1) space - preferred",
+                    "Manacher's algorithm: O(n) time - advanced technique"
+                ]
+            },
+
+            "Isomorphic": {
+                title: "Isomorphic Strings",
+                topic: "Strings",
+                difficulty: "Easy",
+                description: "Check if two strings are isomorphic (one-to-one character mapping)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Character mapping validation problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/isomorphic-strings/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "One-to-one mapping detection using hash maps",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-if-two-given-strings-are-isomorphic-to-each-other/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Need two hash maps: char1->char2 and char2->char1",
+                    "Ensure one-to-one mapping in both directions",
+                    "O(n) time, O(1) space (max 26 English letters)",
+                    "Example: 'egg' and 'add' are isomorphic",
+                    "Important for pattern matching problems"
+                ]
+            },
+
+            "RansomNote": {
+                title: "Ransom Note",
+                topic: "Strings",
+                difficulty: "Easy",
+                description: "Check if ransom note can be constructed from magazine letters",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Character frequency counting problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/ransom-note/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Hash map approach for character frequency",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-if-a-string-can-be-formed-from-another-string-by-at-most-x-removals/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Count character frequencies in both strings",
+                    "Each character in ransom note must exist in magazine with enough count",
+                    "O(n + m) time, O(1) space (max 26 English letters)",
+                    "Can use array instead of hash map for optimization",
+                    "Practice: Understand frequency counting pattern"
+                ]
+            },
+
+            "RomanToInt": {
+                title: "Roman to Integer",
+                topic: "Strings",
+                difficulty: "Easy",
+                description: "Convert Roman numeral string to integer",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "String parsing with special character rules",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/roman-to-integer/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Roman numeral conversion algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/converting-roman-numerals-to-decimal-lying-between-1-to-3999/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Map: I=1, V=5, X=10, L=50, C=100, D=500, M=1000",
+                    "Subtraction rule: smaller before larger means subtract (IV=4, IX=9)",
+                    "O(n) time, O(1) space (fixed 7 mappings)",
+                    "Iterate through string, add/subtract based on rules",
+                    "Key: Understand when smaller values mean subtraction"
+                ]
+            },
+
+            "IntToRoman": {
+                title: "Integer to Roman",
+                topic: "Strings",
+                difficulty: "Easy",
+                description: "Convert integer to Roman numeral string",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Greedy algorithm for Roman numeral conversion",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/integer-to-roman/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Decimal to Roman numeral transformation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/converting-decimal-number-lying-between-1-to-3999-to-roman-numerals/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use greedy approach: use largest possible value first",
+                    "Need to include subtraction cases: IV=4, IX=9, XL=40, etc.",
+                    "O(1) time since number <= 3999 (max iterations=13)",
+                    "Create mapping of numbers to Roman chars in descending order",
+                    "Reverse of RomanToInt problem"
+                ]
+            },
+
+            "MinStack": {
+                title: "Min Stack",
+                topic: "Stacks",
+                difficulty: "Easy",
+                description: "Implement stack with getMin() in O(1) time",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Stack design problem with optimization",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/min-stack/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Stack implementation with minimum tracking",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/design-a-stack-that-supports-getmin-in-o-1-time-and-o-1-extra-space/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Maintain two stacks: one for values, one for minimums",
+                    "Or use pairs: store (value, min_so_far) in single stack",
+                    "Push: Add to min stack if <= current min",
+                    "Pop: Remove from min stack if equals current value",
+                    "All operations: O(1) time, O(n) space"
+                ]
+            },
+
+            "NextGreater": {
+                title: "Next Greater Element",
+                topic: "Stacks",
+                difficulty: "Medium",
+                description: "Find next greater element for each element in array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic monotonic stack problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/next-greater-element-i/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Monotonic stack approach for finding next greater",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/next-greater-element/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use monotonic stack (decreasing order)",
+                    "For each element, pop stack while top < current",
+                    "Top of popped element's next greater = current",
+                    "O(n) time, O(n) space - single pass",
+                    "IMPORTANT: Master monotonic stack pattern here!"
+                ]
+            },
+
+            "DailyTemp": {
+                title: "Daily Temperatures",
+                topic: "Stacks",
+                difficulty: "Medium",
+                description: "Find next warmer day for each day",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Monotonic stack application problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/daily-temperatures/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Stack-based approach for finding next greater element",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/next-greater-element/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Similar to Next Greater Element problem",
+                    "Use monotonic decreasing stack to store indices",
+                    "For each warmer day, calculate difference and store",
+                    "O(n) time, O(n) space",
+                    "Practical application of monotonic stack pattern"
+                ]
+            },
+
+            "PolishNotation": {
+                title: "Evaluate Reverse Polish Notation",
+                topic: "Stacks",
+                difficulty: "Medium",
+                description: "Evaluate expression written in reverse Polish notation",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Stack-based expression evaluation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/evaluate-reverse-polish-notation/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Expression evaluation using stack",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/evaluation-of-postfix-expression/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Push numbers onto stack",
+                    "When operator found, pop two operands, compute, push result",
+                    "Final stack contains single result",
+                    "O(n) time, O(n) space",
+                    "Classic stack application - master this pattern"
+                ]
+            },
+
+            "QueueViaStack": {
+                title: "Implement Queue Using Stacks",
+                topic: "Stacks & Queues",
+                difficulty: "Easy",
+                description: "Implement queue data structure using two stacks",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Data structure design using stacks",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/implement-queue-using-stacks/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Queue implementation with stacks",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/queue-using-stacks/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use two stacks: input_stack and output_stack",
+                    "Push: Always to input_stack",
+                    "Pop/Peek: Move from input to output if output empty",
+                    "Amortized O(1) per operation",
+                    "Opposite: Can also implement Stack using Queues"
+                ]
+            },
+
+            "InorderTraversal": {
+                title: "Inorder Traversal",
+                topic: "Trees",
+                difficulty: "Easy",
+                description: "Left-Root-Right traversal of binary tree",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Tree traversal fundamentals",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/binary-tree-inorder-traversal/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Recursive and iterative inorder traversal",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/inorder-traversal-of-binary-tree/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Recursive: Call left, process node, call right",
+                    "Iterative: Use stack to simulate recursion",
+                    "For BST: Inorder gives sorted order",
+                    "O(n) time, O(h) space for recursion/stack",
+                    "MUST KNOW all 4 traversals (inorder, preorder, postorder, level-order)"
+                ]
+            },
+
+            "LevelOrder": {
+                title: "Level Order Traversal",
+                topic: "Trees",
+                difficulty: "Easy",
+                description: "Breadth-first traversal of binary tree by levels",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "BFS tree traversal using queue",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/binary-tree-level-order-traversal/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Level-order traversal with BFS",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/level-order-traversal-of-binary-tree/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use queue (FIFO) for BFS approach",
+                    "Process nodes level by level, add children to queue",
+                    "O(n) time, O(w) space where w = max width",
+                    "Return result as list of lists (one per level)",
+                    "Also called breadth-first search"
+                ]
+            },
+
+            "MaxDepth": {
+                title: "Maximum Depth of Binary Tree",
+                topic: "Trees",
+                difficulty: "Easy",
+                description: "Find maximum depth (height) of binary tree",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Recursive tree problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/maximum-depth-of-binary-tree/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Tree height calculation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-height-of-a-tree/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Recursive: 1 + max(left_depth, right_depth)",
+                    "Base case: null node has depth 0",
+                    "O(n) time visiting all nodes, O(h) space for recursion",
+                    "Iterative: Use DFS or BFS to track depth",
+                    "Classic example for understanding recursion on trees"
+                ]
+            },
+
+            "PathSum": {
+                title: "Path Sum",
+                topic: "Trees",
+                difficulty: "Easy",
+                description: "Check if root-to-leaf path with given sum exists",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Path traversal and sum computation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/path-sum/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Root to leaf path sum checking",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "DFS from root, accumulate sum, check at leaf",
+                    "Reduce target at each step: target - node.val",
+                    "Base case: leaf node with sum == 0 means path found",
+                    "O(n) time, O(h) space",
+                    "Backtracking pattern on trees - important!"
+                ]
+            },
+
+            "LCA": {
+                title: "Lowest Common Ancestor",
+                topic: "Trees",
+                difficulty: "Medium",
+                description: "Find lowest common ancestor of two nodes in binary tree",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Tree node relationship problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "LCA computation in binary trees",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-tree/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "If node is p or q, it's potential LCA",
+                    "If both p and q in left subtree, LCA is in left",
+                    "If both p and q in right subtree, LCA is in right",
+                    "If one in each, current node is LCA",
+                    "O(n) time, O(h) space - important tree pattern"
+                ]
+            },
+
+            "ValidateBST": {
+                title: "Validate Binary Search Tree",
+                topic: "Trees",
+                difficulty: "Medium",
+                description: "Check if binary tree is valid BST",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "BST property validation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/validate-binary-search-tree/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Binary search tree validation algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Not enough to check: node.left < node.val < node.right",
+                    "Must validate ENTIRE left subtree < node and right subtree > node",
+                    "Use min/max bounds while traversing",
+                    "Inorder traversal gives sorted array - check if sorted",
+                    "O(n) time, O(h) space"
+                ]
+            },
+
+            "SameTree": {
+                title: "Same Tree",
+                topic: "Trees",
+                difficulty: "Easy",
+                description: "Check if two binary trees are identical",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Tree comparison problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/same-tree/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Binary tree equality check",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-if-two-trees-are-identical/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Recursive: Check node value, then recursively check left and right",
+                    "Base cases: both null (true), one null (false), values differ (false)",
+                    "O(min(n,m)) time where n,m are tree sizes",
+                    "O(h) space for recursion",
+                    "Foundation for tree comparison problems"
+                ]
+            },
+
+            "PalindromeLinkedList": {
+                title: "Palindrome Linked List",
+                topic: "Linked Lists",
+                difficulty: "Easy",
+                description: "Check if linked list is palindrome",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Linked list traversal and comparison",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/palindrome-linked-list/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Check palindrome in linked list",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Find middle with slow/fast pointers",
+                    "Reverse second half",
+                    "Compare first half with reversed second half",
+                    "O(n) time, O(1) space",
+                    "Master: slow/fast pointers and reversal pattern"
+                ]
+            },
+
+            "MergeTwoLists": {
+                title: "Merge Two Sorted Lists",
+                topic: "Linked Lists",
+                difficulty: "Easy",
+                description: "Merge two sorted linked lists into one",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Linked list merging fundamentals",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/merge-two-sorted-lists/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Merge sorted linked lists",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/merge-two-sorted-linked-lists/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use dummy node to simplify head handling",
+                    "Compare current nodes from both lists, attach smaller",
+                    "Attach remaining nodes from non-empty list",
+                    "O(n + m) time, O(1) space (excluding output)",
+                    "Important pattern: two pointers on different lists"
+                ]
+            },
+
+            "LinkedListCycle": {
+                title: "Linked List Cycle",
+                topic: "Linked Lists",
+                difficulty: "Easy",
+                description: "Detect cycle in linked list using Floyd's algorithm",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Cycle detection in linked list",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/linked-list-cycle/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Floyd's cycle detection algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Floyd's algorithm: slow (1 step) and fast (2 steps) pointers",
+                    "If they meet, cycle exists",
+                    "O(n) time, O(1) space - MUST KNOW",
+                    "Also works for finding cycle start position",
+                    "Classic interview problem!"
+                ]
+            },
+
+            "RemoveNthNode": {
+                title: "Remove Nth Node From End",
+                topic: "Linked Lists",
+                difficulty: "Medium",
+                description: "Remove nth node from end of linked list",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Linked list node removal",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Remove node from end of linked list",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/remove-nth-node-from-the-end-of-a-linked-list/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use dummy node to handle edge case of removing head",
+                    "Create gap of n nodes using two pointers",
+                    "First pointer moves n steps ahead, then move both until first reaches end",
+                    "O(n) time, O(1) space",
+                    "Practice: Understanding two pointer patterns"
+                ]
+            },
+
+            "FindMiddle": {
+                title: "Find Middle of Linked List",
+                topic: "Linked Lists",
+                difficulty: "Easy",
+                description: "Find middle node of linked list",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Linked list traversal with slow/fast pointers",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/middle-of-the-linked-list/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Find middle of linked list",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-middle-of-a-linked-list/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Slow/fast pointer: slow moves 1 step, fast moves 2 steps",
+                    "When fast reaches end, slow is at middle",
+                    "O(n) time, O(1) space",
+                    "For even length: returns second middle",
+                    "Fundamental pattern - appears in many problems!"
+                ]
+            },
+
+            "ReorderList": {
+                title: "Reorder List",
+                topic: "Linked Lists",
+                difficulty: "Medium",
+                description: "Reorder list to L0→Ln→L1→Ln-1→... pattern",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Linked list manipulation with multiple steps",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/reorder-list/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Reorder linked list algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/rearrange-linked-list-in-a-given-size/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Find middle with slow/fast pointers",
+                    "Reverse second half of list",
+                    "Merge two halves in alternating fashion",
+                    "O(n) time, O(1) space",
+                    "Combines: Finding middle, reversal, and merging"
+                ]
+            },
+
+            "MoveZeroes": {
+                title: "Move Zeroes",
+                topic: "Arrays",
+                difficulty: "Easy",
+                description: "Move all zeros to end while maintaining relative order",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Two pointer in-place array modification",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/move-zeroes/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "In-place zero movement algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/move-all-zeroes-to-end-of-array/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use two pointers: one for non-zero elements placement",
+                    "Only swap when encountering non-zero element",
+                    "Modify array in-place - O(n) time, O(1) space",
+                    "Preserve relative order of non-zero elements",
+                    "Alternative: Track last zero position and shift"
+                ]
+            },
+
+            "ContainsDuplicate": {
+                title: "Contains Duplicate",
+                topic: "Arrays",
+                difficulty: "Easy",
+                description: "Check if array contains any duplicate element",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Hash set for duplicate detection",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/contains-duplicate/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Duplicate element detection in array",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-if-an-array-of-integers-contains-duplicate-elements/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use hash set to track seen elements",
+                    "Return true as soon as duplicate found",
+                    "O(n) time, O(n) space",
+                    "Sorting approach: O(n log n) time, O(1) space",
+                    "Hash set is preferred for better average case"
+                ]
+            },
+
+            "ValidAnagram": {
+                title: "Valid Anagram",
+                topic: "Arrays",
+                difficulty: "Easy",
+                description: "Check if two strings are anagrams of each other",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Character frequency comparison",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/valid-anagram/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Anagram checking algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-whether-two-strings-are-anagram-of-each-other/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Approach 1: Sort both strings, compare - O(n log n)",
+                    "Approach 2: Count character frequencies - O(n)",
+                    "Both strings must have equal length",
+                    "Character count hash map approach preferred",
+                    "Practice: Character frequency pattern"
+                ]
+            },
+
+            "ProductArray": {
+                title: "Product of Array Except Self",
+                topic: "Arrays",
+                difficulty: "Medium",
+                description: "Compute product of all other elements without division",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Prefix-suffix product calculation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/product-of-array-except-self/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Product of array without division operator",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/product-of-array-element-except-itself/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Without division: Use prefix and suffix arrays",
+                    "prefix[i] = product of all elements before i",
+                    "suffix[i] = product of all elements after i",
+                    "result[i] = prefix[i] * suffix[i]",
+                    "O(n) time, O(n) space for output array"
+                ]
+            },
+
+            "SearchInsertPosition": {
+                title: "Search Insert Position",
+                topic: "Binary Search",
+                difficulty: "Easy",
+                description: "Find position to insert target in sorted array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search left boundary variants",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/search-insert-position/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Insert position in sorted array",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-position-element-sorted-array/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Return index if found, else index where should be inserted",
+                    "Use binary search - O(log n) time",
+                    "Similar to lower bound problem",
+                    "Left pointer at end gives insert position",
+                    "Practice: Understanding binary search variations"
+                ]
+            },
+
+            "RotatedArray": {
+                title: "Search in Rotated Sorted Array",
+                topic: "Binary Search",
+                difficulty: "Medium",
+                description: "Search target in rotated sorted array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search with rotation handling",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/search-in-rotated-sorted-array/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Search in rotated sorted array",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/search-element-rotated-sorted-array/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Determine which half is sorted",
+                    "Check if target is in sorted half",
+                    "Eliminate half based on this check",
+                    "O(log n) time - binary search variant",
+                    "Key: Always know which side is sorted"
+                ]
+            },
+
+            "SqrtX": {
+                title: "Sqrt(x)",
+                topic: "Binary Search",
+                difficulty: "Easy",
+                description: "Compute integer square root without built-in function",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search on answer variant",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/sqrt-x/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Integer square root calculation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-the-integer-square-root-of-a-number/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Binary search for answer: search space 0 to x",
+                    "Mid*mid = target → found, < target → search right, > target → search left",
+                    "O(log n) time - better than iterative",
+                    "Return floor of square root",
+                    "Practice: Binary search on answer pattern"
+                ]
+            },
+
+            "FirstLastPosition": {
+                title: "Find First and Last Position",
+                topic: "Binary Search",
+                difficulty: "Medium",
+                description: "Find first and last position of element in sorted array",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search for boundaries",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Find first and last occurrence",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/find-first-and-last-occurrence-of-a-number-in-a-sorted-array/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use binary search for left boundary (first occurrence)",
+                    "Use binary search for right boundary (last occurrence)",
+                    "O(log n) time - two binary searches",
+                    "Handle case where element not found",
+                    "Practice: Understanding lower and upper bounds"
+                ]
+            },
+
+            "KokoEating": {
+                title: "Koko Eating Bananas",
+                topic: "Binary Search",
+                difficulty: "Medium",
+                description: "Find minimum eating speed to finish bananas in given hours",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search on answer pattern",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/koko-eating-bananas/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Binary search applied to optimization problems",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/koko-eating-bananas/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Binary search on speed: 1 to max(piles)",
+                    "For each speed, check if can finish in time",
+                    "O(n log m) where m = max pile size",
+                    "Classic binary search on answer problem",
+                    "Calculate hours needed: ceil(pile / speed)"
+                ]
+            },
+
+            "ShipCapacity": {
+                title: "Capacity To Ship Within D Days",
+                topic: "Binary Search",
+                difficulty: "Medium",
+                description: "Find minimum ship capacity to deliver all packages in D days",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Binary search optimization pattern",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Binary search on capacity",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/ship-packages-within-d-days/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Search space: max(weights) to sum(weights)",
+                    "For each capacity, check if can ship in D days",
+                    "O(n * log(sum)) time complexity",
+                    "Greedy: Load packages day by day with given capacity",
+                    "Similar pattern to Koko Eating Bananas"
+                ]
+            },
+
+            "MaxConsecutiveOnes": {
+                title: "Max Consecutive Ones III",
+                topic: "Sliding Window",
+                difficulty: "Medium",
+                description: "Find max consecutive 1's after flipping at most K zeros",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Sliding window with constraint tracking",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/max-consecutive-ones-iii/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Maximum consecutive elements with k replacements",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/max-consecutive-ones-iii/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Track count of zeros in current window",
+                    "Expand window as long as zeros <= k",
+                    "Shrink window when zeros > k",
+                    "O(n) time, O(1) space",
+                    "Practice: Constraint-based sliding window"
+                ]
+            },
+
+            "MinWindowSubstring": {
+                title: "Minimum Window Substring",
+                topic: "Sliding Window",
+                difficulty: "Hard",
+                description: "Find minimum window size substring with all target characters",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Complex sliding window with character counting",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/minimum-window-substring/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Minimum window substring algorithm",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/minimum-window-substring/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use hash map to count required characters",
+                    "Expand window until all chars found",
+                    "Shrink to minimize length while maintaining requirement",
+                    "O(n) time, O(1) space for ASCII (256 chars)",
+                    "One of hardest sliding window problems - master it!"
+                ]
+            },
+
+            "PermutationInString": {
+                title: "Permutation in String",
+                topic: "Sliding Window",
+                difficulty: "Medium",
+                description: "Check if s1 permutation exists as substring in s2",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Sliding window with character frequency",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/permutation-in-string/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Find permutation substring",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/check-string-substring-anagram/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Fixed window size = len(s1)",
+                    "Track frequency of chars in window",
+                    "Compare frequencies with s1 frequencies",
+                    "O(n) time, O(1) space",
+                    "Similar to anagram checking pattern"
+                ]
+            },
+
+            "GrumpyBookstore": {
+                title: "Grumpy Bookstore Owner",
+                topic: "Sliding Window",
+                difficulty: "Medium",
+                description: "Maximize satisfied customers by using technique once for K minutes",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Sliding window for maximum gain calculation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/grumpy-bookstore-owner/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Fixed window maximum gain pattern",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/maximize-satisfied-customers/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Calculate base satisfied = sum where grumpy[i]=0",
+                    "Use fixed window of size k to find max additional satisfied",
+                    "O(n) time, O(1) space",
+                    "Technique window: grumpy[i]=1 only",
+                    "Practice: Tracking gain in fixed window"
+                ]
+            },
+
+            "FruitBaskets": {
+                title: "Fruit Into Baskets",
+                topic: "Sliding Window",
+                difficulty: "Medium",
+                description: "Maximum fruits collected with at most 2 types",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Sliding window with constraint of k distinct elements",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/fruit-into-baskets/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Max elements with k distinct constraint",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/fruit-into-baskets/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "At most 2 distinct types = at most 2 keys in hash map",
+                    "Expand window, track fruit types",
+                    "Shrink when more than 2 types",
+                    "O(n) time, O(1) space (max 2 types)",
+                    "Similar to 'longest substring with k distinct'"
+                ]
+            },
+
+            "SubstringConcatenation": {
+                title: "Substring with Concatenation",
+                topic: "Sliding Window",
+                difficulty: "Hard",
+                description: "Find indices where concatenation of word list starts",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Complex sliding window with word matching",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/substring-with-concatenation-of-all-words/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Concatenation of words problem",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/substring-with-concatenation-of-all-words/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Fixed window size = total length of all words",
+                    "Track word frequency with hash map",
+                    "For each position, extract words and match",
+                    "O(n * m) where m = word length",
+                    "Hard problem - requires careful window management"
+                ]
+            },
+
+            "MaxAreaIsland": {
+                title: "Max Area of Island",
+                topic: "Graphs",
+                difficulty: "Medium",
+                description: "Find largest island area in 2D grid",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "DFS/BFS for area calculation",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/max-area-of-island/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Maximum island area calculation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/max-area-of-island/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Similar to Number of Islands but track area",
+                    "DFS/BFS returns area of connected component",
+                    "Return maximum area found",
+                    "O(m*n) time, O(m*n) space",
+                    "Practice: DFS variations and area tracking"
+                ]
+            },
+
+            "CloneGraph": {
+                title: "Clone Graph",
+                topic: "Graphs",
+                difficulty: "Medium",
+                description: "Create a deep copy of undirected graph",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Graph traversal with deep copy",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/clone-graph/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Clone or deep copy of graph",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/clone-a-graph/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use DFS or BFS with hash map to track visited/cloned nodes",
+                    "Create new node with same value",
+                    "Connect cloned nodes based on original edges",
+                    "O(n + e) time where e = edges",
+                    "Important: Handle cycles with visited set"
+                ]
+            },
+
+            "CourseSchedule": {
+                title: "Course Schedule",
+                topic: "Graphs",
+                difficulty: "Medium",
+                description: "Determine if all courses can be finished (topological sort)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Topological sort with cycle detection",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/course-schedule/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Topological sorting (DFS or Kahn's algorithm)",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/topological-sorting/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Graph has cycle = impossible to finish all courses",
+                    "Use DFS with 3-state coloring (white, gray, black)",
+                    "Or use Kahn's algorithm with indegree",
+                    "O(v + e) time for cycle detection",
+                    "IMPORTANT: Topological sort is crucial concept"
+                ]
+            },
+
+            "WordLadder": {
+                title: "Word Ladder",
+                topic: "Graphs",
+                difficulty: "Hard",
+                description: "Find shortest transformation sequence between words",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "BFS for shortest path",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/word-ladder/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Shortest path in word transformation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/word-ladder/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Build graph: Each word connects to words with 1 char diff",
+                    "Use BFS to find shortest path",
+                    "Generate neighbors: Replace each char with a-z",
+                    "O(n * l^2 * 26) where l = word length",
+                    "Classic BFS shortest path problem"
+                ]
+            },
+
+            "NetworkDelayTime": {
+                title: "Network Delay Time",
+                topic: "Graphs",
+                difficulty: "Medium",
+                description: "Find time for signal to reach all nodes (Dijkstra)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Dijkstra's shortest path algorithm",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/network-delay-time/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Dijkstra's algorithm implementation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "Use Dijkstra's algorithm for shortest path from source",
+                    "Return maximum time to reach any node",
+                    "If unreachable node, return -1",
+                    "O(e log v) with min heap",
+                    "IMPORTANT: Master Dijkstra's algorithm concept"
+                ]
+            },
+
+            "ClimbingStairs": {
+                title: "Climbing Stairs",
+                topic: "Dynamic Programming",
+                difficulty: "Easy",
+                description: "Number of ways to climb n stairs (1 or 2 at a time)",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic DP warm-up problem",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/climbing-stairs/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Climbing stairs using dynamic programming",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/count-ways-to-reach-nth-stair/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "dp[i] = number of ways to reach step i",
+                    "dp[i] = dp[i-1] + dp[i-2] (Fibonacci pattern)",
+                    "Base cases: dp[1]=1, dp[2]=2",
+                    "O(n) time, O(n) space (can optimize to O(1) space)",
+                    "Classic DP introduction problem"
+                ]
+            },
+
+            "CoinChange": {
+                title: "Coin Change",
+                topic: "Dynamic Programming",
+                difficulty: "Medium",
+                description: "Minimum coins needed to make amount",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Unbounded knapsack - coin change variant",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/coin-change/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "Coin change problem using dynamic programming",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/coin-change-dp-7/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "dp[i] = minimum coins to make amount i",
+                    "For each coin, update all amounts >= coin value",
+                    "Transition: dp[amount] = min(dp[amount], dp[amount - coin] + 1)",
+                    "O(amount * n) time where n = number of coins",
+                    "IMPORTANT: Classic unbounded knapsack pattern"
+                ]
+            },
+
+            "HouseRobber": {
+                title: "House Robber",
+                topic: "Dynamic Programming",
+                difficulty: "Medium",
+                description: "Maximum money robbed without robbing adjacent houses",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "DP with state management",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/house-robber/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "House robber problem solution",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/house-robber-problem/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "dp[i] = max(dp[i-1], dp[i-2] + nums[i])",
+                    "Either rob current house or skip it",
+                    "O(n) time, O(1) space (using 2 variables instead of array)",
+                    "State: (rob, not_rob) for each position",
+                    "Practice: State-based DP thinking"
+                ]
+            },
+
+            "LongestIncreasingSubsequence": {
+                title: "Longest Increasing Subsequence",
+                topic: "Dynamic Programming",
+                difficulty: "Medium",
+                description: "Find length of longest increasing subsequence",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic DP problem with multiple approaches",
+                        links: [
+                            { text: "Problem Link", url: "https://leetcode.com/problems/longest-increasing-subsequence/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "LIS using dynamic programming and binary search",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "DP approach: O(n²) - dp[i] = LIS ending at index i",
+                    "For each i, check all j < i, if nums[j] < nums[i], update dp[i]",
+                    "Binary search approach: O(n log n) using patience sorting",
+                    "Subsequence != subarray (doesn't need to be contiguous)",
+                    "IMPORTANT: Understand both approaches"
+                ]
+            },
+
+            "KnapsackDP": {
+                title: "0-1 Knapsack",
+                topic: "Dynamic Programming",
+                difficulty: "Medium",
+                description: "Maximum value items that fit in knapsack capacity",
+                resources: [
+                    {
+                        platform: "LeetCode",
+                        type: "Practice",
+                        description: "Classic knapsack problem (not directly on LeetCode but common interview)",
+                        links: [
+                            { text: "Problem Link", url: "https://www.geeksforgeeks.org/0-1-knapsack-problem/" }
+                        ]
+                    },
+                    {
+                        platform: "GeeksForGeeks",
+                        type: "Tutorial",
+                        description: "0-1 Knapsack problem explanation",
+                        links: [
+                            { text: "View Solution", url: "https://www.geeksforgeeks.org/0-1-knapsack-problem/" }
+                        ]
+                    }
+                ],
+                tips: [
+                    "dp[i][w] = max value with i items and capacity w",
+                    "For each item, decide: take it or skip it",
+                    "If take: dp[i][w] = value[i] + dp[i-1][w-weight[i]]",
+                    "If skip: dp[i][w] = dp[i-1][w]",
+                    "MASTER THIS: Foundation for all DP variants!"
+                ]
+            }
+        };
+
+        // Get problem from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const problemKey = urlParams.get('problem');
+
+        const contentDiv = document.getElementById('problemContent');
+
+        if (problemKey && problemDatabase[problemKey]) {
+            const problem = problemDatabase[problemKey];
+            const isCompleted = localStorage.getItem(`completed_${problemKey}`) === 'true';
+
+            contentDiv.innerHTML = `
+        <div class="problem-header">
+            <div class="problem-header-top">
+                <div>
+                    <h1 class="problem-title">${problem.title}</h1>
+                    <div class="problem-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Topic</span>
+                            <span class="meta-value">${problem.topic}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Difficulty</span>
+                            <span class="difficulty-badge difficulty-${problem.difficulty.toLowerCase()}">${problem.difficulty}</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="markCompletedBtn" class="mark-completed-btn ${isCompleted ? 'completed' : ''}">
+                    <span class="checkmark">${isCompleted ? '✅' : '☐'}</span>
+                    <span>${isCompleted ? 'Completed!' : 'Mark Complete'}</span>
+                </button>
+            </div>
+            <p>${problem.description}</p>
+            <div class="progress-tracker">
+                📊 Your progress is being tracked automatically
+            </div>
+        </div>
+
+        <div class="resources-section">
+            <h2>🔗 Learning Resources</h2>
+            <div class="resource-list">
+                ${problem.resources.map(resource => `
+                    <div class="resource-card">
+                        <div class="resource-header">
+                            <span class="resource-platform">${resource.platform}</span>
+                            <span class="resource-type">${resource.type}</span>
+                        </div>
+                        <div class="resource-description">${resource.description}</div>
+                        <div class="resource-link-group">
+                            ${resource.links.map(link => `
+                                <a href="${link.url}" target="_blank" class="resource-link">${link.text} →</a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <h2>💡 Key Tips & Insights</h2>
+            <ul class="tips-list">
+                ${problem.tips.map(tip => `<li>${tip}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+
+            // Add event listener for mark completed button
+            document.getElementById('markCompletedBtn').addEventListener('click', function () {
+                const currentStatus = localStorage.getItem(`completed_${problemKey}`) === 'true';
+                const newStatus = !currentStatus;
+                localStorage.setItem(`completed_${problemKey}`, newStatus);
+
+                // Update button appearance
+                const btn = this;
+                btn.classList.toggle('completed');
+                btn.innerHTML = newStatus
+                    ? '<span class="checkmark">✅</span><span>Completed!</span>'
+                    : '<span class="checkmark">☐</span><span>Mark Complete</span>';
+
+                // Show success message
+                if (newStatus) {
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<span class="checkmark">🎉</span><span>Great!</span>';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                    }, 2000);
+                }
+            });
+        } else {
+            contentDiv.innerHTML = `
+        <div class="no-problem">
+            <h2>Problem Not Found</h2>
+            <p>The problem you're looking for doesn't exist yet in our database.</p>
+            <p>Go back to the <a href="master-roadmap.html" style="color: #667eea; font-weight: 600;">Complete Roadmap</a> to choose a problem.</p>
+        </div>
+    `;
+        }
+    </script>
+
+</body>
+
+</html>

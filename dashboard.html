@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Dashboard - DSA Mastery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .dashboard-header p {
+            margin: 0.5rem 0 0 0;
+            opacity: 0.95;
+        }
+
+        .auth-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            border-color: #FF6B35;
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #2D3436;
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-title::before {
+            font-size: 1.5rem;
+        }
+
+        .streak-card {
+            text-align: center;
+        }
+
+        .streak-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF6B35;
+            margin: 1rem 0;
+        }
+
+        .streak-text {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .motivation-quote {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #FF6B35;
+        }
+
+        .progress-bar-container {
+            margin: 1rem 0;
+        }
+
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-item-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2D3436;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .progress-percentage {
+            font-size: 0.9rem;
+            color: #666;
+            min-width: 35px;
+            text-align: right;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #E55A24;
+            transform: translateY(-2px);
+        }
+
+        .reset-button {
+            background: #dc3545;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .reset-button:hover {
+            background: #c82333;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .topic-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+
+        .topic-badge {
+            background: #D4EDDA;
+            color: #155724;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">DSA Mastery</h1>
+            <div id="authStatus">
+                <span id="loginStatus">Guest</span>
+                <button id="loginBtn" onclick="showAuthModal('login')">Login</button>
+                <button id="signupBtn" onclick="showAuthModal('signup')">Signup</button>
+                <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="platform-links.html">Question Links</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2 id="modalTitle">Login</h2>
+            <form id="authForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="submitBtn">Login</button>
+            </form>
+            <p id="authMsg"></p>
+        </div>
+    </div>
+
+    <main class="dashboard-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div>
+                <h1>📊 Your Learning Dashboard</h1>
+                <p>Track your progress and keep the momentum going!</p>
+            </div>
+            <div class="auth-controls">
+                <button id="resetBtn" onclick="resetUserProgress()" class="reset-button" style="display:none;">Reset
+                    Progress</button>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Streak Card -->
+            <div class="dashboard-card streak-card">
+                <h2 class="card-title">🔥 Daily Streak</h2>
+                <div id="streakContent">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🤔</div>
+                        <p>Login to track your learning streak</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Card -->
+            <div class="dashboard-card">
+                <h2 class="card-title">⭐ Recommended Next</h2>
+                <div id="recommendContent">
+                    <div class="empty-state">
+                        <p>Start solving problems to get personalized recommendations!</p>
+                        <a href="platform-links.html" class="cta-button">Start Practicing</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="dashboard-card">
+                <h2 class="card-title">📈 Your Stats</h2>
+                <div id="statsContent">
+                    <div class="empty-state">
+                        <p>Your practice statistics will appear here</p>
+                        <a href="platform-links.html" class="cta-button">Start Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h2 class="card-title">📚 Topic Progress</h2>
+                <div id="topicProgressContent">
+                    <div class="empty-state">
+                        <p>No progress yet. Visit Question Links to start!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h2 class="card-title">💡 Learning Tip</h2>
+                <div class="motivation-quote">
+                    "Consistency is the key to mastering DSA. Practice 4-5 problems daily, understand the patterns, and
+                    you'll ace any interview!"
+                </div>
+                <p style="color: #666; margin-top: 1rem; font-size: 0.9rem;">
+                    ✓ Focus on patterns, not just problems<br>
+                    ✓ Practice from 4-5 platforms<br>
+                    ✓ Understand before memorizing<br>
+                    ✓ Review your mistakes
+                </p>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="dashboard-grid">
+            <div class="dashboard-card" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔗</div>
+                <h3 style="color: #2D3436; margin: 0 0 0.5rem 0;">Question Links</h3>
+                <p style="color: #666; margin: 0 0 1rem 0;">Access curated problems from 6+ platforms</p>
+                <a href="platform-links.html" class="cta-button">Explore Questions</a>
+            </div>
+
+            <div class="dashboard-card" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛣️</div>
+                <h3 style="color: #2D3436; margin: 0 0 0.5rem 0;">Learning Roadmap</h3>
+                <p style="color: #666; margin: 0 0 1rem 0;">Follow the structured DSA roadmap</p>
+                <a href="roadmap.html" class="cta-button">View Roadmap</a>
+            </div>
+
+            <div class="dashboard-card" style="text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏠</div>
+                <h3 style="color: #2D3436; margin: 0 0 0.5rem 0;">Home</h3>
+                <p style="color: #666; margin: 0 0 1rem 0;">Back to the main page</p>
+                <a href="index.html" class="cta-button">Go Home</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 DSA Mastery Platform. Keep practicing, keep growing!
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize Dashboard
+        function initDashboard() {
+            updateAuthUIDashboard();
+            if (!isLoggedIn()) {
+                document.getElementById('resetBtn').style.display = 'none';
+            }
+        }
+
+        function updateAuthUIDashboard() {
+            const loggedIn = isLoggedIn();
+            document.getElementById('loginStatus').textContent = loggedIn ? `Hi, ${currentUser}!` : 'Guest';
+            document.getElementById('loginBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('signupBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('logoutBtn').style.display = loggedIn ? 'inline' : 'none';
+            document.getElementById('resetBtn').style.display = loggedIn ? 'inline-block' : 'none';
+        }
+
+        function showAuthModal(type) {
+            document.getElementById('authModal').style.display = 'block';
+            document.getElementById('modalTitle').textContent = type === 'signup' ? 'Signup' : 'Login';
+            document.getElementById('submitBtn').textContent = type === 'signup' ? 'Signup' : 'Login';
+            document.getElementById('authForm').onsubmit = type === 'signup' ? handleSignup : handleLogin;
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('authMsg').textContent = '';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) closeAuthModal();
+        }
+
+        document.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+
+</html>

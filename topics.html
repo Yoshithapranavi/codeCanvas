@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Topics with Concepts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .nav div {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            background: #667eea;
+        }
+
+        .nav a.active {
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .topic-card {
+            background: white;
+            margin-bottom: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topic-header h2 {
+            font-size: 1.9rem;
+        }
+
+        .start-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .start-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .topic-content {
+            padding: 2.5rem;
+        }
+
+        .concept-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .concept-section h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #e8eef7;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .quick-fact {
+            background: #f0f7ff;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #667eea;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .bullet-list li {
+            padding: 0.8rem 0 0.8rem 2.5rem;
+            position: relative;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .bullet-list li:before {
+            content: "▶";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+        }
+
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .pattern-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .pattern-card strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .pattern-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .complexity-box {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #ffc107;
+        }
+
+        .complexity-box strong {
+            color: #ff6f00;
+        }
+
+        .complexity-box p {
+            color: #333;
+            line-height: 1.8;
+            margin: 0.5rem 0;
+        }
+
+        .interview-tip {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #26a639;
+            color: #1b5e20;
+            line-height: 1.8;
+        }
+
+        .practice-section {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .practice-section h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .practice-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+
+        .practice-links a {
+            display: block;
+            text-align: center;
+            background: #667eea;
+            color: white;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            word-break: break-word;
+        }
+
+        .practice-links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .emoji-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div>
+            <a href="index.html">🏠 Home</a>
+            <a href="roadmap.html">🗺️ Roadmap</a>
+            <a href="topics.html" class="active">📚 Topics & Concepts</a>
+            <a href="learning-roadmap.html">📖 Learning Path</a>
+            <a href="structured-roadmap.html">📋 Structured Prep</a>
+            <a href="dashboard.html">📊 Dashboard</a>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>📚 Master DSA Topics</h1>
+        <p>Learn each concept with patterns, complexity analysis, and interview tips</p>
+    </div>
+
+    <div class="container">
+
+        <!-- ARRAYS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔷</span> Arrays & Hashing</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Arrays are contiguous blocks of memory.</strong> Store elements side-by-side, enabling
+                        instant O(1) access via index.
+                        <strong>60% of interview problems involve arrays!</strong> Master arrays = master interviews.
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn This?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Foundation skill:</strong> Every algorithm relies on understanding arrays</li>
+                        <li><strong>Interview staple:</strong> Easy → Medium → Hard progression on arrays</li>
+                        <li><strong>Optimal access:</strong> O(1) random access beats all others</li>
+                        <li><strong>Gateway to patterns:</strong> Two Pointers, Sliding Window, Prefix Sum all use
+                            arrays</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⏱️ Time Complexity Cheat Sheet</h3>
+                    <div class="complexity-box">
+                        <p><strong>Access element:</strong> O(1) ⚡ Instant</p>
+                        <p><strong>Search (unsorted):</strong> O(n) - Must scan all</p>
+                        <p><strong>Insert/Delete:</strong> O(n) - Shift elements needed</p>
+                        <p><strong>Sort:</strong> O(n log n) - Use merge/quick sort</p>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 5 Core Patterns Every Developer Needs</h3>
+                    <div class="pattern-grid">
+                        <div class="pattern-card">
+                            <strong>1️⃣ Two Pointers</strong>
+                            <p>Move left & right inward. Solves: sorted pairs, palindromes, container-with-most-water.
+                            </p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>2️⃣ Sliding Window</strong>
+                            <p>Expand right, contract left. Solves: longest substring, max in k-size window.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>3️⃣ Prefix Sum</strong>
+                            <p>Precompute cumulative sums. Solves: range sum, 2D matrix sum queries in O(1).</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>4️⃣ Hash Map</strong>
+                            <p>Store frequency/index. Eliminates nested loops, converts O(n²) to O(n).</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>5️⃣ Kadane's Algo</strong>
+                            <p>Find max subarray sum in O(n). Elegant dynamic programming approach.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚠️ Gotchas to Avoid</h3>
+                    <ul class="bullet-list">
+                        <li>Off-by-one errors in loops (i < n vs i <=n)</li>
+                        <li>Forgetting array bounds (IndexOutOfBoundsException)</li>
+                        <li>Not handling edge cases: empty array, single element, duplicates</li>
+                        <li>String concatenation in loop = O(n²), use StringBuilder</li>
+                        <li>Modifying array while iterating (ConcurrentModificationException)</li>
+                    </ul>
+                </div>
+
+                <div class="interview-tip">
+                    <strong>🎤 Interview Strategy:</strong> Always ask: "Can I modify input? Is it sorted? Duplicates
+                    allowed?"
+                    Start with brute force O(n²), then optimize. Test: empty, single element, all same, negatives, very
+                    large numbers.
+                </div>
+
+                <div class="practice-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div class="practice-links">
+                        <a href="https://leetcode.com/problems/two-sum/" target="_blank">Two Sum</a>
+                        <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">Buy
+                            Stock</a>
+                        <a href="https://leetcode.com/problems/contains-duplicate/" target="_blank">Duplicates</a>
+                        <a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank">Product
+                            Array</a>
+                        <a href="https://leetcode.com/problems/3sum/" target="_blank">3Sum</a>
+                        <a href="https://leetcode.com/problems/max-subarray/" target="_blank">Max Subarray</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRINGS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔤</span> Strings</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Strings are immutable sequences of characters.</strong> Once created, you can't change
+                        them—must create new ones.
+                        This immutability completely changes how you solve problems compared to arrays!
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn This?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>20% of interviews:</strong> String manipulation questions appear frequently</li>
+                        <li><strong>Character-specific tricks:</strong> Frequency counting, pattern matching unique to
+                            strings</li>
+                        <li><strong>Real-world problems:</strong> Validation, parsing, text processing</li>
+                        <li><strong>Performance pitfall:</strong> String concatenation in loops = O(n²) disaster!</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⏱️ Time Complexity Cheat Sheet</h3>
+                    <div class="complexity-box">
+                        <p><strong>Access char at index:</strong> O(1) ⚡ Instant</p>
+                        <p><strong>Substring creation:</strong> O(k) - k = length of substring</p>
+                        <p><strong>Concatenation ("+="):</strong> O(n²) in loops - USE StringBuilder!</p>
+                        <p><strong>String comparison:</strong> O(n) - Must check each char</p>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 4 Critical Patterns</h3>
+                    <div class="pattern-grid">
+                        <div class="pattern-card">
+                            <strong>1️⃣ Frequency Counting</strong>
+                            <p>Use hash map or array [26]. Solves: anagrams, valid rearrangement, character frequency.
+                            </p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>2️⃣ Sliding Window</strong>
+                            <p>Find longest/shortest substring with property. Solves: longest substring without repeats.
+                            </p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>3️⃣ Two Pointers</strong>
+                            <p>Validate palindromes, reverse strings efficiently.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>4️⃣ Sort or Hash</strong>
+                            <p>For anagrams: sort both then compare, or use frequency arrays.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚠️ Common Mistakes</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Concatenation loop:</strong> String s = ""; for(...) s += char; = O(n²), use
+                            StringBuilder</li>
+                        <li>Not handling case sensitivity: clarify if comparison is case-sensitive</li>
+                        <li>Forgetting special chars in palindrome: "A man, a plan, a canal: Panama" = palindrome
+                            (ignoring punctuation)</li>
+                        <li>Assuming lowercase only: might have uppercase, digits, special characters</li>
+                    </ul>
+                </div>
+
+                <div class="interview-tip">
+                    <strong>🎤 Interview Strategy:</strong> Clarify: Lowercase only or mixed case? Only alphanumeric or
+                    special chars too?
+                    Using frequency array [26] for a-z? Always use StringBuilder for multiple concatenations. Test:
+                    empty, single char, all same, palindrome edge cases.
+                </div>
+
+                <div class="practice-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div class="practice-links">
+                        <a href="https://leetcode.com/problems/valid-anagram/" target="_blank">Valid Anagram</a>
+                        <a href="https://leetcode.com/problems/valid-palindrome/" target="_blank">Palindrome</a>
+                        <a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank">Longest
+                            Palindrome</a>
+                        <a href="https://leetcode.com/problems/group-anagrams/" target="_blank">Group Anagrams</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BINARY SEARCH -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔍</span> Binary Search</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Divide and conquer for sorted data.</strong> Half the search space each step. O(log n)
+                        vs O(n) = 20 steps vs 1M steps for 1 million elements.
+                        <strong>This is optimization magic!</strong>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn This?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Interview favorite:</strong> Tests precision and edge case handling</li>
+                        <li><strong>Performance game-changer:</strong> O(n) → O(log n) for sorted arrays</li>
+                        <li><strong>Gateway pattern:</strong> Foundation for advanced algorithms</li>
+                        <li><strong>Real-world use:</strong> Searching massive databases, time-series data</li>
+                    </ul>
+                </div>
+
+                <div class="complexity-box" style="margin: 1.5rem 0;">
+                    <p><strong>6 Variations to Master:</strong></p>
+                    <p>1. Standard (find exact) | 2. Left boundary (first occurrence) | 3. Right boundary (last
+                        occurrence)</p>
+                    <p>4. Rotated array | 5. Mountain/peak | 6. Answer-space search (capacity, speed, etc)</p>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 Master Template (Copy This!)</h3>
+                    <div
+                        style="background: #22223b; color: #e8e8ff; padding: 1.5rem; border-radius: 10px; font-family: 'Courier New'; font-size: 0.9rem; overflow-x: auto;">
+                        <pre style="margin: 0;">left = 0, right = n-1
+while (left <= right) {
+    mid = left + (right - left) / 2
+    if (arr[mid] == target) return mid
+    if (arr[mid] > target) right = mid - 1
+    else left = mid + 1
+}
+return -1  // not found</pre>
+                    </div>
+                    <p style="margin: 1rem 0 0 0; color: #d32f2f; font-weight: bold;">⚠️ CRITICAL: Use mid = left +
+                        (right-left)/2, NOT (left+right)/2 (overflow bug!)</p>
+                </div>
+
+                <div class="interview-tip">
+                    <strong>🎤 Interview Strategy:</strong> Always verify array is sorted first! Draw diagram for
+                    rotated/peak problems.
+                    Code template confidently. Test: empty, single element, target at boundary, target not found,
+                    duplicates.
+                </div>
+
+                <div class="practice-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div class="practice-links">
+                        <a href="https://leetcode.com/problems/binary-search/" target="_blank">Binary Search</a>
+                        <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">Rotated
+                            Array</a>
+                        <a href="https://leetcode.com/problems/find-peak-element/" target="_blank">Find Peak</a>
+                        <a href="https://leetcode.com/problems/first-bad-version/" target="_blank">First Bad Version</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LINKED LISTS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">⛓️</span> Linked Lists</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Dynamic data structure with node chains.</strong> Each node = data + pointer to next.
+                        NO random access (O(n) to reach any node), BUT O(1) insert/delete at known position.
+                        <strong>Pointer manipulation is tricky—draw diagrams!</strong>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn This?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Tests pointer thinking:</strong> Abstract pointer manipulation skills</li>
+                        <li><strong>Foundation for graphs:</strong> Graph nodes also have pointers</li>
+                        <li><strong>No random access:</strong> Different algorithm thinking than arrays</li>
+                        <li><strong>Interview challenge:</strong> Errors are common—nulls, cycles, reversals</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⏱️ Time Complexity Cheat Sheet</h3>
+                    <div class="complexity-box">
+                        <p><strong>Access element:</strong> O(n) 🐌 Must traverse</p>
+                        <p><strong>Insert at position:</strong> O(1) if position known, else O(n)</p>
+                        <p><strong>Delete at position:</strong> O(1) if position known, else O(n)</p>
+                        <p><strong>Search:</strong> O(n) - Linear scan</p>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 5 Essential Patterns</h3>
+                    <div class="pattern-grid">
+                        <div class="pattern-card">
+                            <strong>1️⃣ Fast/Slow Pointers</strong>
+                            <p>Slow = 1 step, Fast = 2 steps. Detects cycles, finds middle node.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>2️⃣ Reversal</strong>
+                            <p>Three pointers: prev, curr, next. Reverse pointer direction smoothly.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>3️⃣ Dummy Node</strong>
+                            <p>Fake head avoids special-casing removal of actual head node.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>4️⃣ Merge Sorted</strong>
+                            <p>Combine two sorted lists, pick smaller from each, advance.</p>
+                        </div>
+                        <div class="pattern-card">
+                            <strong>5️⃣ Cycle Detection</strong>
+                            <p>Floyd's algorithm: if fast meets slow, cycle exists!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interview-tip">
+                    <strong>🎤 Interview Strategy:</strong> DRAW THE DIAGRAM ALWAYS. Verbalize pointer updates: "I'm
+                    making current.next point to previous."
+                    Test: empty list, single node, cycle, null handling. Practice reversal until automatic.
+                </div>
+
+                <div class="practice-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div class="practice-links">
+                        <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse List</a>
+                        <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank">Merge Lists</a>
+                        <a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">Cycle Detection</a>
+                        <a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank">Find
+                            Middle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STACKS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">📦</span> Stacks & Queues</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Stack = LIFO (Last In First Out).</strong> Like a stack of plates—remove from top. Last
+                        plate added = first removed.
+                        <strong>Queue = FIFO (First In First Out).</strong> Like a line—first person in = first served.
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn Stacks?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>DFS power:</strong> Stacks are behind all depth-first searches</li>
+                        <li><strong>Expression evaluation:</strong> Solve math expressions, reverse Polish notation</li>
+                        <li><strong>Undo/Redo:</strong> Browser back button, editor undo functionality</li>
+                        <li><strong>Pattern spotter:</strong> See "matching", "previous", "undo" → think Stack!</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚡ Why Learn Queues?</h3>
+                    <ul class="bullet-list">
+                        <li><strong>BFS power:</strong> Queues are behind all breadth-first searches</li>
+                        <li><strong>Level-order traversal:</strong> Visit graph/tree level by level</li>
+                        <li><strong>Shortest path:</strong> Find quickest route in unweighted graphs</li>
+                        <li><strong>Pattern spotter:</strong> See "level-order", "distance", "neighbors" → think Queue!
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 Stack Patterns (5 Must-Know)</h3>
+                    <div class="pattern-grid">
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #ff6b6b 0%, #f44a3a 100%);">
+                            <strong>1️⃣ Matching Brackets</strong>
+                            <p>Valid parentheses: push '(', pop when see ')'. Empty = valid.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #ff6b6b 0%, #f44a3a 100%);">
+                            <strong>2️⃣ Monotonic Stack</strong>
+                            <p>Keep increasing/decreasing. Solves: next greater element, largest rectangle.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #ff6b6b 0%, #f44a3a 100%);">
+                            <strong>3️⃣ Min Stack</strong>
+                            <p>Track minimum while push/pop all O(1). Use two stacks: data + min.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #ff6b6b 0%, #f44a3a 100%);">
+                            <strong>4️⃣ Expression Eval</strong>
+                            <p>Infix to postfix conversion, then evaluate postfix.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #ff6b6b 0%, #f44a3a 100%);">
+                            <strong>5️⃣ DFS Without Recursion</strong>
+                            <p>Use stack instead of recursion to avoid stack overflow.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 Queue Patterns (3 Must-Know)</h3>
+                    <div class="pattern-grid">
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                            <strong>1️⃣ BFS Traversal</strong>
+                            <p>Level-order tree/graph traversal. Use queue to process level by level.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                            <strong>2️⃣ Shortest Path</strong>
+                            <p>Find shortest path in unweighted graph. Distance = levels from start.</p>
+                        </div>
+                        <div class="pattern-card"
+                            style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                            <strong>3️⃣ Deque (Double-Ended)</strong>
+                            <p>Add/remove from both ends. Solves: sliding window maximum with monotonic deque.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interview-tip">
+                    <strong>🎤 Interview Strategy:</strong> See "previous element", "next greater", "matching" → Stack.
+                    See "level order", "distance", "neighbors" → Queue. Test: empty, single element, edge cases where
+                    structure is fully filled/empty.
+                </div>
+
+                <div class="practice-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div class="practice-links">
+                        <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">Valid Parens</a>
+                        <a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">Next Greater</a>
+                        <a href="https://leetcode.com/problems/min-stack/" target="_blank">Min Stack</a>
+                        <a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Islands (BFS)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TREES -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🌳</span> Trees</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+
+                <div class="concept-section">
+                    <h3>💡 What's This About?</h3>
+                    <div class="quick-fact">
+                        <strong>Hierarchical data structure.</strong> Root at top, children below. Each node (except
+                        root) has one parent.
+                        <strong>Binary Tree:</strong> Max 2 children per node. <strong>Binary Search Tree:</strong> left
+                        < node < right (enables fast search). </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⚡ Why Learn This?</h3>
+                        <ul class="bullet-list">
+                            <li><strong>~20% of interviews:</strong> Tree problems are common</li>
+                            <li><strong>Real-world everywhere:</strong> File systems, DOM, databases use trees</li>
+                            <li><strong>Recursion mastery:</strong> Tree problems teach elegant recursive thinking</li>
+                            <li><strong>Traversal algorithms:</strong> 4 different ways to visit nodes</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 4 Traversal Methods (Master All!)</h3>
+                        <div class="pattern-grid">
+                            <div class="pattern-card">
+                                <strong>1️⃣ Inorder (L-Root-R)</strong>
+                                <p>BST inorder = SORTED sequence. Most commonly used for BST.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>2️⃣ Preorder (Root-L-R)</strong>
+                                <p>Root first. Good for copying tree, serialization, cloning.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>3️⃣ Postorder (L-R-Root)</strong>
+                                <p>Children first. Good for deletion, calculating tree properties.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>4️⃣ Level-Order (BFS)</strong>
+                                <p>Level by level. Use queue. Good for vertical/right view, zigzag.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⏱️ Complexity Guide</h3>
+                        <div class="complexity-box">
+                            <p><strong>Balanced tree:</strong> Search O(log n), Insert O(log n), Delete O(log n)</p>
+                            <p><strong>Skewed tree (like linked list):</strong> All operations O(n) - WORST CASE!</p>
+                            <p><strong>Always check:</strong> Is this tree balanced? If skewed, complexity degrades!</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 5 Essential Patterns</h3>
+                        <div class="pattern-grid">
+                            <div class="pattern-card">
+                                <strong>1️⃣ Recursion Template</strong>
+                                <p>Base case (leaf), solve for left, solve for right, combine results.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>2️⃣ Path Problems</strong>
+                                <p>Path sum, max path sum, ancestor questions.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>3️⃣ Lowest Common Ancestor</strong>
+                                <p>Find deepest common ancestor of two nodes. Recursive or iterative.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>4️⃣ Serialization</strong>
+                                <p>Convert tree to string and back. Test cloning, comparison.</p>
+                            </div>
+                            <div class="pattern-card">
+                                <strong>5️⃣ Validate BST</strong>
+                                <p>Check if tree satisfies BST property (tricky with range validation).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interview-tip">
+                        <strong>🎤 Interview Strategy:</strong> DRAW THE TREE CLEARLY. Define return type for recursion.
+                        What should each recursive call return? How do you combine left/right results? Test: empty tree,
+                        single node, skewed tree, balanced tree.
+                    </div>
+
+                    <div class="practice-section">
+                        <h3>🔗 Practice These Problems</h3>
+                        <div class="practice-links">
+                            <a href="https://leetcode.com/problems/inorder-traversal/" target="_blank">Inorder
+                                Traversal</a>
+                            <a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a>
+                            <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-bst/"
+                                target="_blank">LCA</a>
+                            <a href="https://leetcode.com/problems/validate-binary-search-tree/"
+                                target="_blank">Validate BST</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRAPHS -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <h2><span class="emoji-icon">🔗</span> Graphs</h2>
+                    <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+                </div>
+                <div class="topic-content">
+
+                    <div class="concept-section">
+                        <h3>💡 What's This About?</h3>
+                        <div class="quick-fact">
+                            <strong>Most general structure:</strong> Vertices + edges (can have cycles, multiple
+                            connections).
+                            <strong>Directed:</strong> edges have direction. <strong>Weighted:</strong> edges have
+                            costs.
+                            Models networks, social connections, maps.
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⚡ Why Learn This?</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Hardest DSA topic:</strong> Tests algorithmic sophistication</li>
+                            <li><strong>Real-world power:</strong> GPS routing, social networks, recommendations</li>
+                            <li><strong>Complex algorithms:</strong> DFS, BFS, Dijkstra, topological sort, union-find
+                            </li>
+                            <li><strong>Interview challenge:</strong> Can you recognize graph problem in disguise?</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 6 Core Algorithms (Master These!)</h3>
+                        <div class="pattern-grid">
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>1️⃣ DFS</strong>
+                                <p>Depth-first. Use stack/recursion. O(V+E). Good for: connected components, cycles.</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>2️⃣ BFS</strong>
+                                <p>Breadth-first. Use queue. O(V+E). Good for: shortest path (unweighted), distance.</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>3️⃣ Dijkstra</strong>
+                                <p>Shortest path (weighted, non-negative). Heap-based. O((V+E) log V).</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>4️⃣ Topological Sort</strong>
+                                <p>Order vertices so edges point forward. Only for DAGs. Interview favorite!</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>5️⃣ Union-Find</strong>
+                                <p>Efficiently track connected components, detect cycles. Nearly O(1) per operation.</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                                <strong>6️⃣ Cycle Detection</strong>
+                                <p>DFS color marking (white/gray/black) or union-find for undirected.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 Interview Decision Tree</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Shortest path in unweighted?</strong> → BFS</li>
+                            <li><strong>Shortest path in weighted?</strong> → Dijkstra (if no negatives)</li>
+                            <li><strong>Need rank/order?</strong> → Topological sort</li>
+                            <li><strong>Connected components?</strong> → Union-Find or DFS</li>
+                            <li><strong>Detect cycle?</strong> → DFS or Union-Find</li>
+                        </ul>
+                    </div>
+
+                    <div class="interview-tip">
+                        <strong>🎤 Interview Strategy:</strong> Always build adjacency list first (even for matrix
+                        input). Handle both directed and undirected.
+                        Name your graph variables clearly (adj, neighbors, graph). Test: disconnected components,
+                        self-loops, duplicate edges.
+                    </div>
+
+                    <div class="practice-section">
+                        <h3>🔗 Practice These Problems</h3>
+                        <div class="practice-links">
+                            <a href="https://leetcode.com/problems/clone-graph/" target="_blank">Clone Graph</a>
+                            <a href="https://leetcode.com/problems/course-schedule/" target="_blank">Course Schedule</a>
+                            <a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Islands</a>
+                            <a href="https://leetcode.com/problems/network-delay-time/" target="_blank">Dijkstra</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC PROGRAMMING -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <h2><span class="emoji-icon">⚡</span> Dynamic Programming</h2>
+                    <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+                </div>
+                <div class="topic-content">
+
+                    <div class="concept-section">
+                        <h3>💡 What's This About?</h3>
+                        <div class="quick-fact">
+                            <strong>Solve overlapping subproblems once, cache results.</strong>
+                            Transforms exponential O(2^n) → polynomial O(n²) or O(n³).
+                            <strong>The hardest DSA topic, but also the most powerful!</strong>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⚡ Why Learn This?</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Interview differentiator:</strong> ~15% of interviews, separates strong from
+                                average</li>
+                            <li><strong>Algorithmic power:</strong> Takes impossible O(2^n) and makes it solvable</li>
+                            <li><strong>Real-world:</strong> Resource optimization, scheduling, financial planning</li>
+                            <li><strong>Hardest topic:</strong> Expect 9-12 months to master</li>
+                        </ul>
+                    </div>
+
+                    <div class="complexity-box" style="margin: 1.5rem 0; background: #ffe9e9;">
+                        <p><strong>🔥 Why DP Matters:</strong></p>
+                        <p>Brute force: Try all choices, returns exponential O(2^n). For n=20: 1M checks. For n=40: 1
+                            trillion checks!</p>
+                        <p>DP: Calculate once, reuse. O(n²) for n=40: 1600 operations. 625 MILLION times faster! 🚀</p>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 5-Step DP Approach (Always Follow This!)</h3>
+                        <div style="background: #f5f5f5; padding: 2rem; border-radius: 10px; margin: 1.5rem 0;">
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong style="color: #667eea; font-size: 1.1rem;">Step 1: Define State</strong>
+                                <p style="color: #333; margin-top: 0.5rem;">What does dp[i] represent? E.g., dp[i] = max
+                                    profit up to day i, dp[i][j] = ways to reach (i,j)</p>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong style="color: #667eea; font-size: 1.1rem;">Step 2: Base Case</strong>
+                                <p style="color: #333; margin-top: 0.5rem;">Initial values. E.g., dp[0] = prices[0],
+                                    dp[0][0] = 1 way</p>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong style="color: #667eea; font-size: 1.1rem;">Step 3: Recurrence Relation</strong>
+                                <p style="color: #333; margin-top: 0.5rem;">How does dp[i] depend on previous states?
+                                    E.g., dp[i] = min(dp[i-1]+1, dp[i-2]+2)</p>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <strong style="color: #667eea; font-size: 1.1rem;">Step 4: Fill Table</strong>
+                                <p style="color: #333; margin-top: 0.5rem;">Iterate from base case up, fill dp table
+                                    bottom-up (tabulation) or top-down (memoization)</p>
+                            </div>
+                            <div>
+                                <strong style="color: #667eea; font-size: 1.1rem;">Step 5: Extract Answer</strong>
+                                <p style="color: #333; margin-top: 0.5rem;">Usually dp[n-1] or max/min seen during
+                                    computation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 6 Classic Problems (MUST KNOW!)</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Fibonacci:</strong> f(n)=f(n-1)+f(n-2). Simplest DP. Memoization vs Tabulation
+                                comparison.</li>
+                            <li><strong>Coin Change:</strong> Min coins for amount. State: dp[i] = min coins for amount
+                                i.</li>
+                            <li><strong>0/1 Knapsack:</strong> Max value with weight limit. 2D DP: items × capacity.
+                            </li>
+                            <li><strong>Longest Increasing Subsequence:</strong> dp[i] = max length ending at i. Compare
+                                all j < i.</li>
+                            <li><strong>House Robber:</strong> Max loot without adjacent houses. dp[i] = max(dp[i-1],
+                                dp[i-2]+current).</li>
+                            <li><strong>Edit Distance:</strong> Min operations to transform string A→B. Classic 2D DP
+                                problem.</li>
+                        </ul>
+                    </div>
+
+                    <div class="interview-tip">
+                        <strong>🎤 Interview Strategy:</strong> (1) Start with brute force, identify overlapping
+                        subproblems.
+                        (2) Draw state table for small example (n=5). (3) Define state clearly on paper before coding.
+                        (4) Code recurrence carefully—most errors here. (5) Optimize space if time permits. Most don't
+                        optimize; solve problem first.
+                    </div>
+
+                    <div class="practice-section">
+                        <h3>🔗 Practice These Problems</h3>
+                        <div class="practice-links">
+                            <a href="https://leetcode.com/problems/fibonacci-number/" target="_blank">Fibonacci</a>
+                            <a href="https://leetcode.com/problems/coin-change/" target="_blank">Coin Change</a>
+                            <a href="https://leetcode.com/problems/longest-increasing-subsequence/"
+                                target="_blank">LIS</a>
+                            <a href="https://leetcode.com/problems/house-robber/" target="_blank">House Robber</a>
+                            <a href="https://leetcode.com/problems/edit-distance/" target="_blank">Edit Distance</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEAPS -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <h2><span class="emoji-icon">🏆</span> Heaps / Priority Queue</h2>
+                    <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+                </div>
+                <div class="topic-content">
+
+                    <div class="concept-section">
+                        <h3>💡 What's This About?</h3>
+                        <div class="quick-fact">
+                            <strong>Complete binary tree with heap property.</strong> Max-heap: parent ≥ children.
+                            Min-heap: parent ≤ children.
+                            Find max/min instantly O(1), but extraction O(log n). <strong>Perfect for top-k
+                                problems!</strong>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⚡ Why Learn This?</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Powers priority queues:</strong> Process items by priority, not order received
+                            </li>
+                            <li><strong>Top-k problems:</strong> Find k largest/smallest efficiently</li>
+                            <li><strong>Real-world:</strong> Task scheduling, event streams, marketplace (prioritize
+                                urgent)</li>
+                            <li><strong>Interview patterns:</strong> Kth largest, median stream, merge k lists</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>⏱️ Time Complexity Cheat Sheet</h3>
+                        <div class="complexity-box">
+                            <p><strong>Insert element:</strong> O(log n) - Add at end, bubble up</p>
+                            <p><strong>Extract max/min:</strong> O(log n) - Remove root, move last element, bubble down
+                            </p>
+                            <p><strong>Find max/min:</strong> O(1) ⚡ Instant - It's the root!</p>
+                            <p><strong>Heapify (convert array):</strong> O(n) - Better than n inserts = O(n log n)</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 5 Essential Patterns</h3>
+                        <div class="pattern-grid">
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <strong>1️⃣ Top-K Problem</strong>
+                                <p>Keep min-heap of size k. For k largest: O(n log k). Much faster than sorting!</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <strong>2️⃣ Kth Largest</strong>
+                                <p>Min-heap for largest (extract k-1 times), max-heap for smallest.</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <strong>3️⃣ Merge K Sorted</strong>
+                                <p>Min-heap of heads, pop min, push next from that list. O(n log k).</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <strong>4️⃣ Median Stream</strong>
+                                <p>Max-heap (smaller half) + min-heap (larger half). Balance sizes.</p>
+                            </div>
+                            <div class="pattern-card"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <strong>5️⃣ Heap Sort</strong>
+                                <p>Heapify O(n), extract n times O(n log n). In-place sort alternative.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-section">
+                        <h3>🎯 Why Heap Beats Sorting</h3>
+                        <div
+                            style="background: #e8f5e9; padding: 1.5rem; border-radius: 10px; border-left: 5px solid #26a639;">
+                            <p style="color: #1b5e20; line-height: 1.8;"><strong>Find top-10 from 1 million
+                                    items:</strong></p>
+                            <p style="color: #1b5e20; margin: 0.5rem 0;"><strong>Sorting approach:</strong> Sort 1M
+                                items O(n log n) = 20M operations, then take first 10. WASTEFUL!</p>
+                            <p style="color: #1b5e20; margin: 0.5rem 0;"><strong>Heap approach:</strong> Keep min-heap
+                                of 10, scan 1M items O(n log k) = 200K operations. 100x faster!</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="interview-tip">
+                        <strong>🎤 Interview Strategy:</strong> Java: Use PriorityQueue (min-heap by default). For
+                        max-heap, negate or use custom comparator.
+                        Clarify: top-k largest or smallest? Duplicates allowed? Test: heap with 1 element, all same
+                        values, negative numbers.
+                    </div>
+
+                    <div class="practice-section">
+                        <h3>🔗 Practice These Problems</h3>
+                        <div class="practice-links">
+                            <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank">Kth
+                                Largest</a>
+                            <a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank">Median
+                                Stream</a>
+                            <a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank">Merge K
+                                Lists</a>
+                            <a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank">Top K
+                                Frequent</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>

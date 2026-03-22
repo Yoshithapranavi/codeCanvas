@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Pattern</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <h3>Topics</h3>
+
+            <ul id="topicSidebar"></ul>
+
+        </aside>
+
+
+        <main class="content">
+
+            <header>
+                <h1 id="patternTitle">Pattern</h1>
+            </header>
+
+            <section class="pattern-container">
+
+                <h2>Concept</h2>
+
+                <p id="patternExplanation">
+                    Explanation will appear here
+                </p>
+
+                <h2>Java Code Template</h2>
+
+                <button id="copyBtn">Copy Code</button>
+
+                <pre id="codeTemplate">
+Code will appear here
+</pre>
+                <h2>Practice Problems</h2>
+
+                <div id="difficultyFilter">
+
+                    <button onclick="renderProblems('all')">All</button>
+                    <button onclick="renderProblems('easy')">Easy</button>
+                    <button onclick="renderProblems('medium')">Medium</button>
+                    <button onclick="renderProblems('hard')">Hard</button>
+
+                </div>
+
+                <ul id="problemList"></ul>
+
+
+
+
+
+                <div id="patternStats"></div>
+                <button id="completeBtn" onclick="markSolved()">
+                    Mark Practice / Update Revision
+                </button>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="roadmap.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Update pattern stats after load
+        document.addEventListener('DOMContentLoaded', function () {
+            const pattern = new URLSearchParams(window.location.search).get('pattern');
+            if (pattern) {
+                updatePatternStats(pattern);
+            }
+        });
+
+        function updatePatternStats(pattern) {
+            const patternKey = getPatternKey(pattern);
+            const data = JSON.parse(localStorage.getItem(patternKey) || '{}');
+            const statsDiv = document.getElementById('patternStats');
+            if (statsDiv && data.practice_count) {
+                statsDiv.innerHTML = `<p>Practices: ${data.practice_count} | Next Revision: ${data.revisionDate || 'N/A'}</p>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

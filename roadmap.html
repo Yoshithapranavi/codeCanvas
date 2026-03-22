@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Learning Roadmap</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .roadmap-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .roadmap-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .roadmap-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .roadmap-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .topics-section {
+            margin: 3rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: #2D3436;
+            margin: 0;
+        }
+
+        .section-header input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .section-header input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .topic-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .topic-card:hover {
+            border-color: #FF6B35;
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .topic-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .topic-card h3 {
+            font-size: 1.1rem;
+            color: #2D3436;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .topic-card p {
+            color: #666;
+            margin: 0;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .topic-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .question-count {
+            background: #f0f0f0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .stats-overview {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .roadmap-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+            }
+
+            .section-header input {
+                min-width: 100%;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">DSA Mastery</h1>
+            <div id="authStatus">
+                <span id="loginStatus">Guest</span>
+                <button id="loginBtn" onclick="showAuthModal('login')">Login</button>
+                <button id="signupBtn" onclick="showAuthModal('signup')">Signup</button>
+                <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="roadmap.html" class="active">Roadmap</a>
+            <a href="topics.html">📚 Topics & Concepts</a>
+            <a href="learning-roadmap.html">📖 Learning Path</a>
+            <a href="structured-roadmap.html">📋 Structured Prep</a>
+            <a href="platform-links.html">Question Links</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2 id="modalTitle">Login</h2>
+            <form id="authForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="submitBtn">Login</button>
+            </form>
+            <p id="authMsg"></p>
+        </div>
+    </div>
+
+    <main class="roadmap-page">
+        <!-- Hero Section -->
+        <section class="roadmap-hero">
+            <h1>🚀 Master Data Structures & Algorithms</h1>
+            <p>Complete learning path with 16 topics & 68+ practice problems</p>
+        </section>
+
+        <!-- Topics Section -->
+        <section class="topics-section">
+            <div class="section-header">
+                <h2>All Topics</h2>
+                <input type="text" id="searchBox" placeholder="Search topics (Arrays, Trees, DP...)">
+            </div>
+            <div id="topicsContainer" class="topics-grid"></div>
+        </section>
+
+        <!-- Stats Overview -->
+        <section class="stats-overview">
+            <h2 style="color: white; margin-top: 0;">Learn. Practice. Master.</h2>
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-number">16</div>
+                    <p>Topics Covered</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">68+</div>
+                    <p>Practice Questions</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6+</div>
+                    <p>Code Platforms</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 DSA Mastery Platform. Keep Learning, Keep Growing!
+    </footer>
+
+    <script src="questions.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const topicIcons = {
+            "arrays": "📦",
+            "strings": "📝",
+            "linked-lists": "🔗",
+            "trees": "🌳",
+            "graphs": "🕸️",
+            "sorting": "📊",
+            "dynamic-programming": "🧩",
+            "stack-queue": "📚",
+            "hash-table": "🗝️",
+            "heap": "⬆️",
+            "two-pointers": "👈👉",
+            "sliding-window": "🪟",
+            "backtracking": "↩️",
+            "bit-manipulation": "⚙️",
+            "trie": "🌲",
+        };
+
+        function initializeRoadmap() {
+            const container = document.getElementById('topicsContainer');
+            updateAuthUI();
+
+            for (let key in questionsDB) {
+                const topic = questionsDB[key];
+                const questionCount = topic.questions.length;
+                const icon = topicIcons[key] || "⭐";
+
+                const card = document.createElement('div');
+                card.className = 'topic-card';
+                card.innerHTML = `
+                    <div class="topic-icon">${icon}</div>
+                    <h3>${topic.title}</h3>
+                    <p>${questionCount} questions across Easy, Medium, and Hard levels</p>
+                    <div class="topic-card-footer">
+                        <a href="structured-roadmap.html" style="color: #FF6B35; text-decoration: none; font-weight: 500;">Start Learning →</a>
+                        <span class="question-count">${questionCount} Q</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            }
+
+            // Search functionality
+            document.getElementById('searchBox').addEventListener('input', function (e) {
+                const query = e.target.value.toLowerCase();
+                document.querySelectorAll('.topic-card').forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    card.style.display = title.includes(query) ? 'block' : 'none';
+                });
+            });
+        }
+
+        function updateAuthUI() {
+            const loggedIn = isLoggedIn();
+            document.getElementById('loginStatus').textContent = loggedIn ? `Hi, ${currentUser}!` : 'Guest';
+            document.getElementById('loginBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('signupBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('logoutBtn').style.display = loggedIn ? 'inline' : 'none';
+        }
+
+        function showAuthModal(type) {
+            document.getElementById('authModal').style.display = 'block';
+            document.getElementById('modalTitle').textContent = type === 'signup' ? 'Signup' : 'Login';
+            document.getElementById('submitBtn').textContent = type === 'signup' ? 'Signup' : 'Login';
+            document.getElementById('authForm').onsubmit = type === 'signup' ? handleSignup : handleLogin;
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('authMsg').textContent = '';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) closeAuthModal();
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeRoadmap);
+    </script>
+</body>
+
+</html>
+
+<!-- Footer -->
+<footer>
+    &copy; 2024 DSA Mastery. Built for aspiring engineers.
+</footer>
+
+<script src="roadmap.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+<script>
+    // Auth functions (reuse)
+    function showAuthModal(type) {
+        document.getElementById('authModal').style.display = 'block';
+        document.getElementById('modalTitle').textContent = type === 'signup' ? 'Signup' : 'Login';
+        document.getElementById('submitBtn').textContent = type === 'signup' ? 'Signup' : 'Login';
+        document.getElementById('authForm').onsubmit = type === 'signup' ? handleSignup : handleLogin;
+    }
+
+    function closeAuthModal() {
+        document.getElementById('authModal').style.display = 'none';
+        document.getElementById('authMsg').textContent = '';
+    }
+
+    function updateAuthUI() {
+        const loggedIn = isLoggedIn();
+        document.getElementById('loginStatus').textContent = loggedIn ? `Hi, ${currentUser}!` : 'Guest';
+        document.getElementById('loginBtn').style.display = loggedIn ? 'none' : 'inline';
+        document.getElementById('signupBtn').style.display = loggedIn ? 'none' : 'inline';
+        document.getElementById('logoutBtn').style.display = loggedIn ? 'inline' : 'none';
+    }
+
+    window.onclick = function (event) {
+        const modal = document.getElementById('authModal');
+        if (event.target == modal) closeAuthModal();
+    }
+
+    updateAuthUI();
+
+    // Search & Sort
+    document.getElementById('searchBox').addEventListener('input', filterTopics);
+    document.getElementById('sortSelect').addEventListener('change', sortTopics);
+
+    function filterTopics() {
+        const query = document.getElementById('searchBox').value.toLowerCase();
+        const cards = document.querySelectorAll('.topicCard');
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            card.style.display = title.includes(query) ? 'block' : 'none';
+        });
+    }
+
+    function sortTopics() {
+        const sortBy = document.getElementById('sortSelect').value;
+        const cards = Array.from(document.querySelectorAll('.topicCard'));
+        cards.sort((a, b) => {
+            if (sortBy === 'name') {
+                return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+            } else if (sortBy === 'patterns') {
+                return parseInt(b.dataset.patterns) - parseInt(a.dataset.patterns);
+            }
+            return 0;
+        }).forEach(card => document.getElementById('topicCards').appendChild(card));
+    }
+
+    // Update topic cards with dataset for sorting
+    document.addEventListener('DOMContentLoaded', function () {
+        const topicCards = document.querySelectorAll('.topicCard');
+        topicCards.forEach(card => {
+            const patternsText = card.querySelector('p:nth-of-type(1)').textContent.match(/(\\d+)/)?.[0] || '0';
+            card.dataset.patterns = patternsText;
+        });
+    });
+</script>
+</body>
+
+</html>

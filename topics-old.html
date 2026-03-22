@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Topics with Concepts</title>
+</head>
+
+<body style="margin: 0; padding: 0; background: #f8f9ff; font-family: Arial, sans-serif;">
+
+    <nav style="background: #333; padding: 0; margin: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0; display: flex; align-items: center;">
+            <a href="index.html"
+                style="color: white; text-decoration: none; padding: 1rem 1.5rem; font-weight: 600;">Home</a>
+            <a href="roadmap.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">Roadmap</a>
+            <a href="topics.html"
+                style="color: white; text-decoration: none; padding: 1rem 1.5rem; border-bottom: 3px solid #667eea;">📚
+                Topics & Concepts</a>
+            <a href="learning-roadmap.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">📖
+                Learning Path</a>
+            <a href="dashboard.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">Dashboard</a>
+        </div>
+    </nav>
+
+    <div
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem; text-align: center; border-radius: 16px; margin-bottom: 3rem;">
+        <h1 style="font-size: 2.5rem; margin: 0; margin-bottom: 1rem;">📚 DSA Topics & Concepts</h1>
+        <p style="font-size: 1.1rem; margin: 0;">Learn Data Structures & Algorithms with detailed explanations</p>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto;">
+
+        <!-- ARRAYS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🔷 Arrays & Hashing</h2>
+                <a href="topic.html?topic=arrays"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong>
+                    Arrays are contiguous blocks of memory storing elements of the same type. Elements are accessed via
+                    0-based indices, allowing O(1) constant-time random access no matter the array size. This is their
+                    biggest strength compared to linked lists.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Arrays are fundamental. 60% of interview problems involve arrays. Most
+                    problems taught first because they're simple yet powerful. Understanding arrays deeply gives you a
+                    foundation for every other data structure.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Key Operations &
+                        Complexity:</strong> Access element: O(1) | Search (unsorted): O(n) | Insert/Delete: O(n)
+                    because you need to shift elements | Sort: O(n log n) using merge/quick sort.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>Two Pointers</strong> - Use left & right pointers moving inward.
+                    Solves: sorted pair problems, palindrome checks, container-with-most-water. (2) <strong>Sliding
+                        Window</strong> - Maintain window of elements, slide right boundary to expand, left to contract.
+                    Solves: longest substring, max elements in k-size window. (3) <strong>Prefix Sum</strong> -
+                    Precompute cumulative sums for O(1) range queries. Solves: subarray sum, 2D matrix sum. (4)
+                    <strong>Hash Map</strong> - Store frequency/index, eliminate nested loops. (5) <strong>Kadane's
+                        Algorithm</strong> - Find max subarray sum in O(n).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Common Mistakes
+                        to Avoid:</strong> Off-by-one errors in loops, forgetting array bounds, not handling edge cases
+                    (empty array, single element), modifying array while iterating, assuming 1-based indexing.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Tips:</strong> Always clarify: Can I modify input array? Is array sorted? What about duplicates?
+                    Start with brute force O(n²) nested loops, then optimize to O(n) or O(n log n). Test: empty array,
+                    single element, all same elements, negatives, large numbers.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/two-sum/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Two
+                    Sum</a>
+                <a href="https://www.geeksforgeeks.org/two-sum/"
+                    style="display: inline-block; background: #26a639; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">GeeksforGeeks</a>
+                <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Buy
+                    & Sell Stock</a>
+                <a href="https://leetcode.com/problems/contains-duplicate/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Contains
+                    Duplicate</a>
+                <a href="https://leetcode.com/problems/product-of-array-except-self/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Product
+                    of Array</a>
+            </div>
+        </div>
+
+        <!-- STRINGS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🔤 Strings</h2>
+                <a href="topic.html?topic=strings"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong>
+                    Strings are immutable sequences of characters. In languages like Java/Python, once created, you
+                    cannot modify individual characters—you must create a new string. This immutability affects
+                    algorithm design (use StringBuilder for repeated concatenation in Java).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Strings appear in ~20% of interviews. Similar to arrays but with
+                    character-specific tricks. Teaches you frequency counting, pattern matching, and two-pointer
+                    techniques.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Key Operations &
+                        Complexity:</strong> Access char at index: O(1) | substring: O(k) for k-length substring |
+                    concatenation: O(n+m) | string operations generally O(n) where n = string length.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>Character Frequency Counting</strong> - Use hash map to track char
+                    counts. Solves: anagram, valid rearrangement. (2) <strong>Sliding Window</strong> - Find
+                    longest/shortest substring with condition. Solves: longest substring without repeating chars. (3)
+                    <strong>Two Pointers</strong> - Validate palindromes, reverse strings. (4) <strong>Pattern
+                        Matching</strong> - KMP algorithm for efficient substring search. (5) <strong>Hash vs
+                        Sort</strong> - Sort for anagrams (a^2=a^3 after sort), hash for frequencies.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Tips:</strong> Clarify: Are inputs lowercase only, or include uppercase/digits/special chars?
+                    Case-sensitive comparison? Palindrome includes only alphanumeric (skip spaces/punctuation)? Use
+                    frequency array [26] for lowercase a-z, or hash map for general. Common: valid anagram, longest
+                    substring without repeating, longest palindromic substring, valid palindrome with cleanup.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Performance
+                        Pitfall:</strong> String concatenation in loops using "+=" is O(n²) in Java. Always use
+                    StringBuilder append() for O(n) total time.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/valid-anagram/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Valid
+                    Anagram</a>
+                <a href="https://leetcode.com/problems/group-anagrams/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Group
+                    Anagrams</a>
+                <a href="https://leetcode.com/problems/valid-palindrome/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Valid
+                    Palindrome</a>
+                <a href="https://leetcode.com/problems/longest-palindromic-substring/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Longest
+                    Palindrome</a>
+                <a href="https://leetcode.com/problems/3sum/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">3Sum</a>
+            </div>
+        </div>
+
+        <!-- BINARY SEARCH -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🔍 Binary Search</h2>
+                <a href="topic.html?topic=binarysearch"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong>
+                    Binary Search is a divide-and-conquer algorithm that halves the search space each iteration. Works
+                    ONLY on sorted data. By comparing the middle element, you eliminate half the remaining elements,
+                    achieving O(log n) complexity—massive improvement over O(n) linear search.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Reduces time from O(n) to O(log n). For 1 million elements, O(n) = 1M steps,
+                    O(log n) = 20 steps. Interview favorite because it teaches patience (don't jump to first solution)
+                    and precision (handle all edge cases).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Master
+                        Template:</strong> left = 0, right = n-1 | while(left <= right) { mid=left + (right-left)/2;
+                        if(arr[mid]==target) return mid; if(arr[mid]> target) right = mid-1; else left = mid+1 } |
+                        return -1. Avoid: mid = (left+right)/2 can overflow. Always use mid = left + (right-left)/2.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Variations to
+                        Know:</strong> (1) <strong>Standard</strong> - Find exact element. (2) <strong>Left
+                        Boundary</strong> - Find first occurrence. (3) <strong>Right Boundary</strong> - Find last
+                    occurrence. (4) <strong>Rotated Sorted Array</strong> - Determine which side is sorted, eliminate
+                    that side. (5) <strong>Find Peak</strong> - Mountain array, go toward higher side. (6)
+                    <strong>Answer-Space Search</strong> - Instead of searching element location, search answer range
+                    (e.g., min capacity).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Common
+                        Pitfalls:</strong> Not checking if array is sorted first. Infinite loops (mid calculation bugs).
+                    Wrong boundary updates. Off-by-one errors when finding boundaries. Forgetting target not found case
+                    (-1).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Strategy:</strong> Always verify array is sorted. Draw diagram for rotated/peak problems. Code
+                    template confidently. Test: empty array, single element, target at boundary, target not found.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/binary-search/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Binary
+                    Search</a>
+                <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Rotated
+                    Array</a>
+                <a href="https://leetcode.com/problems/find-peak-element/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Find
+                    Peak</a>
+            </div>
+        </div>
+
+        <!-- LINKED LISTS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">⛓️ Linked Lists</h2>
+                <a href="topic.html?topic=linked%20list"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong>
+                    Linked List is a dynamic data structure where each node contains data and a reference (pointer) to
+                    the next node. Unlike arrays, NO random access—you must traverse from head. But insertion/deletion
+                    at known position is O(1) (just update pointers), while array requires O(n) shifting.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Tests pointer manipulation and linked thinking. Essential foundation for
+                    graphs and advanced data structures. Teaches you to handle null references carefully.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Key Operations &
+                        Complexity:</strong> Access element at index: O(n) traversal | Insert/Delete at known position:
+                    O(1) after reaching it | Search: O(n) | Space: O(n).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>Two Pointers (Slow/Fast)</strong> - Slow moves 1 step, fast moves
+                    2. Detects cycles (Floyd's), finds middle (slow is middle when fast reaches end). (2)
+                    <strong>Reversal</strong> - Three pointers: prev, current, next. Reverse direction of pointers. (3)
+                    <strong>Dummy Node</strong> - Fake head node avoids special-casing removal of actual head. (4)
+                    <strong>Merge</strong> - Combine sorted lists, pick smaller node from each. (5) <strong>Cycle
+                        Detection</strong> - Slow/fast meet = cycle exists.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Tips:</strong> ALWAYS draw the diagram. Pointer updates are error-prone. Verbalize: 'I'm
+                    updating current.next to point to previous'. Handle: null checks, single node, empty list, cycles.
+                    Practice: reversal, cycle detection, merge two lists, remove nth node, intersection point.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Key
+                        Insight:</strong> Linked lists shine for insert/delete at known position. Poor for random
+                    access. Most interviews: use dummy node and two-pointer technique.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/reverse-linked-list/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Reverse
+                    List</a>
+                <a href="https://leetcode.com/problems/merge-two-sorted-lists/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Merge
+                    Lists</a>
+                <a href="https://leetcode.com/problems/linked-list-cycle/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Cycle
+                    Detection</a>
+            </div>
+        </div>
+
+        <!-- STACKS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">📦 Stacks</h2>
+                <a href="topic.html?topic=stack"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong> Stack
+                    is a LIFO (Last In First Out) abstract data structure. Imagine a stack of plates—you add and remove
+                    from the top. The last element added is the first removed. Core operations: push (add to top) O(1),
+                    pop (remove from top) O(1), peek (view top) O(1).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Powers DFS (depth-first search). Essential for expression evaluation, undo
+                    functionality, function call stack. Interview problems test if you recognize 'go back' or 'undo'
+                    patterns.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Real-World
+                        Uses:</strong> (1) Call stack in programming languages—function calls push frame, return pops.
+                    (2) Browser back button—each visited page pushed, back button pops. (3) Undo/Redo in editors—undo
+                    pops from undo stack, redo pushes to redo stack.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>Validation</strong> - Matching parentheses/brackets. (2)
+                    <strong>Monotonic Stack</strong> - Maintain increasing/decreasing stack. Solves: next greater
+                    element, largest rectangle. (3) <strong>Expression Evaluation</strong> - Convert infix to postfix,
+                    evaluate postfix. (4) <strong>DFS Traversal</strong> - Use stack instead of recursion to avoid stack
+                    overflow. (5) <strong>Min Stack</strong> - Track minimum while supporting push/pop/getMin all O(1).
+                </p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Implementation
+                        Detail:</strong> Use array/ArrayList (with dynamic resizing) or LinkedList. ArrayList push/pop
+                    at end is O(1) amortized.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Tip:</strong> See 'previous', 'matching', 'validate', 'undo' keywords → think Stack!</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/valid-parentheses/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Valid
+                    Parentheses</a>
+                <a href="https://leetcode.com/problems/next-greater-element-i/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Next
+                    Greater Element</a>
+            </div>
+        </div>
+
+        <!-- QUEUES -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🚀 Queues</h2>
+                <a href="topic.html?topic=stack"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong> Queue
+                    is a FIFO (First In First Out) abstract data structure. Imagine a line at a store—first person in is
+                    first served. Core operations: enqueue (add to back/rear) O(1), dequeue (remove from front/head)
+                    O(1), peek (view front) O(1).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Powers BFS (breadth-first search) for level-order traversal of trees/graphs.
+                    Models real-world queuing (job scheduling, print queue). Interview problems test
+                    level-order/distance-based thinking.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Real-World
+                        Uses:</strong> (1) Printer jobs—queue incoming print requests, process in order. (2) Customer
+                    service—customers join queue, served in order. (3) BFS in graphs—start node enqueued, expand
+                    neighbors level by level. (4) Task scheduling—processes queued, executed based on priority/order.
+                </p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>BFS Traversal</strong> - Level-order tree/graph traversal. (2)
+                    <strong>Distance Tracking</strong> - Find shortest path in unweighted graph. (3) <strong>LRU
+                        Cache</strong> - Combine queue + hash map for O(1) operations. (4) <strong>Deque (Double-Ended
+                        Queue)</strong> - Add/remove from both ends. Solves: sliding window maximum.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Implementation
+                        Detail:</strong> Use circular array or LinkedList. Circular array efficiently reuses space.
+                    Java: LinkedList or ArrayDeque (preferred for deque operations).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Tip:</strong> See 'level-order', 'distance', 'shortest path', 'neighbors' → think Queue + BFS!
+                </p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/number-of-islands/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">BFS
+                    Example</a>
+            </div>
+        </div>
+
+        <!-- TREES -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🌳 Trees</h2>
+                <a href="topic.html?topic=trees"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong> Tree
+                    is a hierarchical, acyclic data structure with a root node and child nodes. Each node (except root)
+                    has one parent. Key terms: root (top), parent (node with children), child, leaf (no children),
+                    subtree, height (longest path to leaf), depth (distance from root). Binary Tree: max 2 children per
+                    node.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Trees model hierarchical data (file systems, DOM). ~20% of interviews. Binary
+                    Search Trees enable fast search. Teaches recursion and divide-and-conquer thinking.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Traversal Methods
+                        (Critical to Master):</strong> (1) <strong>Inorder (Left-Root-Right)</strong> - BST inorder
+                    gives sorted sequence. (2) <strong>Preorder (Root-Left-Right)</strong> - Root first, good for
+                    copying tree, serialization. (3) <strong>Postorder (Left-Right-Root)</strong> - Children before
+                    parent, good for deletion, space calculation. (4) <strong>Level-Order (BFS)</strong> - Visit nodes
+                    level by level, use queue.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Tree
+                        Types:</strong> (1) <strong>Binary Search Tree (BST)</strong> - Left subtree < node < right
+                        subtree. Enables O(log n) search if balanced. (2) <strong>Balanced Trees</strong> - AVL,
+                        Red-Black ensure height O(log n). (3) <strong>Complete Binary Tree</strong> - All levels filled
+                        except possibly last level, filled left to right. (4) <strong>Full Binary Tree</strong> - Every
+                        node has 0 or 2 children.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Patterns to
+                        Master:</strong> (1) <strong>Recursion</strong> - Solve base case (leaf), combine child results.
+                    (2) <strong>DFS</strong> - Traverse depth-first using recursion or stack. (3) <strong>BFS</strong> -
+                    Level-order using queue. (4) <strong>Path Problems</strong> - Path sum, lowest common ancestor. (5)
+                    <strong>Serialization</strong> - Convert tree to string/array and back.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;">
+                    <strong>Complexity:</strong> Balanced binary tree: search O(log n), insert/delete O(log n). Skewed
+                    (like linked list): all O(n). Always check if tree is balanced.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Strategy:</strong> Draw tree clearly. Recursion template: define return type, base case,
+                    recursive case. Test: empty tree, single node, skewed tree, balanced tree.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/binary-tree-inorder-traversal/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Inorder
+                    Traversal</a>
+                <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">LCA</a>
+            </div>
+        </div>
+
+        <!-- GRAPHS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🔗 Graphs</h2>
+                <a href="topic.html?topic=graphs"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong> Graph
+                    is a non-linear data structure with vertices (nodes) and edges (connections). Directed: edges have
+                    direction (A→B) vs Undirected: bidirectional. Weighted: edges have costs vs Unweighted: uniform
+                    cost. Can have cycles unlike trees. Models networks, social connections, maps.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Graph problems are challenging but appear in interviews. Tests algorithmic
+                    thinking. Solves: social networks, maps, routing, recommendations.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;">
+                    <strong>Representations:</strong> (1) <strong>Adjacency List</strong> - Map/Array of lists. Sparse
+                    graphs: O(V+E) space, good for most problems. (2) <strong>Adjacency Matrix</strong> - 2D array.
+                    Dense graphs: O(V²) space. Avoid unless problem specifies dense.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core Algorithms
+                        to Master:</strong> (1) <strong>DFS (Depth-First Search)</strong> - Visit deep before broad, use
+                    stack/recursion. O(V+E). (2) <strong>BFS (Breadth-First Search)</strong> - Visit level by level, use
+                    queue. O(V+E). Finds shortest path in unweighted graphs. (3) <strong>Dijkstra's Algorithm</strong> -
+                    Shortest path in weighted graphs (non-negative weights). O((V+E) log V) with heap. (4)
+                    <strong>Topological Sort</strong> - Order vertices so edges point forward. Only for directed acyclic
+                    graphs (DAGs). (5) <strong>Cycle Detection</strong> - DFS color marking (white/gray/black) or
+                    Union-Find. (6) <strong>Union-Find</strong> - Efficiently find connected components, detect cycles,
+                    used in Kruskal's MST.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Approach:</strong> (1) Identify: Is it asking for path? Connected components? Shortest path?
+                    Cycle? (2) Choose algorithm: Unweighted shortest→BFS. Weighted→Dijkstra. Rank order→Topological
+                    sort. Components→Union-Find. (3) Implement carefully: Build adjacency list first, handle both
+                    directed and undirected.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Common Interview
+                        Problems:</strong> Clone graph (DFS/BFS copy), course schedule (topological sort), number of
+                    islands (union-find or DFS), network delay (Dijkstra), critical connections (bridge-finding
+                    algorithm).</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/clone-graph/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Clone
+                    Graph</a>
+                <a href="https://leetcode.com/problems/course-schedule/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Course
+                    Schedule</a>
+            </div>
+        </div>
+
+        <!-- DYNAMIC PROGRAMMING -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">⚡ Dynamic Programming</h2>
+                <a href="topic.html?topic=dp"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong>
+                    Dynamic Programming solves problems by breaking into overlapping subproblems, solving each once,
+                    storing results to avoid recomputation. Combines optimal substructure (optimal solution uses optimal
+                    subsolutions) with overlapping subproblems (same subproblems repeat). Two approaches: (1)
+                    <strong>Memoization (Top-Down)</strong> - Recursion + cache. (2) <strong>Tabulation
+                        (Bottom-Up)</strong> - Iterative, build from base cases up.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                        Matters:</strong> Hardest DSA topic. Appears in ~15% of interviews. Tests if you can recognize
+                    problems beyond surface. Transforms exponential O(2ⁿ) to polynomial O(n²) or O(n³).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>When To Use
+                        DP:</strong> (1) Problem asks for optimal value (max/min). (2) Problem has overlapping
+                    subproblems. (3) Problem has optimal substructure. (4) Constraints allow polynomial time/space.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>5-Step DP
+                        Approach:</strong> (1) <strong>Define State</strong> - What does dp[i] represent? E.g., dp[i] =
+                    max profit up to day i. (2) <strong>Base Case</strong> - Initial values. E.g., dp[0] = prices[0].
+                    (3) <strong>Recurrence Relation</strong> - How does dp[i] depend on previous states? E.g., dp[i] =
+                    max(dp[i-1], price[i] - min_price). (4) <strong>Compute</strong> - Iterate or recurse. (5)
+                    <strong>Return</strong> - Usually last dp value or maximum seen.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Classic DP
+                        Problems (Must Know):</strong> (1) <strong>Fibonacci</strong> - Simplest, f(n) = f(n-1) +
+                    f(n-2). (2) <strong>Coin Change</strong> - Min coins for amount. (3) <strong>Knapsack (0/1)</strong>
+                    - Max value with weight constraint. (4) <strong>Longest Increasing Subsequence (LIS)</strong> -
+                    dp[i] = max length ending at i. (5) <strong>House Robber</strong> - Max loot without robbing
+                    adjacent houses. (6) <strong>Edit Distance</strong> - Min operations to transform one string to
+                    another.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Memoization vs
+                        Tabulation:</strong> Memoization easier to code (recursive), debug, but risk stack overflow.
+                    Tabulation more efficient (iterative), guaranteed not to revisit, easier space optimization.
+                    Practice both.</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Complexity
+                        Trade-off:</strong> Memoization O(n²) time, O(n) space. If you recognize pattern, optimize
+                    space: rolling array (only track last 2 rows) reduces O(n²) space to O(n).</p>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                        Strategy:</strong> (1) Start with brute force (exponential). (2) Identify overlapping
+                    subproblems (evidence DP helps). (3) Draw state table for small example. (4) Define recurrence
+                    carefully. (5) Code iterative version, test transitions. (6) Optimize space if possible. Most don't
+                    optimize; solve problem first.</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/fibonacci-number/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Fibonacci</a>
+                <a href="https://leetcode.com/problems/coin-change/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Coin
+                    Change</a>
+            </div>
+        </div>
+
+        <!-- HEAPS -->
+        <div
+            style="background: white; padding: 2.5rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 5px solid #667eea;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="color: #667eea; font-size: 1.8rem; margin: 0;">🏆 Heaps</h2>
+                <a href="topic.html?topic=heaps"
+                    style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">Start
+                    Learning</a>
+            </div>
+            <div
+                style="background: #f0f5ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #667eea;">
+                <strong style="color: #667eea; font-size: 1.1rem; display: block; margin-bottom: 0.5rem;">What is
+                    it?</strong>
+                <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 0;"><strong>Definition:</strong> Heap
+                    is a complete binary tree satisfying heap property: (1) <strong>Max-Heap</strong> - Parent >=
+                    children. Root is maximum. (2) <strong>Min-Heap</strong> - Parent <= children. Root is minimum.
+                        Complete means all levels filled except possibly last, filled left-to-right. Stored as array
+                        where parent at index i has children at 2i+1 (left), 2i+2 (right).</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why It
+                                Matters:</strong> Powers Priority Queues. Efficient for repeatedly finding max/min.
+                            Heapsort is O(n log n) in-place sort. Interview problems (top-k, median, merge k lists)
+                            often solved with heaps.</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core
+                                Operations & Complexity:</strong> Insert: O(log n) - add at end, bubble up. Delete root:
+                            O(log n) - swap last with root, bubble down. Find root: O(1) - immediate access. Heapify
+                            (convert array): O(n).</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Key
+                                Algorithms:</strong> (1) <strong>Insert</strong> - Add element at end, bubble up
+                            (compare with parent, swap if needed). (2) <strong>Delete/Extract-Min</strong> - Remove
+                            root, move last element to root, bubble down (compare with smaller child, swap down). (3)
+                            <strong>Heapify</strong> - Convert unsorted array to heap in O(n) (better than n inserts =
+                            O(n log n)).</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Core
+                                Patterns to Master:</strong> (1) <strong>Top-K Problem</strong> - Keep min-heap of size
+                            k, O(n log k). (2) <strong>Kth Largest/Smallest</strong> - Min-heap for largest (remove k-1
+                            times), max-heap for smallest. (3) <strong>Merge K Sorted Lists</strong> - Min-heap of
+                            heads, pop min, push next from that list. (4) <strong>Median of Data Stream</strong> -
+                            Max-heap for smaller half, min-heap for larger half, balance sizes. (5) <strong>Heap
+                                Sort</strong> - Heapify array O(n), extract n times O(n log n), in-place sort.</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Interview
+                                Tips:</strong> Use language's PriorityQueue (min-heap default in Java). For max-heap,
+                            negate values or use custom comparator. Clarify: find top-k largest or smallest? Duplicates
+                            allowed? Negative numbers? Practice: kth largest, median stream, merge k lists, meeting
+                            rooms (heap variant).</p>
+                        <p style="color: #333; line-height: 1.8; font-size: 1rem; margin: 1rem 0 0 0;"><strong>Why
+                                Better Than Sorting?</strong> Sorting k largest from n elements: sort all O(n log n).
+                            Heap approach: n-element operation O(n log k) where k << n. Spatial wins matter in
+                                interviews (explain trade-off).</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <h3 style="color: #333; font-size: 1.2rem; margin: 0 0 1rem 0;">Practice Problems:</h3>
+                <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/"
+                    style="display: inline-block; background: #667eea; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin-right: 0.8rem; margin-bottom: 0.8rem;">Kth
+                    Largest</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

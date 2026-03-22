@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Structured DSA Learning Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .nav div {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            background: #667eea;
+        }
+
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .topic-item {
+            background: white;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid;
+        }
+
+        .phase-1 {
+            border-top-color: #26a639;
+        }
+
+        .phase-2 {
+            border-top-color: #ff9800;
+        }
+
+        .phase-3 {
+            border-top-color: #f44336;
+        }
+
+        .phase-4 {
+            border-top-color: #9c27b0;
+        }
+
+        .topic-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topic-number {
+            background: rgba(255, 255, 255, 0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .topic-title-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .topic-title-section p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .difficulty {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .topic-content {
+            padding: 2.5rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media(max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .concept-list {
+            list-style: none;
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .concept-list li {
+            padding: 0.8rem 0 0.8rem 2rem;
+            position: relative;
+            color: #333;
+            line-height: 1.6;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .concept-list li:last-child {
+            border-bottom: none;
+        }
+
+        .concept-list li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .problem-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .problem-btn {
+            display: block;
+            text-align: center;
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .problem-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .key-pattern {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .key-pattern strong {
+            color: #ff6f00;
+        }
+
+        .recognition-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #1565c0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-steps {
+            background: #e8f5e9;
+            border-left: 5px solid #26a639;
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: #1b5e20;
+            line-height: 1.8;
+        }
+
+        .next-steps strong {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .phase-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .badge-1 {
+            background: #e8f5e9;
+            color: #1b5e20;
+        }
+
+        .badge-2 {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-3 {
+            background: #ffebee;
+            color: #b71c1c;
+        }
+
+        .badge-4 {
+            background: #f3e5f5;
+            color: #4a148c;
+        }
+
+        .footer-note {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            color: #333;
+        }
+
+        .footer-note h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .mark-complete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .mark-complete-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div>
+            <a href="index.html">🏠 Home</a>
+            <a href="roadmap.html">🗺️ Roadmap</a>
+            <a href="topics.html">📚 Topics</a>
+            <a href="learning-roadmap.html">📖 Learning Path</a>
+            <a href="structured-roadmap.html" style="border-bottom: 3px solid #667eea;">📋 Structured Prep</a>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>📋 Structured DSA Preparation Roadmap</h1>
+        <p>Follow this step-by-step progression to master DSA for interviews</p>
+        <div id="progressTracker"
+            style="margin-top: 2rem; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; color: white;">
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold;" id="completionPercentage">0%</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Overall Completion</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold;" id="problemsCompleted">0</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Problems Completed</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold;" id="problemsTotal">0</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Total Problems</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- PHASE 1: FOUNDATIONS -->
+
+        <!-- TOPIC 1: ARRAYS -->
+        <div class="topic-item phase-1" data-topic-id="arrays">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">1️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Arrays & Manipulation</h2>
+                        <p>Master the foundation - 60% of all DSA problems</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #26a639;">FOUNDATION</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('arrays')"
+                        style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓
+                        Mark Complete</button>
+                </div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-1">PHASE 1: Foundations</span>
+                    <span class="phase-badge badge-1">Week 1-2</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Array traversal (forward & backward)</li>
+                                <li>Array indexing & bounds checking</li>
+                                <li>Prefix sum arrays</li>
+                                <li>Kadane's algorithm (max subarray)</li>
+                                <li>Frequency counting with hashing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Arrays" class="problem-btn">Two Sum</a>
+                                <a href="category.html?topic=Arrays" class="problem-btn">Max Subarray</a>
+                                <a href="category.html?topic=Arrays" class="problem-btn">Buy Stock</a>
+                                <a href="category.html?topic=Arrays" class="problem-btn">Move Zeroes</a>
+                                <a href="category.html?topic=Arrays" class="problem-btn">Duplicates</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Find pair/sum/subarray" → Arrays are first choice.
+                    Use hash map for frequency/index lookups.
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can solve Two Sum in < 15 minutes</p>
+                            <p>✓ Understand Kadane's algorithm completely</p>
+                            <p>✓ Know when to use hash map vs sorting</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOPIC 2: BINARY SEARCH -->
+        <div class="topic-item phase-1" data-topic-id="binary-search">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">2️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Binary Search</h2>
+                        <p>Transform O(n) → O(log n) for sorted data</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #26a639;">FOUNDATION</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('binary-search')"
+                        style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓
+                        Mark Complete</button>
+                </div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-1">PHASE 1: Foundations</span>
+                    <span class="phase-badge badge-1">Week 1-2</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Classic binary search template</li>
+                                <li>Left/right boundary finding</li>
+                                <li>Binary search on answer</li>
+                                <li>Identifying monotonic property</li>
+                                <li>Rotated array search</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Binary%20Search" class="problem-btn">Binary Search</a>
+                                <a href="category.html?topic=Binary%20Search" class="problem-btn">Rotated Array</a>
+                                <a href="category.html?topic=Binary%20Search" class="problem-btn">Sqrt(x)</a>
+                                <a href="category.html?topic=Binary%20Search" class="problem-btn">First/Last</a>
+                                <a href="category.html?topic=Binary%20Search" class="problem-btn">Answer Search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Sorted array + search" → Binary search. Look for
+                    monotonic property - can eliminate half search space.
+                </div>
+
+                <div class="recognition-box">
+                    <strong>🔍 Recognition Trick:</strong> If problem says "efficient search" on sorted data, first
+                    thought should be binary search, not linear scan!
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can code binary search template from memory</p>
+                    <p>✓ Understand lower bound vs upper bound</p>
+                    <p>✓ Can solve rotated array variant</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 2: OPTIMIZATION TECHNIQUES -->
+
+        <!-- TOPIC 3: TWO POINTERS -->
+        <div class="topic-item phase-2" data-topic-id="two-pointers">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">3️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Two Pointers</h2>
+                        <p>Optimize arrays with left & right movements</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #ff9800;">MEDIUM</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('two-pointers')"
+                        style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓
+                        Mark Complete</button>
+                </div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-2">PHASE 2: Optimization</span>
+                    <span class="phase-badge badge-2">Week 3-4</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Opposite direction pointers (left, right)</li>
+                                <li>Same direction pointers (slow, fast)</li>
+                                <li>Array reversal patterns</li>
+                                <li>Partition logic</li>
+                                <li>Valid palindrome checking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Two%20Pointers" class="problem-btn">Two Sum II</a>
+                                <a href="category.html?topic=Two%20Pointers" class="problem-btn">Container</a>
+                                <a href="category.html?topic=Two%20Pointers" class="problem-btn">3Sum</a>
+                                <a href="category.html?topic=Two%20Pointers" class="problem-btn">Remove
+                                    Dups</a>
+                                <a href="category.html?topic=Two%20Pointers" class="problem-btn">Palindrome</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Sorted array + need pairs" → Two pointers. "Compare
+                    elements from opposite ends" → Two pointers shrinks problem space.
+                </div>
+
+                <div class="recognition-box">
+                    <strong>🔍 Recognition Trick:</strong> If problem asks "find two elements" and array is sorted,
+                    ALWAYS think two pointers before hash map!
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can solve 3Sum in < 20 minutes</p>
+                            <p>✓ Understand when to move left vs right pointer</p>
+                            <p>✓ Know difference between opposite and same direction</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: SLIDING WINDOW -->
+        <div class="topic-item phase-2" data-topic-id="sliding-window">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">4️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Sliding Window</h2>
+                        <p>VERY IMPORTANT - Substring/subarray optimal approach</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #ff9800;">MEDIUM</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('sliding-window')"
+                        style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓
+                        Mark Complete</button>
+                </div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-2">PHASE 2: Optimization</span>
+                    <span class="phase-badge badge-2">Week 3-4</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Fixed window size approach</li>
+                                <li>Variable window size approach</li>
+                                <li>Hash map for character frequency</li>
+                                <li>Expand & contract pattern</li>
+                                <li>Condition checking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Sliding%20Window" class="problem-btn">Longest
+                                    Substring</a>
+                                <a href="category.html?topic=Sliding%20Window" class="problem-btn">Max
+                                    Consecutive</a>
+                                <a href="category.html?topic=Sliding%20Window" class="problem-btn">Min
+                                    Window</a>
+                                <a href="category.html?topic=Sliding%20Window" class="problem-btn">Permutation</a>
+                                <a href="category.html?topic=Sliding%20Window" class="problem-btn">Fixed
+                                    Window</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Longest/shortest substring/subarray" → Sliding
+                    window. Fixed window? Expand from right. Variable? Shrink from left when condition breaks.
+                </div>
+
+                <div class="recognition-box">
+                    <strong>🔍 Recognition Trick:</strong> See "substring", "subarray", "contiguous" → 90% sliding
+                    window! It's that important!
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can solve longest substring without repeats < 20 min</p>
+                            <p>✓ Know when to expand vs contract window</p>
+                            <p>✓ Can use hash map to track character count</p>
+                            <p><strong style="color: #c62828;">NOTE: This is a CRITICAL skill. Master it before moving
+                                    forward!</strong></p>
+                </div>
+            </div>
+        </div> data-topic-id="strings">
+        <div class="topic-header">
+            <div style="display: flex; align-items: center;">
+                <div class="topic-number">5️⃣</div>
+                <div class="topic-title-section">
+                    <h2>Strings</h2>
+                    <p>Character-based problems using array techniques</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <div class="difficulty" style="background: #ff9800;">MEDIUM</div>
+                <button class="mark-complete-btn" onclick="markTopicComplete('strings')"
+                    style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓
+                    Mark Complete</button>
+                /p>
+            </div>
+        </div>
+        <div class="difficulty" style="background: #ff9800;">MEDIUM</div>
+    </div>
+    <div class="topic-content">
+
+        <div class="timeline">
+            <span class="phase-badge badge-2">PHASE 2: Optimization</span>
+            <span class="phase-badge badge-2">Week 4-5</span>
+        </div>
+
+        <div class="content-grid">
+            <div>
+                <div class="section">
+                    <h3>📚 Core Concepts to Learn</h3>
+                    <ul class="concept-list">
+                        <li>Character frequency counting</li>
+                        <li>Immutability in strings</li>
+                        <li>StringBuilder for concatenation</li>
+                        <li>Pattern matching basics</li>
+                        <li>Two pointer for palindromes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="section">
+                    <h3>🎯 Problems to Solve</h3>
+                    <div class="problem-buttons">
+                        <a href="category.html?topic=Strings" class="problem-btn">Valid Anagram</a>
+                        <a href="category.html?topic=Strings" class="problem-btn">Group
+                            Anagrams</a>
+                        <a href="category.html?topic=Strings" class="problem-btn">Longest
+                            Palindrome</a>
+                        <a href="category.html?topic=Strings" class="problem-btn">Isomorphic</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="key-pattern">
+            <strong>🎯 Key Pattern to Recognize:</strong> Treat strings like arrays. Use same techniques:
+            frequency counting, two pointers, sliding window.
+        </div>
+
+        <div class="next-steps">
+            <strong>✅ You are ready to move forward when:</strong>
+            <p>✓ Understand string immutability</p>
+            <p>✓ Can solve anagram problems</p>
+            <p>✓ Know difference: sort vs frequency count</p>
+        </div>
+    </div>
+    </div>
+
+    <!-- PHASE 3: ADVANCED STRUCTUR data-topic-id="linked-lists">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">6️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Linked Lists</h2>
+                        <p>Dynamic structures with pointer manipulation</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #f44336;">HARD</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('linked-lists')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓ Mark Complete</button>
+                p>
+                    </div>
+                </div>
+                <div class="difficulty" style="background: #f44336;">HARD</div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-3">PHASE 3: Advanced</span>
+                    <span class="phase-badge badge-3">Week 5-6</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Node structure & pointers</li>
+                                <li>Fast/slow pointer technique</li>
+                                <li>Reversal logic</li>
+                                <li>Dummy node pattern</li>
+                                <li>Cycle detection (Floyd's)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Linked%20Lists" class="problem-btn">Reverse
+                                    List</a>
+                                <a href="category.html?topic=Linked%20Lists" class="problem-btn">Merge Lists</a>
+                                <a href="category.html?topic=Linked%20Lists" class="problem-btn">Cycle
+                                    Check</a>
+                                <a href="category.html?topic=Linked%20Lists" class="problem-btn">Remove Node</a>
+                                <a href="category.html?topic=Linked%20Lists" class="problem-btn">Find Middle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> No random access like arrays. Need pointer
+                    manipulation. Use dummy node to avoid edge cases with head removal.
+                </div>
+
+                <div class="recognition-box">
+                    <strong>🔍 Interview Tip:</strong> ALWAYS DRAW the linked list! Verbalize pointer updates: "I'm
+                    making A.next point to B." Mistakes are common without visualization.
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can reverse a linked list without looking</p>
+                    <p>✓ Know fast/slow pointer for cycle detection</p>
+                    <p>✓ Understand dum data-topic-id="stacks-queues">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">7️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Stacks & Queues</h2>
+                        <p>LIFO & FIFO data structures for traversals</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #f44336;">HARD</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('stacks-queues')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓ Mark Complete</button>
+                
+                    <div class="topic-title-section">
+                        <h2>Stacks & Queues</h2>
+                        <p>LIFO & FIFO data structures for traversals</p>
+                    </div>
+                </div>
+                <div class="difficulty" style="background: #f44336;">HARD</div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-3">PHASE 3: Advanced</span>
+                    <span class="phase-badge badge-3">Week 6-7</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Stack: LIFO principle</li>
+                                <li>Queue: FIFO principle</li>
+                                <li>Monotonic stack</li>
+                                <li>Deque (double-ended)</li>
+                                <li>Expression evaluation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Stacks" class="problem-btn">Valid
+                                    Parens</a>
+                                <a href="category.html?topic=Stacks" class="problem-btn">Next Greater</a>
+                                <a href="category.html?topic=Stacks" class="problem-btn">Daily Temp</a>
+                                <a href="category.html?topic=Stacks" class="problem-btn">Islands
+                                    (BFS)</a>
+                                <a href="category.html?topic=Stacks" class="problem-btn">Queue via
+                                    Stack</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Previous/matching" → Stack. "Level-order/distance" →
+                    Queue. Stack powers DFS, Queue powers BFS.
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can solve valid parentheses without hints</p>
+                    <p>✓ Know monotonic stack for next greater</p>
+                    <p>✓ Understand LIF data-topic-id="trees">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">8️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Trees (DFS & Traversals)</h2>
+                        <p>Hierarchical structures with recursion</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #f44336;">HARD</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('trees')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓ Mark Complete</button>
+                
+                    <div class="topic-title-section">
+                        <h2>Trees (DFS & Traversals)</h2>
+                        <p>Hierarchical structures with recursion</p>
+                    </div>
+                </div>
+                <div class="difficulty" style="background: #f44336;">HARD</div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-3">PHASE 3: Advanced</span>
+                    <span class="phase-badge badge-3">Week 7-8</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Inorder/Preorder/Postorder traversal</li>
+                                <li>Level-order (BFS) traversal</li>
+                                <li> DFS recursion pattern</li>
+                                <li>Path sum & ancestor problems</li>
+                                <li>BST validation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Trees" class="problem-btn">Inorder</a>
+                                <a href="category.html?topic=Trees" class="problem-btn">Level Order</a>
+                                <a href="category.html?topic=Trees" class="problem-btn">Path Sum</a>
+                                <a href="category.html?topic=Trees" class="problem-btn">LCA</a>
+                                <a href="category.html?topic=Trees" class="problem-btn">Validate BST</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> Subtree problems suggest recursion. Define what each
+                    recursive call returns. Combine left & right results.
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are r data-topic-id="graphs">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">9️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Graphs (BFS/DFS)</h2>
+                        <p>Most complex structure with powerful algorithms</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #f44336;">HARD</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('graphs')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓ Mark Complete</button>
+                
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">9️⃣</div>
+                    <div class="topic-title-section">
+                        <h2>Graphs (BFS/DFS)</h2>
+                        <p>Most complex structure with powerful algorithms</p>
+                    </div>
+                </div>
+                <div class="difficulty" style="background: #f44336;">HARD</div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-3">PHASE 3: Advanced</span>
+                    <span class="phase-badge badge-3">Week 8-9</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Graph representations (adjacency list)</li>
+                                <li>DFS implementation</li>
+                                <li>BFS for shortest path</li>
+                                <li>Topological sort</li>
+                                <li>Union-Find for components</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Graphs" class="problem-btn">Islands</a>
+                                <a href="category.html?topic=Graphs" class="problem-btn">Clone Graph</a>
+                                <a href="category.html?topic=Graphs" class="problem-btn">Course
+                                    Schedule</a>
+                                <a href="category.html?topic=Graphs" class="problem-btn">Word Ladder</a>
+                                <a href="category.html?topic=Graphs" class="problem-btn">Dijkstra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Components/islands" → DFS/Union-Find. "Shortest path
+                    unweighted" → BFS. "Shortest weighted" → Dijkstra. "Ordering" → Topological sort.
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ You are ready to move forward when:</strong>
+                    <p>✓ Can code DFS/BFS from memory</p>
+                    <p>✓ Know when to u data-topic-id="dynamic-programming">
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">🔟</div>
+                    <div class="topic-title-section">
+                        <h2>Dynamic Programming</h2>
+                        <p>HARDEST - Only after mastering all above</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div class="difficulty" style="background: #9c27b0;">VERY HARD</div>
+                    <button class="mark-complete-btn" onclick="markTopicComplete('dynamic-programming')" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">✓ Mark Complete</button>
+                
+            <div class="topic-header">
+                <div style="display: flex; align-items: center;">
+                    <div class="topic-number">🔟</div>
+                    <div class="topic-title-section">
+                        <h2>Dynamic Programming</h2>
+                        <p>HARDEST - Only after mastering all above</p>
+                    </div>
+                </div>
+                <div class="difficulty" style="background: #9c27b0;">VERY HARD</div>
+            </div>
+            <div class="topic-content">
+
+                <div class="timeline">
+                    <span class="phase-badge badge-4">PHASE 4: Mastery</span>
+                    <span class="phase-badge badge-4">Week 9-12+</span>
+                </div>
+
+                <div class="content-grid">
+                    <div>
+                        <div class="section">
+                            <h3>📚 Core Concepts to Learn</h3>
+                            <ul class="concept-list">
+                                <li>Overlapping subproblems recognition</li>
+                                <li>Memoization (top-down)</li>
+                                <li>Tabulation (bottom-up)</li>
+                                <li>State definition</li>
+                                <li>Recurrence relation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="section">
+                            <h3>🎯 Problems to Solve</h3>
+                            <div class="problem-buttons">
+                                <a href="category.html?topic=Dynamic%20Programming" class="problem-btn">Fibonacci</a>
+                                <a href="category.html?topic=Dynamic%20Programming" class="problem-btn">Coin Change</a>
+                                <a href="category.html?topic=Dynamic%20Programming" class="problem-btn">House Robber</a>
+                                <a href="category.html?topic=Dynamic%20Programming" class="problem-btn">LIS</a>
+                                <a href="category.html?topic=Dynamic%20Programming" class="problem-btn">Knapsack</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-pattern">
+                    <strong>🎯 Key Pattern to Recognize:</strong> "Optimal value" (max/min) + "choices at each step" +
+                    "future depends on now" → DP. Try brute force first to see exponential complexity.
+                </div>
+
+                <div class="recognition-box">
+                    <strong>🔍 DP Recognition:</strong> If brute force is O(2^n) and you see overlapping subproblems, DP
+                    converts it to O(n²) or O(n³). Massive speedup!
+                </div>
+
+                <div class="next-steps">
+                    <strong>✅ Congratulations! You are now ready for:</strong>
+                    <p>✓ Senior-level DSA interviews</p>
+                    <p>✓ Complex optimization problems</p>
+                    <p>✓ Real-world algorithm design</p>
+                    <p style="margin-top: 1rem; font-weight: bold; color: #c62828;">Expected timeline: 12-16 weeks of
+                        consistent practice to reach this level.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-note" style="margin-top: 3rem; margin-bottom: 2rem;">
+        <h3>⚠️ IMPORTANT: How to Use This Roadmap</h3>
+        <p style="color: #555; line-height: 1.8; margin: 1rem 0;">
+            <strong>Do NOT skip topics or jump around randomly.</strong> Follow the order strictly. Each topic builds on
+            previous ones.
+            <br><br>
+            <strong>For each topic:</strong> Understand concepts first → Solve easy problems → Then harder ones → Move
+            forward only when confident.
+            <br><br>
+            <strong>Timeline:</strong> Follow the suggested weeks. Rushing will hurt understanding. Treating it like a
+            race leads to shallow knowledge.
+            <br><br>
+            <strong>Master skill:</strong> For EVERY problem: (1) Identify pattern, (2) Write logic in words, (3) Code,
+            (4) Test edge cases.
+        </p>
+    </div>
+
+    <script>
+        // Define topics for progress tracking
+        const TOPICS = ['arrays', 'binary-search', 'two-pointers', 'sliding-window', 'strings', 'linked-lists', 'stacks-queues', 'trees', 'graphs', 'dynamic-programming'];
+        
+        // Function to mark topic as complete
+        function markTopicComplete(topicId) {
+            const button = document.querySelector(`[onclick="markTopicComplete('${topicId}')"]`);
+            const topicElement = document.querySelector(`[data-topic-id="${topicId}"]`);
+            
+            // Toggle completion state
+            const isCompleted = localStorage.getItem(`topic_${topicId}`) === 'completed';
+            
+            if (isCompleted) {
+                // Unmark
+                localStorage.removeItem(`topic_${topicId}`);
+                button.style.background = '#667eea';
+                button.textContent = '✓ Mark Complete';
+                topicElement.style.opacity = '1';
+            } else {
+                // Mark as complete
+                localStorage.setItem(`topic_${topicId}`, 'completed');
+                button.style.background = '#26a639';
+                button.textContent = '✓ Completed';
+                topicElement.style.opacity = '0.7';
+            }
+            
+            // Update progress tracker
+            updateProgressTracker();
+        }
+
+        // Progress tracker for completed topics
+        function updateProgressTracker() {
+            let completedCount = 0;
+            
+            TOPICS.forEach(topic => {
+                if (localStorage.getItem(`topic_${topic}`) === 'completed') {
+                    completedCount++;
+                }
+            });
+
+            const totalTopics = TOPICS.length;
+            const percentage = totalTopics > 0 ? Math.round((completedCount / totalTopics) * 100) : 0;
+
+            // Update DOM
+            const percentageEl = document.getElementById('completionPercentage');
+            const completedEl = document.getElementById('problemsCompleted');
+            const totalEl = document.getElementById('problemsTotal');
+
+            if (percentageEl) percentageEl.textContent = percentage + '%';
+            if (completedEl) completedEl.textContent = completedCount;
+            if (totalEl) totalEl.textContent = totalTopics;
+        }
+
+        // Initialize button states and visual indicators on page load
+        function initializeTopicStates() {
+            TOPICS.forEach(topic => {
+                const button = document.querySelector(`[onclick="markTopicComplete('${topic}')"]`);
+                const topicElement = document.querySelector(`[data-topic-id="${topic}"]`);
+                
+                if (localStorage.getItem(`topic_${topic}`) === 'completed') {
+                    if (button) {
+                        button.style.background = '#26a639';
+                        button.textContent = '✓ Completed';
+                    }
+                    if (topicElement) {
+                        topicElement.style.opacity = '0.7';
+                    }
+                }
+            });
+            
+            // Update progress tracker on page load
+            updateProgressTracker();
+        }
+
+        // Update on page load
+        window.addEventListener('load', initializeTopicStates);
+
+        // Optional: Update progress when this page comes into focus (when returning from problem-detail.html)
+        window.addEventListener('focus', updateProgressTracker);
+    </script>
+
+</body>
+
+</html>

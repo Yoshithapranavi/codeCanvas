@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Practice - Category</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .nav div {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            background: #667eea;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #764ba2;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .problem-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .resource-btn {
+            display: inline-block;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+            text-align: center;
+            color: white;
+        }
+
+        .leetcode-btn {
+            background: #ffa500;
+        }
+
+        .leetcode-btn:hover {
+            background: #ff8c00;
+        }
+
+        .geeksforgeeks-btn {
+            background: #2f8d47;
+        }
+
+        .geeksforgeeks-btn:hover {
+            background: #1f6d37;
+        }
+
+        .youtube-btn {
+            background: #e74c3c;
+        }
+
+        .youtube-btn:hover {
+            background: #c0392b;
+        }
+
+        .interviewbit-btn {
+            background: #7f39fb;
+        }
+
+        .interviewbit-btn:hover {
+            background: #6d28d9;
+        }
+
+        .tips-section {
+            background: #f0f4ff;
+            padding: 1rem;
+            border-left: 4px solid #667eea;
+            margin-top: 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .tips-section strong {
+            color: #333;
+        }
+
+        .not-found {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+        }
+
+        .not-found h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div>
+            <a href="index.html">🏠 Home</a>
+            <a href="master-roadmap.html">📚 Master Roadmap</a>
+            <a href="structured-roadmap.html">📋 Structured Roadmap</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="content"></div>
+    </div>
+
+    <script>
+        const problemDatabase = {
+            "Arrays": [
+                {
+                    name: "Two Sum",
+                    key: "TwoSum",
+                    description: "Find two numbers that add up to a target. Classic two-pointer or hash map problem.",
+                    leetcode: "https://leetcode.com/problems/two-sum/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/given-an-array-a-of-n-numbers-find-index-pairs-whose-sum-is-equal-to-given-number/",
+                    youtube: "https://www.youtube.com/results?search_query=two+sum+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/2-sum/",
+                    tips: "Try using a hash map to store seen numbers for O(n) solution instead of O(n²) brute force."
+                },
+                {
+                    name: "Best Time to Buy and Sell Stock",
+                    key: "BuyStock",
+                    description: "Find the maximum profit from buying and selling stock once.",
+                    leetcode: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/best-time-to-buy-and-sell-stock/",
+                    youtube: "https://www.youtube.com/results?search_query=best+time+buy+sell+stock",
+                    interviewbit: "https://www.interviewbit.com/problems/best-time-to-buy-and-sell-stock/",
+                    tips: "Track the minimum price seen so far and calculate profit at each step. Time: O(n), Space: O(1)."
+                },
+                {
+                    name: "Maximum Subarray",
+                    key: "MaxSubarray",
+                    description: "Find the contiguous subarray with the largest sum (Kadane's algorithm).",
+                    leetcode: "https://leetcode.com/problems/maximum-subarray/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/largest-sum-contiguous-subarray-part-1/",
+                    youtube: "https://www.youtube.com/results?search_query=maximum+subarray+kadane",
+                    interviewbit: "https://www.interviewbit.com/problems/max-sum-subarray/",
+                    tips: "Use Kadane's algorithm: track current sum and maximum sum found so far. Updates at each element."
+                },
+                {
+                    name: "Move Zeroes",
+                    key: "MoveZeroes",
+                    description: "Move all zeros to the end while maintaining relative order of non-zero elements.",
+                    leetcode: "https://leetcode.com/problems/move-zeroes/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/move-all-zeros-to-end-of-array/",
+                    youtube: "https://www.youtube.com/results?search_query=move+zeroes+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/move-matrix-elements/",
+                    tips: "Use two pointers: one for insertion position, one for iteration. Do it in-place."
+                },
+                {
+                    name: "Contains Duplicate",
+                    key: "ContainsDuplicate",
+                    description: "Determine if an array has any duplicate elements.",
+                    leetcode: "https://leetcode.com/problems/contains-duplicate/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/check-if-array-elements-are-consecutive/",
+                    youtube: "https://www.youtube.com/results?search_query=contains+duplicate+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/containsduplicate/",
+                    tips: "Use a Set for O(n) time. Second pass checks if size equals array length."
+                },
+                {
+                    name: "Rotate Array",
+                    key: "RotateArray",
+                    description: "Rotate array elements by k steps to the right in-place.",
+                    leetcode: "https://leetcode.com/problems/rotate-array/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/array-rotation/",
+                    youtube: "https://www.youtube.com/results?search_query=rotate+array+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/rotate-matrix/",
+                    tips: "Reverse technique: reverse entire array, then first k, then remaining. No extra space needed."
+                },
+                {
+                    name: "Remove Duplicates from Sorted Array",
+                    key: "RemoveDuplicates",
+                    description: "Remove duplicate elements from sorted array in-place, return new length.",
+                    leetcode: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/remove-duplicates-from-sorted-array/",
+                    youtube: "https://www.youtube.com/results?search_query=remove+duplicates+sorted+array",
+                    interviewbit: "https://www.interviewbit.com/problems/remove-duplicate-from-sorted-array/",
+                    tips: "Two pointer approach: track unique position and iterate through array."
+                },
+                {
+                    name: "Product of Array Except Self",
+                    key: "ProductArray",
+                    description: "Return array where each element is product of all other elements (no division).",
+                    leetcode: "https://leetcode.com/problems/product-of-array-except-self/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/product-of-array-element-except-itself/",
+                    youtube: "https://www.youtube.com/results?search_query=product+array+except+self",
+                    interviewbit: "https://www.interviewbit.com/problems/product-array-except-self/",
+                    tips: "Use prefix and suffix products. Two passes: left-to-right then right-to-left."
+                }
+            ],
+            "Binary Search": [
+                {
+                    name: "Binary Search",
+                    key: "BinarySearch",
+                    description: "Classic binary search on sorted array to find a target value.",
+                    leetcode: "https://leetcode.com/problems/binary-search/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/binary-search/",
+                    youtube: "https://www.youtube.com/results?search_query=binary+search",
+                    interviewbit: "https://www.interviewbit.com/problems/binary-search/",
+                    tips: "Standard approach: adjust left/right pointers based on mid comparison."
+                },
+                {
+                    name: "Search in Rotated Sorted Array",
+                    key: "RotatedArray",
+                    description: "Binary search on rotated array to find target value.",
+                    leetcode: "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-rotated-array/",
+                    youtube: "https://www.youtube.com/results?search_query=search+rotated+sorted+array",
+                    interviewbit: "https://www.interviewbit.com/problems/search-in-rotated-sorted-array/",
+                    tips: "Identify which half is sorted, then determine if target is in that half."
+                },
+                {
+                    name: "Sqrt(x)",
+                    key: "SqrtX",
+                    description: "Compute integer square root without using built-in functions.",
+                    leetcode: "https://leetcode.com/problems/sqrtx/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/square-root-of-an-integer/",
+                    youtube: "https://www.youtube.com/results?search_query=sqrt+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/sqrt-x/",
+                    tips: "Binary search from 0 to x. Check if mid*mid <= x."
+                },
+                {
+                    name: "First and Last Position of Element",
+                    key: "FirstLastPosition",
+                    description: "Find first and last position of a target value in sorted array.",
+                    leetcode: "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/find-first-and-last-occurrences-of-a-number-in-a-sorted-array/",
+                    youtube: "https://www.youtube.com/results?search_query=first+last+position+element",
+                    interviewbit: "https://www.interviewbit.com/problems/find-first-and-last-position/",
+                    tips: "Two binary searches: one for leftmost, one for rightmost position."
+                },
+                {
+                    name: "Koko Eating Bananas",
+                    key: "KokoEating",
+                    description: "Binary search to find minimum eating speed to finish all bananas within h hours.",
+                    leetcode: "https://leetcode.com/problems/koko-eating-bananas/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/koko-eating-bananas/",
+                    youtube: "https://www.youtube.com/results?search_query=koko+eating+bananas",
+                    interviewbit: "https://www.interviewbit.com/problems/koko-eating-bananas/",
+                    tips: "Search on answer space (1 to max pile). Check feasibility for each speed."
+                },
+                {
+                    name: "Capacity To Ship Packages",
+                    key: "ShipCapacity",
+                    description: "Find minimum capacity to ship all packages within d days.",
+                    leetcode: "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/capacity-to-ship-packages-within-d-days/",
+                    youtube: "https://www.youtube.com/results?search_query=capacity+ship+packages",
+                    interviewbit: "https://www.interviewbit.com/problems/capacity-ship-packages/",
+                    tips: "Binary search on capacity (max weight to sum). Validate with greedy check."
+                },
+                {
+                    name: "Search Insert Position",
+                    key: "SearchInsertPosition",
+                    description: "Find index where target should be inserted in sorted array.",
+                    leetcode: "https://leetcode.com/problems/search-insert-position/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/find-the-index-of-an-element-in-a-sorted-array-of-arrays/",
+                    youtube: "https://www.youtube.com/results?search_query=search+insert+position",
+                    interviewbit: "https://www.interviewbit.com/problems/search-insert-position/",
+                    tips: "Binary search returns insertion point even if element not found."
+                }
+            ],
+            "Two Pointers": [
+                {
+                    name: "Two Sum II",
+                    key: "TwoSumII",
+                    description: "Find two numbers in sorted array that sum to target (return indices).",
+                    leetcode: "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/two-pointers-technique/",
+                    youtube: "https://www.youtube.com/results?search_query=two+sum+II+sorted+array",
+                    interviewbit: "https://www.interviewbit.com/problems/2-sum-ii/",
+                    tips: "Start with pointers at both ends. Move based on sum vs target."
+                },
+                {
+                    name: "Container With Most Water",
+                    key: "Container",
+                    description: "Find two lines that form a container with maximum area.",
+                    leetcode: "https://leetcode.com/problems/container-with-most-water/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/container-with-most-water/",
+                    youtube: "https://www.youtube.com/results?search_query=container+most+water",
+                    interviewbit: "https://www.interviewbit.com/problems/container-with-most-water/",
+                    tips: "Start at widest position. Move inward based on shorter height."
+                },
+                {
+                    name: "3Sum",
+                    key: "3Sum",
+                    description: "Find all unique triplets in array that sum to zero.",
+                    leetcode: "https://leetcode.com/problems/3sum/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/find-triplets-array-sum-given-number/",
+                    youtube: "https://www.youtube.com/results?search_query=3sum+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/3-sum/",
+                    tips: "Sort array, fix first element, use two pointers for remaining two."
+                },
+                {
+                    name: "Valid Palindrome",
+                    key: "ValidPalindrome",
+                    description: "Check if string is valid palindrome (alphanumeric only, case-insensitive).",
+                    leetcode: "https://leetcode.com/problems/valid-palindrome/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/palindrome-checking/",
+                    youtube: "https://www.youtube.com/results?search_query=valid+palindrome",
+                    interviewbit: "https://www.interviewbit.com/problems/palindrome-string/",
+                    tips: "Two pointers from ends, skip non-alphanumeric, compare characters."
+                },
+                {
+                    name: "Is Subsequence",
+                    key: "IsSubsequence",
+                    description: "Check if s is a subsequence of t (characters appear in order).",
+                    leetcode: "https://leetcode.com/problems/is-subsequence/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/given-two-strings-find-first-string-is-subsequence-of-second/",
+                    youtube: "https://www.youtube.com/results?search_query=is+subsequence",
+                    interviewbit: "https://www.interviewbit.com/problems/is-subsequence/",
+                    tips: "Two pointers approach: iterate through t and advance s pointer when match."
+                }
+            ],
+            "Sliding Window": [
+                {
+                    name: "Longest Substring Without Repeating",
+                    key: "LongestSubstring",
+                    description: "Find longest substring with all unique characters.",
+                    leetcode: "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/length-of-the-longest-substring-without-repeating-characters/",
+                    youtube: "https://www.youtube.com/results?search_query=longest+substring+repeating",
+                    interviewbit: "https://www.interviewbit.com/problems/longest-substring-without-repeat/",
+                    tips: "Use sliding window with hash map. Track character indices."
+                },
+                {
+                    name: "Max Consecutive Ones",
+                    key: "MaxConsecutiveOnes",
+                    description: "Find maximum number of consecutive 1's in binary array.",
+                    leetcode: "https://leetcode.com/problems/max-consecutive-ones/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/count-maximum-consecutive-ones-binary-array/",
+                    youtube: "https://www.youtube.com/results?search_query=max+consecutive+ones",
+                    interviewbit: "https://www.interviewbit.com/problems/max-consecutive-ones/",
+                    tips: "Single pass: track current count and max count."
+                },
+                {
+                    name: "Minimum Window Substring",
+                    key: "MinWindowSubstring",
+                    description: "Find minimum window in s containing all characters of t.",
+                    leetcode: "https://leetcode.com/problems/minimum-window-substring/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/minimum-window-substring/",
+                    youtube: "https://www.youtube.com/results?search_query=minimum+window+substring",
+                    interviewbit: "https://www.interviewbit.com/problems/minimum-window-substring/",
+                    tips: "Sliding window with character count map. Expand then contract."
+                },
+                {
+                    name: "Permutation in String",
+                    key: "PermutationInString",
+                    description: "Check if permutation of s1 exists as substring in s2.",
+                    leetcode: "https://leetcode.com/problems/permutation-in-string/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/permutations-of-a-given-string/",
+                    youtube: "https://www.youtube.com/results?search_query=permutation+string+substring",
+                    interviewbit: "https://www.interviewbit.com/problems/permutation-in-string/",
+                    tips: "Fixed window size approach. Compare character frequencies."
+                },
+                {
+                    name: "Grumpy Bookstore Owner",
+                    key: "GrumpyBookstore",
+                    description: "Maximize satisfied customers considering owner's grumpy minutes.",
+                    leetcode: "https://leetcode.com/problems/grumpy-bookstore-owner/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/maximum-points-obtained-by-giving-gifts/",
+                    youtube: "https://www.youtube.com/results?search_query=grumpy+bookstore+owner",
+                    interviewbit: "https://www.interviewbit.com/problems/grumpy-bookstore-owner/",
+                    tips: "Use sliding window to find best consecutive minutes to be calm."
+                },
+                {
+                    name: "Fruit Into Baskets",
+                    key: "FruitBaskets",
+                    description: "Pick fruits with max total items using at most 2 different fruits.",
+                    leetcode: "https://leetcode.com/problems/fruit-into-baskets/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/k-maximum-sum-subarrays-of-size-k/",
+                    youtube: "https://www.youtube.com/results?search_query=fruit+baskets+sliding+window",
+                    interviewbit: "https://www.interviewbit.com/problems/fruit-into-baskets/",
+                    tips: "Sliding window with at most 2 distinct characters constraint."
+                }
+            ],
+            "Strings": [
+                {
+                    name: "Valid Anagram",
+                    key: "ValidAnagram",
+                    description: "Check if two strings are anagrams of each other.",
+                    leetcode: "https://leetcode.com/problems/valid-anagram/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/valid-anagram-strings/",
+                    youtube: "https://www.youtube.com/results?search_query=valid+anagram",
+                    interviewbit: "https://www.interviewbit.com/problems/anagrams/",
+                    tips: "Sort both strings and compare, or use character frequency map."
+                },
+                {
+                    name: "Longest Palindromic Substring",
+                    key: "LongestPalindrome",
+                    description: "Find longest substring that reads the same forwards and backwards.",
+                    leetcode: "https://leetcode.com/problems/longest-palindromic-substring/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/",
+                    youtube: "https://www.youtube.com/results?search_query=longest+palindromic+substring",
+                    interviewbit: "https://www.interviewbit.com/problems/longest-palindromic-substring/",
+                    tips: "Expand around centers approach. Check odd-length and even-length separately."
+                },
+                {
+                    name: "Isomorphic Strings",
+                    key: "Isomorphic",
+                    description: "Check if two strings follow same pattern (character mapping).",
+                    leetcode: "https://leetcode.com/problems/isomorphic-strings/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/check-if-strings-are-isomorphic-to-each-other/",
+                    youtube: "https://www.youtube.com/results?search_query=isomorphic+strings",
+                    interviewbit: "https://www.interviewbit.com/problems/isomorphic-strings/",
+                    tips: "Use two maps to track bidirectional character mapping."
+                },
+                {
+                    name: "Ransom Note",
+                    key: "RansomNote",
+                    description: "Check if ransom note can be constructed from magazine letters.",
+                    leetcode: "https://leetcode.com/problems/ransom-note/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/check-if-a-string-can-be-formed-from-characters-of-another-string/",
+                    youtube: "https://www.youtube.com/results?search_query=ransom+note+leetcode",
+                    interviewbit: "https://www.interviewbit.com/problems/ransom-note/",
+                    tips: "Count characters in magazine, then check if ransom note needs exist."
+                },
+                {
+                    name: "Roman to Integer",
+                    key: "RomanToInt",
+                    description: "Convert Roman numeral to integer.",
+                    leetcode: "https://leetcode.com/problems/roman-to-integer/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/converting-roman-numerals-to-decimal-lying-between-1-to-3999/",
+                    youtube: "https://www.youtube.com/results?search_query=roman+to+integer",
+                    interviewbit: "https://www.interviewbit.com/problems/roman-to-integer/",
+                    tips: "Map symbols to values. Subtract if smaller value before larger one."
+                },
+                {
+                    name: "Integer to Roman",
+                    key: "IntToRoman",
+                    description: "Convert integer to Roman numeral.",
+                    leetcode: "https://leetcode.com/problems/integer-to-roman/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/converting-decimal-number-lying-between-1-to-3999-to-roman-numerals/",
+                    youtube: "https://www.youtube.com/results?search_query=integer+to+roman",
+                    interviewbit: "https://www.interviewbit.com/problems/integer-to-roman/",
+                    tips: "Use value-symbol pairs in descending order. Greedy approach."
+                }
+            ],
+            "Linked Lists": [
+                {
+                    name: "Reverse Linked List",
+                    key: "ReverseLinkedList",
+                    description: "Reverse a singly linked list iteratively.",
+                    leetcode: "https://leetcode.com/problems/reverse-linked-list/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/reverse-a-linked-list/",
+                    youtube: "https://www.youtube.com/results?search_query=reverse+linked+list",
+                    interviewbit: "https://www.interviewbit.com/problems/reverse-linked-list/",
+                    tips: "Use three pointers: prev, curr, next. Update links one by one."
+                },
+                {
+                    name: "Palindrome Linked List",
+                    key: "PalindromeLinkedList",
+                    description: "Check if a linked list is a palindrome.",
+                    leetcode: "https://leetcode.com/problems/palindrome-linked-list/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/function-to-check-if-a-singly-linked-list-is-palindrome/",
+                    youtube: "https://www.youtube.com/results?search_query=palindrome+linked+list",
+                    interviewbit: "https://www.interviewbit.com/problems/palindrome-list/",
+                    tips: "Find middle, reverse second half, compare. Space: O(1)."
+                },
+                {
+                    name: "Merge Two Sorted Lists",
+                    key: "MergeTwoLists",
+                    description: "Merge two sorted linked lists into one sorted list.",
+                    leetcode: "https://leetcode.com/problems/merge-two-sorted-lists/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/merge-two-sorted-linked-lists/",
+                    youtube: "https://www.youtube.com/results?search_query=merge+two+sorted+linked+lists",
+                    interviewbit: "https://www.interviewbit.com/problems/merge-two-sorted-lists/",
+                    tips: "Two pointer approach: always attach the smaller node."
+                },
+                {
+                    name: "Linked List Cycle",
+                    key: "LinkedListCycle",
+                    description: "Detect if a linked list has a cycle.",
+                    leetcode: "https://leetcode.com/problems/linked-list-cycle/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/",
+                    youtube: "https://www.youtube.com/results?search_query=linked+list+cycle",
+                    interviewbit: "https://www.interviewbit.com/problems/detect-cycle-in-list/",
+                    tips: "Floyd's cycle detection (tortoise and hare). Two pointers at different speeds."
+                },
+                {
+                    name: "Remove Nth Node From End",
+                    key: "RemoveNthNode",
+                    description: "Remove the nth node from the end of the list.",
+                    leetcode: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/remove-nth-node-from-the-end-of-the-list/",
+                    youtube: "https://www.youtube.com/results?search_query=remove+nth+node+from+end",
+                    interviewbit: "https://www.interviewbit.com/problems/remove-nth-node-from-end/",
+                    tips: "Two-pass or two-pointer approach. Dummy node simplifies edge cases."
+                },
+                {
+                    name: "Find the Middle of Linked List",
+                    key: "FindMiddle",
+                    description: "Find the middle node of a linked list.",
+                    leetcode: "https://leetcode.com/problems/middle-of-the-linked-list/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/find-middle-of-a-linked-list-using-tortoise-and-hare/",
+                    youtube: "https://www.youtube.com/results?search_query=middle+of+linked+list",
+                    interviewbit: "https://www.interviewbit.com/problems/middle-of-linked-list/",
+                    tips: "Slow and fast pointer approach. Fast moves 2 steps, slow moves 1."
+                },
+                {
+                    name: "Reorder List",
+                    key: "ReorderList",
+                    description: "Reorder list to L0 → Ln → L1 → Ln-1 pattern.",
+                    leetcode: "https://leetcode.com/problems/reorder-list/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/reorder-a-linked-list/",
+                    youtube: "https://www.youtube.com/results?search_query=reorder+list+linked+list",
+                    interviewbit: "https://www.interviewbit.com/problems/reorder-list/",
+                    tips: "Find middle, reverse second half, then merge interleaving."
+                }
+            ],
+            "Stacks": [
+                {
+                    name: "Valid Parentheses",
+                    key: "ValidParentheses",
+                    description: "Check if string has valid matching and ordered parentheses, brackets, braces.",
+                    leetcode: "https://leetcode.com/problems/valid-parentheses/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/",
+                    youtube: "https://www.youtube.com/results?search_query=valid+parentheses",
+                    interviewbit: "https://www.interviewbit.com/problems/valid-parentheses/",
+                    tips: "Push opening brackets, pop and match closing brackets."
+                },
+                {
+                    name: "Min Stack",
+                    key: "MinStack",
+                    description: "Design stack that supports push, pop, top, and getMin in O(1).",
+                    leetcode: "https://leetcode.com/problems/min-stack/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/",
+                    youtube: "https://www.youtube.com/results?search_query=min+stack",
+                    interviewbit: "https://www.interviewbit.com/problems/min-stack/",
+                    tips: "Use auxiliary stack to track minimums at each level."
+                },
+                {
+                    name: "Next Greater Element",
+                    key: "NextGreater",
+                    description: "For each element, find next greater element (to the right).",
+                    leetcode: "https://leetcode.com/problems/next-greater-element-i/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/next-greater-element/",
+                    youtube: "https://www.youtube.com/results?search_query=next+greater+element",
+                    interviewbit: "https://www.interviewbit.com/problems/next-greater-element-i/",
+                    tips: "Use monotonic decreasing stack. Iterate from right to left."
+                },
+                {
+                    name: "Daily Temperatures",
+                    key: "DailyTemp",
+                    description: "Find days until warmer temperature for each day.",
+                    leetcode: "https://leetcode.com/problems/daily-temperatures/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/daily-temperatures-leetcode/",
+                    youtube: "https://www.youtube.com/results?search_query=daily+temperatures",
+                    interviewbit: "https://www.interviewbit.com/problems/daily-temperatures/",
+                    tips: "Monotonic decreasing stack with indices. Process from right to left."
+                },
+                {
+                    name: "Evaluate Reverse Polish Notation",
+                    key: "PolishNotation",
+                    description: "Evaluate expression in Reverse Polish Notation.",
+                    leetcode: "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/evaluation-of-postfix-expression/",
+                    youtube: "https://www.youtube.com/results?search_query=reverse+polish+notation",
+                    interviewbit: "https://www.interviewbit.com/problems/evaluate-reverse-polish-notation/",
+                    tips: "Push operands, pop two when operator found, compute and push result."
+                },
+                {
+                    name: "Implement Queue Using Stacks",
+                    key: "QueueViaStack",
+                    description: "Implement queue data structure using stacks.",
+                    leetcode: "https://leetcode.com/problems/implement-queue-using-stacks/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/queue-using-stacks/",
+                    youtube: "https://www.youtube.com/results?search_query=implement+queue+using+stacks",
+                    interviewbit: "https://www.interviewbit.com/problems/implement-queue-using-stacks/",
+                    tips: "Use two stacks: one for push, one for pop (reverse order)."
+                }
+            ],
+            "Trees": [
+                {
+                    name: "Binary Tree Inorder Traversal",
+                    key: "InorderTraversal",
+                    description: "Traverse binary tree in inorder (Left-Root-Right) fashion.",
+                    leetcode: "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/inorder-traversal-of-binary-tree/",
+                    youtube: "https://www.youtube.com/results?search_query=binary+tree+inorder+traversal",
+                    interviewbit: "https://www.interviewbit.com/problems/inorder-traversal/",
+                    tips: "Recursive: inorder(left), process node, inorder(right). Iterative uses stack."
+                },
+                {
+                    name: "Binary Tree Level Order Traversal",
+                    key: "LevelOrder",
+                    description: "Traverse tree level by level (breadth-first).",
+                    leetcode: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/level-order-traversal-of-binary-tree/",
+                    youtube: "https://www.youtube.com/results?search_query=binary+tree+level+order+traversal",
+                    interviewbit: "https://www.interviewbit.com/problems/level-order-traversal/",
+                    tips: "Use queue. Process all nodes at current level before moving to next."
+                },
+                {
+                    name: "Maximum Depth of Binary Tree",
+                    key: "MaxDepth",
+                    description: "Find maximum depth (height) of binary tree.",
+                    leetcode: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/height-of-a-binary-tree/",
+                    youtube: "https://www.youtube.com/results?search_query=maximum+depth+binary+tree",
+                    interviewbit: "https://www.interviewbit.com/problems/max-depth-binary-tree/",
+                    tips: "Recursive: 1 + max(maxDepth(left), maxDepth(right))."
+                },
+                {
+                    name: "Path Sum",
+                    key: "PathSum",
+                    description: "Check if tree has root-to-leaf path with given sum.",
+                    leetcode: "https://leetcode.com/problems/path-sum/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/",
+                    youtube: "https://www.youtube.com/results?search_query=path+sum+binary+tree",
+                    interviewbit: "https://www.interviewbit.com/problems/path-sum-binary-tree/",
+                    tips: "DFS recursively. Subtract node value from target, check if reach leaf with 0."
+                },
+                {
+                    name: "Lowest Common Ancestor",
+                    key: "LCA",
+                    description: "Find lowest common ancestor of two nodes in binary search tree.",
+                    leetcode: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-search-tree/",
+                    youtube: "https://www.youtube.com/results?search_query=lowest+common+ancestor+bst",
+                    interviewbit: "https://www.interviewbit.com/problems/lowest-common-ancestor-bst/",
+                    tips: "If both values less than node, go left. If both greater, go right. Else node is LCA."
+                },
+                {
+                    name: "Validate Binary Search Tree",
+                    key: "ValidateBST",
+                    description: "Check if binary tree is a valid binary search tree.",
+                    leetcode: "https://leetcode.com/problems/validate-binary-search-tree/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/",
+                    youtube: "https://www.youtube.com/results?search_query=validate+binary+search+tree",
+                    interviewbit: "https://www.interviewbit.com/problems/validate-binary-search-tree/",
+                    tips: "Recursive with min/max bounds checking at each node."
+                },
+                {
+                    name: "Same Tree",
+                    key: "SameTree",
+                    description: "Check if two binary trees are identical.",
+                    leetcode: "https://leetcode.com/problems/same-tree/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/identical-binary-trees/",
+                    youtube: "https://www.youtube.com/results?search_query=same+tree+binary+tree",
+                    interviewbit: "https://www.interviewbit.com/problems/same-tree/",
+                    tips: "Compare node values, then recursively check left and right subtrees."
+                }
+            ],
+            "Graphs": [
+                {
+                    name: "Number of Islands",
+                    key: "NumberOfIslands",
+                    description: "Count number of connected components (islands) in grid.",
+                    leetcode: "https://leetcode.com/problems/number-of-islands/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/find-number-of-islands/",
+                    youtube: "https://www.youtube.com/results?search_query=number+of+islands",
+                    interviewbit: "https://www.interviewbit.com/problems/number-of-islands/",
+                    tips: "DFS or BFS. Mark visited cells. Increment counter for each new island."
+                },
+                {
+                    name: "Clone Graph",
+                    key: "CloneGraph",
+                    description: "Create a deep copy of undirected graph.",
+                    leetcode: "https://leetcode.com/problems/clone-graph/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/clone-a-graph/",
+                    youtube: "https://www.youtube.com/results?search_query=clone+graph",
+                    interviewbit: "https://www.interviewbit.com/problems/clone-graph/",
+                    tips: "Use hash map for mapping original to cloned nodes. DFS/BFS traversal."
+                },
+                {
+                    name: "Course Schedule",
+                    key: "CourseSchedule",
+                    description: "Determine if all courses can be taken (cycle detection in directed graph).",
+                    leetcode: "https://leetcode.com/problems/course-schedule/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/detect-cycle-in-directed-graph/",
+                    youtube: "https://www.youtube.com/results?search_query=course+schedule",
+                    interviewbit: "https://www.interviewbit.com/problems/course-schedule/",
+                    tips: "Topological sort using DFS. Detect back edges to find cycles."
+                },
+                {
+                    name: "Word Ladder",
+                    key: "WordLadder",
+                    description: "Find shortest transformation sequence from start to end word.",
+                    leetcode: "https://leetcode.com/problems/word-ladder/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/word-ladder/",
+                    youtube: "https://www.youtube.com/results?search_query=word+ladder",
+                    interviewbit: "https://www.interviewbit.com/problems/word-ladder/",
+                    tips: "BFS with pattern matching (one character difference as neighbors)."
+                },
+                {
+                    name: "Network Delay Time",
+                    key: "NetworkDelayTime",
+                    description: "Find time for signal to reach all nodes in network (Dijkstra's shortest path).",
+                    leetcode: "https://leetcode.com/problems/network-delay-time/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/",
+                    youtube: "https://www.youtube.com/results?search_query=network+delay+time",
+                    interviewbit: "https://www.interviewbit.com/problems/network-delay-time/",
+                    tips: "Dijkstra's algorithm using priority queue. Process shortest distance first."
+                },
+                {
+                    name: "Max Area of Island",
+                    key: "MaxAreaIsland",
+                    description: "Find the maximum area of island (connected 1s) in grid.",
+                    leetcode: "https://leetcode.com/problems/max-area-of-island/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/largest-island-in-binary-matrix/",
+                    youtube: "https://www.youtube.com/results?search_query=max+area+of+island",
+                    interviewbit: "https://www.interviewbit.com/problems/max-area-island/",
+                    tips: "DFS to explore connected islands. Track area count."
+                }
+            ],
+            "Dynamic Programming": [
+                {
+                    name: "Climbing Stairs",
+                    key: "ClimbingStairs",
+                    description: "Count ways to climb n stairs (1 or 2 steps at a time).",
+                    leetcode: "https://leetcode.com/problems/climbing-stairs/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/count-ways-to-reach-nth-stair/",
+                    youtube: "https://www.youtube.com/results?search_query=climbing+stairs+dp",
+                    interviewbit: "https://www.interviewbit.com/problems/climbing-stairs/",
+                    tips: "Fibonacci sequence. dp[i] = dp[i-1] + dp[i-2]."
+                },
+                {
+                    name: "Coin Change",
+                    key: "CoinChange",
+                    description: "Find minimum number of coins to make given amount.",
+                    leetcode: "https://leetcode.com/problems/coin-change/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/dynamic-programming-set-9-coin-change-problem/",
+                    youtube: "https://www.youtube.com/results?search_query=coin+change+dp",
+                    interviewbit: "https://www.interviewbit.com/problems/coin-change/",
+                    tips: "dp[amount] = min coins needed. Iterate coins and amounts."
+                },
+                {
+                    name: "House Robber",
+                    key: "HouseRobber",
+                    description: "Maximize money robbed from houses (cannot rob adjacent houses).",
+                    leetcode: "https://leetcode.com/problems/house-robber/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/house-robber-problem/",
+                    youtube: "https://www.youtube.com/results?search_query=house+robber+dp",
+                    interviewbit: "https://www.interviewbit.com/problems/house-robber/",
+                    tips: "dp[i] = max(dp[i-1], dp[i-2] + nums[i])."
+                },
+                {
+                    name: "Longest Increasing Subsequence",
+                    key: "LongestIncreasingSubsequence",
+                    description: "Find length of longest increasing subsequence.",
+                    leetcode: "https://leetcode.com/problems/longest-increasing-subsequence/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/",
+                    youtube: "https://www.youtube.com/results?search_query=longest+increasing+subsequence",
+                    interviewbit: "https://www.interviewbit.com/problems/longest-increasing-subsequence/",
+                    tips: "dp[i] = longest ending at i. Check all j < i where nums[j] < nums[i]."
+                },
+                {
+                    name: "0/1 Knapsack Problem",
+                    key: "KnapsackDP",
+                    description: "Maximize value with weight constraint (classic DP problem).",
+                    leetcode: "https://leetcode.com/problems/0-1-knapsack-problem/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/",
+                    youtube: "https://www.youtube.com/results?search_query=0+1+knapsack+dp",
+                    interviewbit: "https://www.interviewbit.com/problems/0-1-knapsack/",
+                    tips: "2D DP table: dp[item][weight]. Include or exclude each item."
+                },
+                {
+                    name: "Fibonacci Number",
+                    key: "Fibonacci",
+                    description: "Compute fibonacci number with memoization or tabulation.",
+                    leetcode: "https://leetcode.com/problems/fibonacci-number/",
+                    geeksforgeeks: "https://www.geeksforgeeks.org/program-for-fibonacci-numbers-2/",
+                    youtube: "https://www.youtube.com/results?search_query=fibonacci+memoization",
+                    interviewbit: "https://www.interviewbit.com/problems/fibonacci-number/",
+                    tips: "Use memoization or bottom-up DP to avoid redundant calculations."
+                }
+            ]
+        };
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function renderProblems() {
+            const topic = getQueryParam('topic');
+            const contentDiv = document.getElementById('content');
+
+            if (!topic || !problemDatabase[topic]) {
+                contentDiv.innerHTML = `
+                    <div class="not-found">
+                        <h2>Topic Not Found</h2>
+                        <p>The topic "${topic}" doesn't exist. Please select a valid topic from the roadmap.</p>
+                        <a href="structured-roadmap.html" class="back-btn">Back to Roadmap</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const problems = problemDatabase[topic];
+            let html = `
+                <div class="header">
+                    <h1>${topic} Problems</h1>
+                    <p>Master ${topic} with curated learning resources for each problem</p>
+                    <a href="structured-roadmap.html" class="back-btn">← Back to Roadmap</a>
+                </div>
+                <div class="problems-grid">
+            `;
+
+            problems.forEach(problem => {
+                html += `
+                    <div class="problem-card">
+                        <h3>${problem.name}</h3>
+                        <p>${problem.description}</p>
+                        <div class="resource-links">
+                            <a href="${problem.leetcode}" target="_blank" rel="noopener" class="resource-btn leetcode-btn">🔗 LeetCode</a>
+                            <a href="${problem.geeksforgeeks}" target="_blank" rel="noopener" class="resource-btn geeksforgeeks-btn">🔗 GeeksforGeeks</a>
+                            <a href="${problem.youtube}" target="_blank" rel="noopener" class="resource-btn youtube-btn">▶ YouTube</a>
+                            <a href="${problem.interviewbit}" target="_blank" rel="noopener" class="resource-btn interviewbit-btn">🔗 InterviewBit</a>
+                        </div>
+                        <div class="tips-section">
+                            <strong>💡 Key Tip:</strong> ${problem.tips}
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            contentDiv.innerHTML = html;
+        }
+
+        // Render problems when page loads
+        document.addEventListener('DOMContentLoaded', renderProblems);
+    </script>
+</body>
+
+</html>

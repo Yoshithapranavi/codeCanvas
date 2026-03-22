@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Topic</title>
+</head>
+
+<body style="margin: 0; padding: 0; background: #f8f9ff; font-family: Arial, sans-serif;">
+
+    <nav style="background: #333; padding: 0; margin: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0; display: flex; align-items: center;">
+            <a href="index.html"
+                style="color: white; text-decoration: none; padding: 1rem 1.5rem; font-weight: 600;">Home</a>
+            <a href="roadmap.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">Roadmap</a>
+            <a href="topics.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">📚 Topics &
+                Concepts</a>
+            <a href="learning-roadmap.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">📖
+                Learning Path</a>
+            <a href="structured-roadmap.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">📋
+                Structured Prep</a>
+            <a href="dashboard.html" style="color: white; text-decoration: none; padding: 1rem 1.5rem;">Dashboard</a>
+        </div>
+    </nav>
+
+    <header
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; text-align: center;">
+        <h1 id="topicTitle" style="margin: 0; font-size: 2.5rem;">📚 Topic</h1>
+    </header>
+
+    <section style="max-width: 1100px; margin: 0 auto; padding: 2rem;">
+
+        <!-- CONCEPT CARD -->
+        <div
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 16px; margin-bottom: 3rem; min-height: 150px;">
+            <h2 style="margin-top: 0; font-size: 1.5rem; color: white;">💡 Core Concept</h2>
+            <p id="conceptText" style="font-size: 1.1rem; line-height: 1.8; color: white; margin: 0;"></p>
+        </div>
+
+        <!-- DETAILED EXPLANATION -->
+        <div
+            style="background: #f0f5ff; padding: 2rem; border-radius: 12px; margin-bottom: 3rem; border-left: 5px solid #667eea;">
+            <h2 style="color: #667eea; font-size: 1.5rem; margin-top: 0;">📖 Detailed Explanation</h2>
+            <p id="detailedText" style="color: #333; line-height: 1.9; font-size: 1.05rem; margin: 0;"></p>
+        </div>
+
+        <!-- APPROACHES -->
+        <div style="margin-bottom: 3rem;">
+            <h2 style="color: #333; font-size: 1.5rem; margin-bottom: 1.5rem;">🎯 Different Approaches & Strategies</h2>
+            <div id="approachesContainer"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;"></div>
+        </div>
+
+        <!-- PATTERNS -->
+        <h2 style="color: #333; margin-bottom: 2rem; font-weight: 700; font-size: 1.8rem;">🎯 Patterns & Techniques</h2>
+        <div id="patternCards"></div>
+
+    </section>
+
+    <script src="roadmap.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Load concept immediately
+        const params = new URLSearchParams(window.location.search);
+        const topicName = params.get('topic');
+
+        function loadConcept() {
+            if (typeof topics !== 'undefined' && topicName && topics[topicName]) {
+                const data = topics[topicName];
+                document.getElementById('topicTitle').textContent = data.title;
+                document.getElementById('conceptText').textContent = data.concept;
+
+                // Load detailed explanation
+                if (data.detailedExplanation) {
+                    document.getElementById('detailedText').textContent = data.detailedExplanation;
+                }
+
+                // Load approaches
+                if (data.approaches && data.approaches.length > 0) {
+                    const container = document.getElementById('approachesContainer');
+                    data.approaches.forEach(approach => {
+                        const div = document.createElement('div');
+                        div.style.cssText = 'background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 4px solid #667eea;';
+                        div.innerHTML = `<h3 style="color: #667eea; margin-top: 0; font-size: 1.2rem;">${approach.name}</h3>
+                            <p style="color: #555; line-height: 1.6; margin: 0;">${approach.description}</p>`;
+                        container.appendChild(div);
+                    });
+                }
+
+                // Load patterns
+                const container = document.getElementById('patternCards');
+                for (let key in data.patterns) {
+                    const pattern = data.patterns[key];
+                    const div = document.createElement('div');
+                    div.style.cssText = 'background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
+                    div.innerHTML = `<h3 style="margin-top: 0; color: #333;">${pattern.title}</h3>
+                        <button onclick="location.href='pattern.html?topic=${topicName}&pattern=${key}'" style="background: #667eea; color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">Practice</button>`;
+                    container.appendChild(div);
+                }
+            }
+        }
+
+        // Try immediately
+        loadConcept();
+        // Try again after delay
+        setTimeout(loadConcept, 500);
+    </script>
+
+</body>
+
+</html>

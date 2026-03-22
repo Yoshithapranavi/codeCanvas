@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    DSA Interview Mastery - Ace Technical Interviews
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">DSA Mastery</h1>
+            <div id="authStatus">
+                <span id="loginStatus">Guest</span>
+                <button id="loginBtn" onclick="showAuthModal('login')">Login</button>
+                <button id="signupBtn" onclick="showAuthModal('signup')">Signup</button>
+                <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="master-roadmap.html">📚 Complete Roadmap (START HERE!)</a>
+            <a href="dashboard.html">📊 Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal" style="display:none;">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="closeAuthModal()">&times;</span>
+            <h2 id="modalTitle">Login</h2>
+            <div id="authModeToggle" class="auth-toggle">
+                <button type="button" class="toggle-btn active" onclick="switchAuthMode('login')">Login</button>
+                <button type="button" class="toggle-btn" onclick="switchAuthMode('signup')">Signup</button>
+            </div>
+            <form id="authForm">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Username" required minlength="3" maxlength="20">
+                    <small id="usernameHelp" class="form-help"></small>
+                </div>
+                <div class="form-group" id="emailGroup" style="display:none;">
+                    <input type="email" id="email" placeholder="Email address">
+                    <small id="emailHelp" class="form-help"></small>
+                </div>
+                <div class="form-group">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password" placeholder="Password" required>
+                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility()"
+                            tabindex="-1">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <small id="passwordHelp" class="form-help"></small>
+                    <small id="passwordRequirements" class="password-requirements" style="display:none;">
+                        Password must contain: UPPERCASE • lowercase • numbers • 8+ characters
+                    </small>
+                </div>
+                <button type="submit" id="submitBtn" class="submit-btn">Login</button>
+            </form>
+            <div id="forgotPasswordLink" style="text-align: center; margin-top: 1rem;">
+                <a href="#" onclick="showForgotPasswordModal(); return false;" class="forgot-password-link">Forgot
+                    Password?</a>
+            </div>
+            <p id="authMsg" class="auth-message"></p>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal" style="display:none;">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="closeForgotPasswordModal()">&times;</span>
+            <h2>Reset Password</h2>
+            <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                Enter your email or username, and we'll send you instructions to reset your password.
+            </p>
+            <form id="forgotPasswordForm">
+                <div class="form-group">
+                    <input type="text" id="resetEmail" placeholder="Email or Username" required>
+                    <small id="resetEmailHelp" class="form-help"></small>
+                </div>
+                <button type="submit" class="submit-btn">Send Reset Link</button>
+            </form>
+            <p id="forgotPasswordMsg" class="auth-message"></p>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="#" onclick="showAuthModal('login'); return false;" class="forgot-password-link">Back to
+                    Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Password Confirmation Modal -->
+    <div id="resetConfirmModal" class="modal" style="display:none;">
+        <div class="modal-content auth-modal">
+            <span class="close" onclick="closeResetConfirmModal()">&times;</span>
+            <h2>Create New Password</h2>
+            <form id="resetPasswordForm">
+                <div class="form-group">
+                    <input type="text" id="resetUsername" placeholder="Username" required minlength="3" maxlength="20">
+                    <small id="resetUsernameHelp" class="form-help"></small>
+                </div>
+                <div class="form-group">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="newPassword" placeholder="New Password" required>
+                        <button type="button" class="password-toggle-btn" onclick="toggleNewPasswordVisibility()"
+                            tabindex="-1">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <small id="newPasswordHelp" class="form-help"></small>
+                    <small class="password-requirements" style="display:block;">
+                        Password must contain: UPPERCASE • lowercase • numbers • 8+ characters
+                    </small>
+                </div>
+                <div class="form-group">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                        <button type="button" class="password-toggle-btn" onclick="toggleConfirmPasswordVisibility()"
+                            tabindex="-1">
+                            <span class="eye-icon">👁️</span>
+                        </button>
+                    </div>
+                    <small id="confirmPasswordHelp" class="form-help"></small>
+                </div>
+                <button type="submit" class="submit-btn">Reset Password</button>
+            </form>
+            <p id="resetConfirmMsg" class="auth-message"></p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            Ace Technical Interviews with Structured DSA Mastery
+            <p class="hero-subtitle">150+ Patterns • 500+ Problems • 90% Success Rate • Used by 50K+ Engineers</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div>Patterns</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div>Problems</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div>Topics</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">90%</div>
+                    <div>Success</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <button class="cta-primary" onclick="location.href='master-roadmap.html'">📚 Start Complete
+                    Roadmap</button>
+                <button class="cta-secondary" onclick="location.href='dashboard.html'">📊 Track Progress</button>
+            </div>
+        </div>
+        <div class="hero-features">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div>Curated Patterns</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⏱️</div>
+                <div>Timed Practice</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <div>Progress Tracking</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <div>Interview Stats</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class=\"container\">
+            <h2>How It Works</h2>
+            <div class=\"steps-grid\">
+                <div class=\"step-card\">
+                    <div class=\"step-number\">1</div>
+                    <h3>Choose Your Path</h3>
+                    <p>Pick a topic or follow our master roadmap designed by tech experts</p>
+                </div>
+                <div class=\"step-card\">
+                    <div class=\"step-number\">2</div>
+                    <h3>Learn Patterns</h3>
+                    <p>Understand key algorithms and data structure patterns with detailed explanations</p>
+                </div>
+                <div class=\"step-card\">
+                    <div class=\"step-number\">3</div>
+                    <h3>Practice Problems</h3>
+                    <p>Solve curated problems from multiple platforms to reinforce your learning</p>
+                </div>
+                <div class=\"step-card\">
+                    <div class=\"step-number\">4</div>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your performance and get personalized recommendations for improvement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class=\"testimonials\">
+        <h2>Success Stories from Our Users</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Landed Amazon SDE2 offcampus after following Arrays roadmap. NeetCode level quality!"</p>
+                <div class="author">Rahul S., Amazon SDE2</div>
+            </div>
+            <div class="testimonial">
+                <p>"Google interview cleared in 1 month. Best pattern explanations + problem selection."</p>
+                <div class="author">Priya K., Google SWE</div>
+            </div>
+            <div class="testimonial">
+                <p>"Structured like LeetCode but better progress tracking. 5 stars!"</p>
+                <div class="author">Arjun M., Meta Engineer</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="quick-start">
+        <h2>Start Your Journey</h2>
+        <div class="quick-buttons">
+            <a href="master-roadmap.html" class="quick-btn primary">📚 Complete Roadmap (All Topics & Links)</a>
+            <a href="master-roadmap.html#topic-1" class="quick-btn">🔥 Start with Arrays</a>
+            <a href="dashboard.html" class="quick-btn">📈 Track Progress</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 DSA Mastery. Built for aspiring engineers.
+    </footer>
+
+    <script src="auth.js"></script>
+    <script>
+        let currentAuthMode = 'login';
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.password-toggle-btn .eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '👁️‍🗨️';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        function switchAuthMode(mode) {
+            currentAuthMode = mode;
+            const emailGroup = document.getElementById('emailGroup');
+            const modalTitle = document.getElementById('modalTitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const passwordRequirements = document.getElementById('passwordRequirements');
+            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+
+            // Toggle buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (mode === 'signup') {
+                emailGroup.style.display = 'block';
+                modalTitle.textContent = 'Create Account';
+                submitBtn.textContent = 'Signup';
+                passwordRequirements.style.display = 'block';
+                forgotPasswordLink.style.display = 'none';
+            } else {
+                emailGroup.style.display = 'none';
+                modalTitle.textContent = 'Login';
+                submitBtn.textContent = 'Login';
+                passwordRequirements.style.display = 'none';
+                forgotPasswordLink.style.display = 'block';
+            }
+            clearFormMessages();
+        }
+
+        function showAuthModal(type) {
+            document.getElementById('authModal').style.display = 'block';
+            switchAuthMode(type);
+            document.getElementById('authForm').reset();
+            clearFormMessages();
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('authMsg').textContent = '';
+            clearFormMessages();
+            document.getElementById('authForm').reset();
+        }
+
+        function clearFormMessages() {
+            document.getElementById('usernameHelp').textContent = '';
+            document.getElementById('emailHelp').textContent = '';
+            document.getElementById('passwordHelp').textContent = '';
+            document.getElementById('authMsg').textContent = '';
+            document.getElementById('authMsg').className = 'auth-message';
+        }
+
+        function showFieldError(fieldId, message) {
+            const helpId = fieldId + 'Help';
+            const helpElement = document.getElementById(helpId);
+            if (helpElement) {
+                helpElement.textContent = message;
+                helpElement.style.color = '#e74c3c';
+            }
+        }
+
+        function clearFieldError(fieldId) {
+            const helpId = fieldId + 'Help';
+            const helpElement = document.getElementById(helpId);
+            if (helpElement) {
+                helpElement.textContent = '';
+            }
+        }
+
+        function validateLoginForm(username, password) {
+            let isValid = true;
+            clearFormMessages();
+
+            if (!username.trim()) {
+                showFieldError('username', 'Username is required');
+                isValid = false;
+            } else if (username.length < 3) {
+                showFieldError('username', 'Username must be at least 3 characters');
+                isValid = false;
+            }
+
+            if (!password) {
+                showFieldError('password', 'Password is required');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function validateSignupForm(username, email, password) {
+            let isValid = true;
+            clearFormMessages();
+
+            // Validate username
+            if (!username.trim()) {
+                showFieldError('username', 'Username is required');
+                isValid = false;
+            } else {
+                const usernameValidation = validateUsername(username);
+                if (!usernameValidation.valid) {
+                    showFieldError('username', usernameValidation.msg);
+                    isValid = false;
+                }
+            }
+
+            // Validate email
+            if (!email.trim()) {
+                showFieldError('email', 'Email is required');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showFieldError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password) {
+                showFieldError('password', 'Password is required');
+                isValid = false;
+            } else {
+                const passwordValidation = validatePassword(password);
+                if (!passwordValidation.valid) {
+                    showFieldError('password', passwordValidation.msg);
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!validateLoginForm(username, password)) {
+                return;
+            }
+
+            const result = login(username, password);
+            const authMsg = document.getElementById('authMsg');
+
+            if (result.success) {
+                authMsg.textContent = result.msg;
+                authMsg.className = 'auth-message success';
+                updateAuthUI();
+                setTimeout(() => closeAuthModal(), 1500);
+            } else {
+                authMsg.textContent = result.msg;
+                authMsg.className = 'auth-message error';
+            }
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!validateSignupForm(username, email, password)) {
+                return;
+            }
+
+            const result = signup(username, email, password);
+            const authMsg = document.getElementById('authMsg');
+
+            if (result.success) {
+                authMsg.textContent = result.msg;
+                authMsg.className = 'auth-message success';
+                setTimeout(() => {
+                    switchAuthMode('login');
+                    document.getElementById('authForm').reset();
+                    clearFormMessages();
+                }, 1500);
+            } else {
+                authMsg.textContent = result.msg;
+                authMsg.className = 'auth-message error';
+            }
+        }
+
+        function updateAuthUI() {
+            const loggedIn = isLoggedIn();
+            document.getElementById('loginStatus').textContent = loggedIn ? `Hi, ${currentUser}!` : 'Guest';
+            document.getElementById('loginBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('signupBtn').style.display = loggedIn ? 'none' : 'inline';
+            document.getElementById('logoutBtn').style.display = loggedIn ? 'inline' : 'none';
+        }
+
+        // ===== FORGOT PASSWORD FUNCTIONS =====
+        function showForgotPasswordModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('forgotPasswordModal').style.display = 'block';
+            document.getElementById('forgotPasswordForm').reset();
+            document.getElementById('forgotPasswordMsg').textContent = '';
+            document.getElementById('resetEmailHelp').textContent = '';
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+            document.getElementById('forgotPasswordForm').reset();
+        }
+
+        function showResetConfirmModal(email) {
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+            document.getElementById('resetConfirmModal').style.display = 'block';
+            document.getElementById('resetPasswordForm').reset();
+            document.getElementById('resetConfirmMsg').textContent = '';
+            localStorage.setItem('resetEmail', email);
+        }
+
+        function closeResetConfirmModal() {
+            document.getElementById('resetConfirmModal').style.display = 'none';
+            document.getElementById('resetPasswordForm').reset();
+            localStorage.removeItem('resetEmail');
+        }
+
+        function toggleNewPasswordVisibility() {
+            const passwordInput = document.getElementById('newPassword');
+            const toggleBtn = document.querySelector('#resetConfirmModal .password-toggle-btn .eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '👁️‍🗨️';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        function toggleConfirmPasswordVisibility() {
+            const passwordInput = document.getElementById('confirmPassword');
+            const toggleBtns = document.querySelectorAll('#resetConfirmModal .password-toggle-btn .eye-icon');
+            const toggleBtn = toggleBtns[toggleBtns.length - 1];
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '👁️‍🗨️';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const resetEmail = document.getElementById('resetEmail').value.trim();
+            const forgotPasswordMsg = document.getElementById('forgotPasswordMsg');
+
+            if (!resetEmail) {
+                document.getElementById('resetEmailHelp').textContent = 'Email or username is required';
+                return;
+            }
+
+            // Check if user exists
+            const users = getUsers();
+            const user = users.find(u => u.email === resetEmail || u.username === resetEmail);
+
+            if (!user) {
+                forgotPasswordMsg.textContent = '❌ User not found. Please check and try again.';
+                forgotPasswordMsg.className = 'auth-message error';
+                return;
+            }
+
+            // Show reset password form
+            forgotPasswordMsg.textContent = '✓ Verification successful. Create your new password.';
+            forgotPasswordMsg.className = 'auth-message success';
+            setTimeout(() => {
+                showResetConfirmModal(user.email);
+            }, 1000);
+        }
+
+        function handleResetPassword(e) {
+            e.preventDefault();
+            const username = document.getElementById('resetUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const resetConfirmMsg = document.getElementById('resetConfirmMsg');
+
+            // Validate fields
+            if (!username.trim()) {
+                document.getElementById('resetUsernameHelp').textContent = 'Username is required';
+                return;
+            }
+
+            if (!newPassword) {
+                document.getElementById('newPasswordHelp').textContent = 'Password is required';
+                return;
+            }
+
+            const passwordValidation = validatePassword(newPassword);
+            if (!passwordValidation.valid) {
+                document.getElementById('newPasswordHelp').textContent = passwordValidation.msg;
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                document.getElementById('confirmPasswordHelp').textContent = 'Passwords do not match';
+                return;
+            }
+
+            // Update password in users database
+            const users = getUsers();
+            const userIndex = users.findIndex(u => u.username === username);
+
+            if (userIndex === -1) {
+                document.getElementById('resetUsernameHelp').textContent = 'Username not found';
+                return;
+            }
+
+            users[userIndex].password = simpleHash(newPassword);
+            saveUsers(users);
+
+            resetConfirmMsg.textContent = '✓ Password reset successfully! Redirecting to login...';
+            resetConfirmMsg.className = 'auth-message success';
+
+            setTimeout(() => {
+                closeResetConfirmModal();
+                showAuthModal('login');
+            }, 1500);
+        }
+
+        // Form submission handlers
+        document.addEventListener('DOMContentLoaded', function () {
+            const authForm = document.getElementById('authForm');
+            if (authForm) {
+                authForm.addEventListener('submit', function (e) {
+                    if (currentAuthMode === 'login') {
+                        handleLogin(e);
+                    } else {
+                        handleSignup(e);
+                    }
+                });
+            }
+
+            const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+            if (forgotPasswordForm) {
+                forgotPasswordForm.addEventListener('submit', handleForgotPassword);
+            }
+
+            const resetPasswordForm = document.getElementById('resetPasswordForm');
+            if (resetPasswordForm) {
+                resetPasswordForm.addEventListener('submit', handleResetPassword);
+            }
+
+            updateAuthUI();
+        });
+
+        window.onclick = function (event) {
+            const authModal = document.getElementById('authModal');
+            const forgotModal = document.getElementById('forgotPasswordModal');
+            const resetModal = document.getElementById('resetConfirmModal');
+
+            if (event.target == authModal) closeAuthModal();
+            if (event.target == forgotModal) closeForgotPasswordModal();
+            if (event.target == resetModal) closeResetConfirmModal();
+        }
+
+        updateAuthUI();
+    </script>
+</body>
+
+</html>

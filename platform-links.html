@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Question Links - Find Practice Problems</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    <style>
+        .platform-links-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-filter-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .filter-btn.active {
+            background: #FF6B35;
+            color: white;
+            border-color: #FF6B35;
+        }
+
+        .topic-section {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #FF6B35;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .topic-header h2 {
+            margin: 0;
+            flex: 1;
+            color: #2D3436;
+        }
+
+        .topic-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .topic-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .question-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2D3436;
+            margin: 0;
+        }
+
+        .difficulty-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .difficulty-easy {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .difficulty-medium {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .difficulty-hard {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .platform-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #f0f0f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2D3436;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .platform-link:hover {
+            background: #FF6B35;
+            color: white;
+            border-color: #FF6B35;
+            transform: translateX(4px);
+        }
+
+        .platform-icon {
+            font-size: 1.5rem;
+        }
+
+        .platform-name {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .external-icon {
+            font-size: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+
+        .empty-state h3 {
+            color: #2D3436;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .search-filter-section {
+                flex-direction: column;
+            }
+
+            .filter-controls {
+                width: 100%;
+            }
+
+            .platform-links {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">DSA Question Links</h1>
+            <div id="authStatus">
+                <span id="loginStatus">Guest</span>
+                <button id="loginBtn" onclick="showAuthModal('login')">Login</button>
+                <button id="signupBtn" onclick="showAuthModal('signup')">Signup</button>
+                <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="roadmap.html">Roadmap</a>
+            <a href="platform-links.html" class="active">Question Links</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find DSA Practice Problems</h1>
+            <p>Access curated questions from LeetCode, CodeChef, GeeksforGeeks, CodingNinjas, HackerRank, Google Code
+                and more - all in one place!</p>
+        </div>
+    </section>
+
+    <div class="platform-links-container">
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" id="totalQuestions">0</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalTopics">0</div>
+                <div class="stat-label">Topics Covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalPlatforms">6+</div>
+                <div class="stat-label">Platforms</div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search questions (e.g., Two Sum, Binary Search)...">
+            </div>
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Levels</button>
+                <button class="filter-btn" data-filter="Easy">Easy</button>
+                <button class="filter-btn" data-filter="Medium">Medium</button>
+                <button class="filter-btn" data-filter="Hard">Hard</button>
+            </div>
+        </div>
+
+        <!-- Questions Display -->
+        <div id="questionsContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DSA Mastery Platform. Practice anywhere, anytime!</p>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="questions.js"></script>
+    <script>
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        // Initialize page
+        function initializePage() {
+            updateStats();
+            renderQuestions();
+            setupEventListeners();
+        }
+
+        // Update statistics
+        function updateStats() {
+            const allQuestions = getAllQuestions();
+            document.getElementById('totalQuestions').textContent = allQuestions.length;
+            document.getElementById('totalTopics').textContent = Object.keys(questionsDB).length;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                renderQuestions();
+            });
+
+            // Difficulty filter
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    renderQuestions();
+                });
+            });
+        }
+
+        // Render questions
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            // Get questions based on search
+            let filteredQuestions = searchQuery.length > 0
+                ? searchQuestions(searchQuery)
+                : getAllQuestions();
+
+            // Apply difficulty filter
+            if (currentFilter !== 'all') {
+                filteredQuestions = filterByDifficulty(filteredQuestions, currentFilter);
+            }
+
+            if (filteredQuestions.length === 0) {
+                container.innerHTML = '<div class="no-results"><h3>No questions found</h3><p>Try adjusting your search or filters</p></div>';
+                return;
+            }
+
+            // Group by topic
+            const groupedByTopic = {};
+            filteredQuestions.forEach(q => {
+                if (!groupedByTopic[q.topic]) {
+                    groupedByTopic[q.topic] = [];
+                }
+                groupedByTopic[q.topic].push(q);
+            });
+
+            // Render topics
+            for (let topic in groupedByTopic) {
+                const topicData = questionsDB[topic];
+                const topicSection = document.createElement('div');
+                topicSection.className = 'topic-section';
+                topicSection.innerHTML = `
+                    <div class="topic-header" onclick="toggleTopic(this)">
+                        <h2>${topicData.title}</h2>
+                        <span class="topic-toggle">▾</span>
+                    </div>
+                    <div class="question-list" style="display: block;">
+                        ${groupedByTopic[topic].map(q => createQuestionCardHTML(q)).join('')}
+                    </div>
+                `;
+                container.appendChild(topicSection);
+            }
+        }
+
+        // Create question card HTML
+        function createQuestionCardHTML(question) {
+            const difficultyClass = `difficulty-${question.difficulty.toLowerCase()}`;
+            const platformLinksHTML = question.platforms
+                .map(p => `
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="platform-link" title="Open on ${p.name}">
+                        <span class="platform-icon">${p.logo}</span>
+                        <span class="platform-name">${p.name}</span>
+                        <span class="external-icon">↗</span>
+                    </a>
+                `)
+                .join('');
+
+            return `
+                <div class="question-card">
+                    <div class="question-header">
+                        <h3 class="question-title">${question.title}</h3>
+                        <span class="difficulty-badge ${difficultyClass}">${question.difficulty}</span>
+                    </div>
+                    <div class="platform-links">
+                        ${platformLinksHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Toggle topic visibility
+        function toggleTopic(header) {
+            const list = header.nextElementSibling;
+            const toggle = header.querySelector('.topic-toggle');
+            list.style.display = list.style.display === 'none' ? 'block' : 'none';
+            toggle.classList.toggle('collapsed');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+</body>
+
+</html>
