@@ -1037,6 +1037,7 @@ pre {
 
 .platforms {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -1050,7 +1051,33 @@ pre {
 }
 
 .leetcode {
-    background: #ffa116;
+    background: #ffa116 !important;
+    color: white;
+}
+
+.geeksforgeeks {
+    background: #2f8d46 !important;
+    color: white;
+}
+
+.hackerrank {
+    background: #1f1d25 !important;
+    color: white;
+}
+
+.codechef {
+    background: #664db0 !important;
+    color: white;
+}
+
+.interviewbit {
+    background: #ff6f00 !important;
+    color: white;
+}
+
+.codewars {
+    background: #8b0000 !important;
+    color: white;
 }
 
 .gfg {

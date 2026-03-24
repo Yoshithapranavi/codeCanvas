@@ -194,6 +194,61 @@
             font-size: 1rem;
         }
 
+        .search-badge {
+            display: inline-block;
+            background: #FFA500;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .platform-link.requires-search {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+        }
+
+        .platform-link.requires-search:hover {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .platform-link.requires-search .platform-icon {
+            opacity: 0.8;
+        }
+
+        .info-banner {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            color: #1565c0;
+        }
+
+        .info-banner h4 {
+            margin: 0 0 0.5rem 0;
+            color: #1565c0;
+        }
+
+        .info-banner p {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .info-banner ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .info-banner li {
+            font-size: 0.95rem;
+            margin: 0.3rem 0;
+        }
+
         .empty-state {
             text-align: center;
             padding: 3rem 1rem;
@@ -296,9 +351,21 @@
                 <div class="stat-label">Topics Covered</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" id="totalPlatforms">6+</div>
+                <div class="stat-number" id="totalPlatforms">9+</div>
                 <div class="stat-label">Platforms</div>
             </div>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <h4>💡 About These Links</h4>
+            <p><strong>✅ Direct Links:</strong> LeetCode and GeeksforGeeks have direct problem links that take you
+                straight to the specific DSA question.</p>
+            <p><strong>🔍 Search Required:</strong> Other platforms (HackerRank, CodeChef, InterviewBit, Codewars) are
+                linked to their main problem pages. You'll need to search for the specific question name on these
+                platforms.</p>
+            <p>This approach ensures all links are working and reliable while giving you access to multiple practice
+                platforms!</p>
         </div>
 
         <!-- Search and Filter -->
@@ -324,8 +391,25 @@
     </footer>
 
     <script src="auth.js"></script>
-    <script src="questions.js"></script>
+    <script src="questions.js?t=mixed-direct-search"></script>
     <script>
+        // Diagnostic check
+        setTimeout(() => {
+            if (typeof questionsDB !== 'undefined') {
+                let totalPlatforms = 0;
+                for (let topic in questionsDB) {
+                    if (questionsDB[topic].questions) {
+                        questionsDB[topic].questions.forEach(q => {
+                            totalPlatforms += (q.platforms ? q.platforms.length : 0);
+                        });
+                    }
+                }
+                console.log(`✅ questionsDB loaded with ${totalPlatforms} total platform links`);
+            } else {
+                console.error('❌ ERROR: questionsDB not loaded - questions.js may not have loaded');
+            }
+        }, 100);
+
         let currentFilter = 'all';
         let searchQuery = '';
 
@@ -412,14 +496,19 @@
         // Create question card HTML
         function createQuestionCardHTML(question) {
             const difficultyClass = `difficulty-${question.difficulty.toLowerCase()}`;
+            console.log(`Question: ${question.title}, Platforms: ${question.platforms.length}`);
             const platformLinksHTML = question.platforms
-                .map(p => `
-                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="platform-link" title="Open on ${p.name}">
-                        <span class="platform-icon">${p.logo}</span>
-                        <span class="platform-name">${p.name}</span>
-                        <span class="external-icon">↗</span>
-                    </a>
-                `)
+                .map(p => {
+                    const classExtra = (!p.direct) ? 'requires-search' : '';
+                    const badge = (!p.direct) ? '<span class="search-badge">🔍 Search</span>' : '';
+                    return `
+                        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="platform-link ${classExtra}" title="Open on ${p.name}">
+                            <span class="platform-icon">${p.logo}</span>
+                            <span class="platform-name">${p.name}${badge}</span>
+                            <span class="external-icon">↗</span>
+                        </a>
+                    `;
+                })
                 .join('');
 
             return `

@@ -256,6 +256,237 @@
         .emoji-icon {
             font-size: 1.5rem;
         }
+
+        .platform-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .platform-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e8eef7;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .platform-link:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .platform-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+
+        .platform-name {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-badge {
+            background: #ffc107;
+            color: #333;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .external-icon {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .problem-title {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1rem 0 0.8rem 0;
+        }
+
+        .resources-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .resources-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .resource-list {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .resource-card {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .resource-platform {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .resource-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .resource-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .resource-link-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .problem-item {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .problem-item .problem-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: flex-start;
+            min-width: 100%;
+        }
+
+        .platform-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-btn.leetcode {
+            background: #ffa116;
+        }
+
+        .platform-btn.geeksforgeeks {
+            background: #2f8d46;
+        }
+
+        .platform-btn.hackerrank {
+            background: #1f1d25;
+        }
+
+        .platform-btn.codechef {
+            background: #664db0;
+        }
+
+        .platform-btn.interviewbit {
+            background: #ff6f00;
+        }
+
+        .platform-btn.codewars {
+            background: #8b0000;
+        }
+
+        .platform-btn.hackerearth {
+            background: #624699;
+        }
+
+        .search-badge {
+            background: #ffc107;
+            color: #333;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
     </style>
 </head>
 
@@ -364,16 +595,7 @@
 
                 <div class="practice-section">
                     <h3>🔗 Practice These Problems</h3>
-                    <div class="practice-links">
-                        <a href="https://leetcode.com/problems/two-sum/" target="_blank">Two Sum</a>
-                        <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">Buy
-                            Stock</a>
-                        <a href="https://leetcode.com/problems/contains-duplicate/" target="_blank">Duplicates</a>
-                        <a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank">Product
-                            Array</a>
-                        <a href="https://leetcode.com/problems/3sum/" target="_blank">3Sum</a>
-                        <a href="https://leetcode.com/problems/max-subarray/" target="_blank">Max Subarray</a>
-                    </div>
+                    <div id="arrays-problems" class="practice-problems-list"></div>
                 </div>
             </div>
         </div>
@@ -461,13 +683,7 @@
 
                 <div class="practice-section">
                     <h3>🔗 Practice These Problems</h3>
-                    <div class="practice-links">
-                        <a href="https://leetcode.com/problems/valid-anagram/" target="_blank">Valid Anagram</a>
-                        <a href="https://leetcode.com/problems/valid-palindrome/" target="_blank">Palindrome</a>
-                        <a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank">Longest
-                            Palindrome</a>
-                        <a href="https://leetcode.com/problems/group-anagrams/" target="_blank">Group Anagrams</a>
-                    </div>
+                    <div id="strings-problems" class="practice-problems-list"></div>
                 </div>
             </div>
         </div>
@@ -532,13 +748,7 @@ return -1  // not found</pre>
 
                 <div class="practice-section">
                     <h3>🔗 Practice These Problems</h3>
-                    <div class="practice-links">
-                        <a href="https://leetcode.com/problems/binary-search/" target="_blank">Binary Search</a>
-                        <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">Rotated
-                            Array</a>
-                        <a href="https://leetcode.com/problems/find-peak-element/" target="_blank">Find Peak</a>
-                        <a href="https://leetcode.com/problems/first-bad-version/" target="_blank">First Bad Version</a>
-                    </div>
+                    <div id="binary-search-problems" class="practice-problems-list"></div>
                 </div>
             </div>
         </div>
@@ -614,13 +824,7 @@ return -1  // not found</pre>
 
                 <div class="practice-section">
                     <h3>🔗 Practice These Problems</h3>
-                    <div class="practice-links">
-                        <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse List</a>
-                        <a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank">Merge Lists</a>
-                        <a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">Cycle Detection</a>
-                        <a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank">Find
-                            Middle</a>
-                    </div>
+                    <div id="linked-lists-problems" class="practice-problems-list"></div>
                 </div>
             </div>
         </div>
@@ -723,12 +927,7 @@ return -1  // not found</pre>
 
                 <div class="practice-section">
                     <h3>🔗 Practice These Problems</h3>
-                    <div class="practice-links">
-                        <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">Valid Parens</a>
-                        <a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">Next Greater</a>
-                        <a href="https://leetcode.com/problems/min-stack/" target="_blank">Min Stack</a>
-                        <a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Islands (BFS)</a>
-                    </div>
+                    <div id="stacks-queues-problems" class="practice-problems-list"></div>
                 </div>
             </div>
         </div>
@@ -825,15 +1024,7 @@ return -1  // not found</pre>
 
                     <div class="practice-section">
                         <h3>🔗 Practice These Problems</h3>
-                        <div class="practice-links">
-                            <a href="https://leetcode.com/problems/inorder-traversal/" target="_blank">Inorder
-                                Traversal</a>
-                            <a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a>
-                            <a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-bst/"
-                                target="_blank">LCA</a>
-                            <a href="https://leetcode.com/problems/validate-binary-search-tree/"
-                                target="_blank">Validate BST</a>
-                        </div>
+                        <div id="trees-problems" class="practice-problems-list"></div>
                     </div>
                 </div>
             </div>
@@ -924,12 +1115,7 @@ return -1  // not found</pre>
 
                     <div class="practice-section">
                         <h3>🔗 Practice These Problems</h3>
-                        <div class="practice-links">
-                            <a href="https://leetcode.com/problems/clone-graph/" target="_blank">Clone Graph</a>
-                            <a href="https://leetcode.com/problems/course-schedule/" target="_blank">Course Schedule</a>
-                            <a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Islands</a>
-                            <a href="https://leetcode.com/problems/network-delay-time/" target="_blank">Dijkstra</a>
-                        </div>
+                        <div id="graphs-problems" class="practice-problems-list"></div>
                     </div>
                 </div>
             </div>
@@ -1028,14 +1214,7 @@ return -1  // not found</pre>
 
                     <div class="practice-section">
                         <h3>🔗 Practice These Problems</h3>
-                        <div class="practice-links">
-                            <a href="https://leetcode.com/problems/fibonacci-number/" target="_blank">Fibonacci</a>
-                            <a href="https://leetcode.com/problems/coin-change/" target="_blank">Coin Change</a>
-                            <a href="https://leetcode.com/problems/longest-increasing-subsequence/"
-                                target="_blank">LIS</a>
-                            <a href="https://leetcode.com/problems/house-robber/" target="_blank">House Robber</a>
-                            <a href="https://leetcode.com/problems/edit-distance/" target="_blank">Edit Distance</a>
-                        </div>
+                        <div id="dynamic-programming-problems" class="practice-problems-list"></div>
                     </div>
                 </div>
             </div>
@@ -1134,22 +1313,93 @@ return -1  // not found</pre>
 
                     <div class="practice-section">
                         <h3>🔗 Practice These Problems</h3>
-                        <div class="practice-links">
-                            <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank">Kth
-                                Largest</a>
-                            <a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank">Median
-                                Stream</a>
-                            <a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank">Merge K
-                                Lists</a>
-                            <a href="https://leetcode.com/problems/top-k-frequent-elements/" target="_blank">Top K
-                                Frequent</a>
-                        </div>
+                        <div id="heaps-problems" class="practice-problems-list"></div>
                     </div>
                 </div>
             </div>
 
         </div>
 
+        <script>
+            console.log('🔵 topics.html script tag loaded');
+        </script>
+        <script src="questions.js"></script>
+        <script>
+            console.log('🟩 questions.js loaded');
+
+            function initializeProblems() {
+                console.log('🟪 initializeProblems called');
+
+                if (typeof questionsDB === 'undefined') {
+                    console.error('❌ questionsDB not defined - retrying in 1 second');
+                    setTimeout(initializeProblems, 1000);
+                    return;
+                }
+
+                console.log('✅ questionsDB loaded');
+
+                const topicMapping = {
+                    'arrays': 'arrays-problems',
+                    'strings': 'strings-problems',
+                    'binary-search': 'binary-search-problems',
+                    'linked-lists': 'linked-lists-problems',
+                    'stacks': 'stacks-queues-problems',
+                    'trees': 'trees-problems',
+                    'graphs': 'graphs-problems',
+                    'dynamic-programming': 'dynamic-programming-problems',
+                    'heaps': 'heaps-problems'
+                };
+
+                let successCount = 0;
+                for (let topicKey in topicMapping) {
+                    const containerId = topicMapping[topicKey];
+                    const container = document.getElementById(containerId);
+
+                    if (!container) {
+                        console.warn(`⚠️ Container ${containerId} not found`);
+                        continue;
+                    }
+
+                    if (!questionsDB[topicKey]) {
+                        console.warn(`⚠️ Topic ${topicKey} not in questionsDB`);
+                        continue;
+                    }
+
+                    let html = '';
+                    const problems = questionsDB[topicKey].questions || [];
+                    console.log(`📚 ${topicKey}: ${problems.length} problems found`);
+
+                    problems.forEach(problem => {
+                        if (!problem.title || !problem.platforms || problem.platforms.length === 0) return;
+
+                        let platformButtons = problem.platforms.map(p => {
+                            const badge = (!p.direct) ? '<span class="search-badge">🔍 Search</span>' : '';
+                            return `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank" title="${p.direct ? 'Direct Link' : 'Search Required'}">${p.logo || ''} ${p.name}${badge}</a>`;
+                        }).join('');
+
+                        html += `
+<div class="problem-item">
+    <div class="problem-title">${problem.title}</div>
+    <div class="platforms">${platformButtons}</div>
+</div>`;
+                    });
+
+                    container.innerHTML = html;
+                    successCount++;
+                }
+                console.log(`✅ ${successCount} topics populated`);
+            }
+
+            // Call immediately
+            console.log('🔶 Current document readyState:', document.readyState);
+            if (document.readyState === 'loading') {
+                console.log('📝 Adding DOMContentLoaded listener');
+                document.addEventListener('DOMContentLoaded', initializeProblems);
+            } else {
+                console.log('🚀 Calling initializeProblems directly');
+                initializeProblems();
+            }
+        </script>
 </body>
 
 </html>

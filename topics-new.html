@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Topics with Concepts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+        }
+
+        .nav div {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            background: #667eea;
+        }
+
+        .nav a.active {
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .topic-card {
+            background: white;
+            margin-bottom: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topic-header h2 {
+            font-size: 1.9rem;
+        }
+
+        .start-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .start-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .topic-content {
+            padding: 2.5rem;
+        }
+
+        .concept-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .concept-section h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid #e8eef7;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .practice-section {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .practice-section h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .practice-problems-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .problem-item {
+            background: #f9f9f9;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .problem-item .problem-title {
+            flex: 1;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        .platform-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .platform-btn.leetcode {
+            background: #ffa116;
+        }
+
+        .platform-btn.geeksforgeeks {
+            background: #2f8d46;
+        }
+
+        .platform-btn.hackerrank {
+            background: #1f1d25;
+        }
+
+        .platform-btn.codechef {
+            background: #664db0;
+        }
+
+        .platform-btn.interviewbit {
+            background: #ff6f00;
+        }
+
+        .platform-btn.codewars {
+            background: #8b0000;
+        }
+
+        .platform-btn.hackerearth {
+            background: #624699;
+        }
+
+        .search-badge {
+            background: #ffc107;
+            color: #333;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        .emoji-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav">
+        <div>
+            <a href="index.html">🏠 Home</a>
+            <a href="roadmap.html">🗺️ Roadmap</a>
+            <a href="topics.html" class="active">📚 Topics & Concepts</a>
+            <a href="learning-roadmap.html">📖 Learning Path</a>
+            <a href="structured-roadmap.html">📋 Structured Prep</a>
+            <a href="dashboard.html">📊 Dashboard</a>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>📚 Master DSA Topics</h1>
+        <p>Practice problems with direct platform links</p>
+    </div>
+
+    <div class="container">
+        <!-- ARRAYS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔷</span> Arrays & Hashing</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="arrays-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STRINGS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔤</span> Strings</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="strings-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BINARY SEARCH -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔍</span> Binary Search</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="binary-search-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LINKED LISTS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">⛓️</span> Linked Lists</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="linked-lists-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STACKS & QUEUES -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">📦</span> Stacks & Queues</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="stacks-queues-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TREES -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🌳</span> Trees</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="trees-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRAPHS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🔗</span> Graphs</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="graphs-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DYNAMIC PROGRAMMING -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">⚡</span> Dynamic Programming</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="dynamic-programming-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HEAPS -->
+        <div class="topic-card">
+            <div class="topic-header">
+                <h2><span class="emoji-icon">🏆</span> Heaps / Priority Queue</h2>
+                <a href="structured-roadmap.html" class="start-btn">▶ Start Learning</a>
+            </div>
+            <div class="topic-content">
+                <div class="concept-section">
+                    <h3>🔗 Practice These Problems</h3>
+                    <div id="heaps-problems" class="practice-problems-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script>
+        console.log('🟩 questions.js loaded');
+
+        function initializeProblems() {
+            console.log('🟪 initializeProblems called');
+
+            if (typeof questionsDB === 'undefined') {
+                console.error('❌ questionsDB not defined - retrying in 1 second');
+                setTimeout(initializeProblems, 1000);
+                return;
+            }
+
+            console.log('✅ questionsDB loaded');
+
+            const topicMapping = {
+                'arrays': 'arrays-problems',
+                'strings': 'strings-problems',
+                'binary-search': 'binary-search-problems',
+                'linked-lists': 'linked-lists-problems',
+                'stacks': 'stacks-queues-problems',
+                'trees': 'trees-problems',
+                'graphs': 'graphs-problems',
+                'dynamic-programming': 'dynamic-programming-problems',
+                'heaps': 'heaps-problems'
+            };
+
+            let successCount = 0;
+            for (let topicKey in topicMapping) {
+                const containerId = topicMapping[topicKey];
+                const container = document.getElementById(containerId);
+
+                if (!container) {
+                    console.warn(`⚠️ Container ${containerId} not found`);
+                    continue;
+                }
+
+                if (!questionsDB[topicKey]) {
+                    console.warn(`⚠️ Topic ${topicKey} not in questionsDB`);
+                    continue;
+                }
+
+                let html = '';
+                const problems = questionsDB[topicKey].questions || [];
+                console.log(`📚 ${topicKey}: ${problems.length} problems found`);
+
+                problems.forEach(problem => {
+                    if (!problem.title || !problem.platforms || problem.platforms.length === 0) return;
+
+                    let platformButtons = problem.platforms.map(p => {
+                        const badge = (!p.direct) ? '<span class="search-badge">🔍 Search</span>' : '';
+                        return `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank" title="${p.direct ? 'Direct Link' : 'Search Required'}">${p.logo || ''} ${p.name}${badge}</a>`;
+                    }).join('');
+
+                    html += `
+<div class="problem-item">
+    <div class="problem-title">${problem.title}</div>
+    <div class="platforms">${platformButtons}</div>
+</div>`;
+                });
+
+                container.innerHTML = html;
+                successCount++;
+            }
+            console.log(`✅ ${successCount} topics populated`);
+        }
+
+        // Call immediately
+        console.log('🔶 Current document readyState:', document.readyState);
+        if (document.readyState === 'loading') {
+            console.log('📝 Adding DOMContentLoaded listener');
+            document.addEventListener('DOMContentLoaded', initializeProblems);
+        } else {
+            console.log('🚀 Calling initializeProblems directly');
+            initializeProblems();
+        }
+    </script>
+
+</body>
+
+</html>

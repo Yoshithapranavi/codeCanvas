@@ -372,9 +372,10 @@ function renderProblems(level) {
 
         let platformButtons = '';
         if (problem.platforms && problem.platforms.length > 0) {
-            platformButtons = problem.platforms.map(p =>
-                `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank">${p.name}</a>`
-            ).join('');
+            platformButtons = problem.platforms.map(p => {
+                const badge = (!p.direct) ? '<span class="search-badge">🔍 Search</span>' : '';
+                return `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank" title="${p.direct ? 'Direct Link' : 'Search Required'}">${p.logo || ''} ${p.name}${badge}</a>`;
+            }).join('');
         } else if (problem.link) {
             platformButtons = `<a class="platform-btn leetcode" href="${problem.link}" target="_blank">LeetCode</a>`;
         }
@@ -477,11 +478,10 @@ function renderProblems(level) {
 
         if (problem.platforms && problem.platforms.length > 0) {
 
-            platformButtons = problem.platforms.map(p =>
-
-                `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank">${p.name}</a>`
-
-            ).join('');
+            platformButtons = problem.platforms.map(p => {
+                const badge = (!p.direct) ? '<span class="search-badge">🔍 Search</span>' : '';
+                return `<a class="platform-btn ${p.name.toLowerCase().replace(/ /g, '')}" href="${p.url}" target="_blank" title="${p.direct ? 'Direct Link' : 'Search Required'}">${p.logo || ''} ${p.name}${badge}</a>`;
+            }).join('');
 
         } else if (problem.link) {
 
